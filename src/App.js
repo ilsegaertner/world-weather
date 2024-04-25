@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <div className="App bg-gray-500 h-screen">
           <NavigationBar className="bg-white" />
-          <div className="flex flex-row align-middle justify-between m-10 max-w-5xl overflow-hidden m-auto">
+          <div className="flex flex-row align-middle justify-between m-10 max-w-5xl  m-auto">
             <MainComponent />
             <Weather className="shadow-2xl" />
           </div>
