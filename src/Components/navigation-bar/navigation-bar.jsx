@@ -7,7 +7,7 @@ import Profile from "../profile/profile";
 const NavigationBar = () => {
   return (
     <nav className="bg-white p-5 shadow-md">
-      <ul>
+      <ul style={{ fontStyle: "italic" }}>
         <li>
           <Link to="/">Home</Link>
         </li>

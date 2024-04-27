@@ -7,6 +7,7 @@ import Weather from "./Components/weather/weather";
 import MyMap from "./Components/MyMap/myMap";
 import Home from "./Components/home/home";
 import { BrowserRouter } from "react-router-dom";
+import NameComponent from "./Components/name/name";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <MainComponent />
             <Weather className="shadow-2xl" />
           </div>
+          <NameComponent />
         </div>
       </BrowserRouter>
     </>

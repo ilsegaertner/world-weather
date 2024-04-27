@@ -14,6 +14,7 @@ const Weather = () => {
   const cityName = "Lamu";
   const limit = 1;
 
+  // useEffect for page reload when city not existing
   useEffect(() => {
     if (error && error.includes("No matching city found")) {
       const timeoutId = setTimeout(() => {
@@ -120,6 +121,10 @@ const Weather = () => {
     default:
       backgroundImage = null;
   }
+
+  // const highestTemperature =
+
+  // weatherData.weather.main
 
   // Convert temperature from Kelvin to Celsius
   const temperatureCelsius = weatherData.main.temp - 273.15;
