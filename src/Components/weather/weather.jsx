@@ -4,12 +4,8 @@ import RainSvg from "../../assets/160354.svg";
 import CloudsSvg from "../../assets/clouds-cloud-svgrepo-com.svg";
 import ClearSvg from "../../assets/Weather-clear.svg";
 
-const Weather = () => {
-  const [weatherData, setWeatherData] = useState(null);
-  const [error, setError] = useState(null);
-  const [lat, setLat] = useState(null);
-  const [lon, setLon] = useState(null);
-  const [query, setQuery] = useState("Passau");
+const Weather = ({weatherData, inputQuery, query, handleKeyDown, handleSubmit, error}) => {
+  
 
   const cityName = "Lamu";
   const limit = 1;
@@ -25,79 +21,6 @@ const Weather = () => {
     }
   }, [error]);
 
-  const inputQuery = (event) => {
-    setQuery(event.target.value);
-    console.log("Query:", event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetchCoords();
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      fetchCoords();
-    }
-  };
-
-  const fetchCoords = async () => {
-    try {
-      if (!query) {
-        // Don't make the request if the query is empty
-        return;
-      }
-
-      const response = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=${limit}&appid=4430e9e41106a5deb2aba2b74568af5e`
-      );
-      if (!response.ok) {
-        throw new Error(
-          "Failed to fetch the weather Data from the city name query"
-        );
-      }
-      const data = await response.json();
-
-      // Check if data array is empty
-      if (data.length === 0) {
-        throw new Error("No matching city found");
-      }
-
-      const { lat, lon } = data[0];
-      setLat(lat);
-      setLon(lon);
-    } catch (error) {
-      setError(error.message);
-    }
-    console.log(lat);
-    console.log(lon);
-  };
-
-  useEffect(() => {
-    fetchCoords();
-  }, []);
-
-  const fetchWeatherData = async () => {
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=4430e9e41106a5deb2aba2b74568af5e`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch weather data");
-      }
-      const data = await response.json();
-      setWeatherData(data);
-      console.log(data);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  useEffect(() => {
-    if (lat !== null && lon !== null) {
-      fetchWeatherData();
-    }
-  }, [lat, lon]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -121,10 +44,6 @@ const Weather = () => {
     default:
       backgroundImage = null;
   }
-
-  // const highestTemperature =
-
-  // weatherData.weather.main
 
   // Convert temperature from Kelvin to Celsius
   const temperatureCelsius = weatherData.main.temp - 273.15;
@@ -168,10 +87,6 @@ const Weather = () => {
               <div className="p-2 justify-start align-top text-white">
                 {" "}
                 <p>{weatherData.weather[0].main}</p>
-                {/* <p>Longitude: {weatherData.coord.lon}</p>
-                <p>Latitude: {weatherData.coord.lat}</p>
-                <p>Max Temp: {weatherData.main.temp_max} </p>
-                <p>Min Temp: {weatherData.main.temp_min} </p> */}
               </div>
               <div></div>
             </div>
@@ -181,7 +96,9 @@ const Weather = () => {
         {error && <p>Error: {error}</p>}
       </div>
 
-      <MyMap city={query} />
+      <div className="flex flex-col justify-center max-w-sm">
+        <MyMap city={query} />
+      </div>
     </>
   );
 };

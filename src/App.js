@@ -1,6 +1,5 @@
 import "./App.css";
 import React from "react";
-import MainComponent from "./Components/MainComponent";
 import NavigationBar from "./Components/navigation-bar/navigation-bar";
 import Profile from "./Components/profile/profile";
 import Weather from "./Components/weather/weather";
@@ -8,6 +7,9 @@ import MyMap from "./Components/MyMap/myMap";
 import Home from "./Components/home/home";
 import { BrowserRouter } from "react-router-dom";
 import NameComponent from "./Components/name/name";
+import LoopingComponent from "./Components/Looping/looping";
+import MainComponent from "./Components/MainComponent";
+import StateHandling from "./Components/StateHandling/state-handling";
 
 function App() {
   return (
@@ -15,11 +17,10 @@ function App() {
       <BrowserRouter>
         <div className="App bg-gray-500 h-screen">
           <NavigationBar className="bg-white" />
-          <div className="flex flex-row align-middle justify-between m-10 max-w-5xl  m-auto">
-            <MainComponent />
-            <Weather className="shadow-2xl" />
-          </div>
-          <NameComponent />
+
+          <StateHandling />
+
+          <MainComponent />
         </div>
       </BrowserRouter>
     </>

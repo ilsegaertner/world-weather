@@ -1,40 +1,110 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import FiveDayWeather from "./FiveDayWeather/FiveDayWeather";
+import Weather from "./weather/weather";
 
 const MainComponent = () => {
-  const [count, setCount] = useState(0);
+  const [weatherData, setWeatherData] = useState(null);
+  const [lat, setLat] = useState(null);
+  const [lon, setLon] = useState(null);
+  const [query, setQuery] = useState("Paris");
+  const [error, setError] = useState(null);
+  const limit = 1;
+
+  const inputQuery = (event) => {
+    setQuery(event.target.value);
+    console.log("Query:", event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetchCoords();
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      fetchCoords();
+    }
+  };
+
+  // API call Geocoding
+  const fetchCoords = async () => {
+    try {
+      if (!query) {
+        // Don't make the request if the query is empty
+        return;
+      }
+
+      const response = await fetch(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=${limit}&appid=4430e9e41106a5deb2aba2b74568af5e`
+      );
+      if (!response.ok) {
+        throw new Error(
+          "Failed to fetch the weather Data from the city name query"
+        );
+      }
+      const data = await response.json();
+
+      // Check if data array is empty
+      if (data.length === 0) {
+        throw new Error("No matching city found");
+      }
+
+      const { lat, lon } = data[0];
+      setLat(lat);
+      setLon(lon);
+    } catch (error) {
+      setError(error.message);
+    }
+    console.log(lat);
+    console.log(lon);
+  };
+
+  useEffect(() => {
+    fetchCoords();
+  }, []);
+
+  const fetchWeatherData = async () => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=4430e9e41106a5deb2aba2b74568af5e`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch weather data");
+      }
+      const data = await response.json();
+      setWeatherData(data);
+      console.log(data);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        await fetchCoords();
+        if (lat !== null && lon !== null) {
+          await fetchWeatherData();
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, [lat, lon]);
 
   return (
     <>
-      <div className="bg-blue-300 rounded-3xl shadow-xl border-gray-600">
-        <div className="flex flex-col bg-gray-300 max-w-md m-auto p-12">
-          <h1 className="font-bold pt-5 text-3xl">State handling</h1>
-          <div className="justify-center">
-            <ul className="flex justify-center">
-              <li>
-                {" "}
-                <button
-                  className=" m-4 bg-gradient-to-r from-blue-500 to-green-500 shadow-lg text-gray-800 font-bold py-2 px-2 rounded-lg hover:text-grey-300"
-                  onClick={() => setCount((count) => count + 1)}
-                >
-                  Click Me
-                </button>
-              </li>
-              <li>
-                <button
-                  className="m-4 bg-gradient-to-r from-blue-500 to-green-500 shadow-lg text-gray-800 font-bold py-2 px-2 rounded-lg hover:text-grey-300"
-                  onClick={() => {
-                    setCount((count) => 0);
-                  }}
-                >
-                  Reset
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          <div>Count: {count}</div>
-        </div>
+      {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
+      <div className="bg-blue-300 shadow-xl border-gray-600 p-10 flex">
+        <FiveDayWeather lat={lat} lon={lon} />
+        <Weather
+          handleSubmit={handleSubmit}
+          handleKeyDown={handleKeyDown}
+          inputQuery={inputQuery}
+          weatherData={weatherData}
+          error={error}
+        />
       </div>
     </>
   );
