@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FiveDayWeather from "./FiveDayWeather/FiveDayWeather";
 import Weather from "./weather/weather";
+import FooterComponent from "./footer-component/footer";
 import MyMap from "./MyMap/myMap";
 import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
 
@@ -110,8 +111,11 @@ const MainComponent = () => {
         />
         <FiveCityForecast city={query} lon={lon} lat={lat} />
       </div>
-      <div className="flex flex-col justify-center max-w-sm">
+      <div className="flex flex-col justify-center w-screen bg-yellow-300">
         <MyMap city={query} />
+      </div>
+      <div className="bg-blue-900 w-screen h-screen">
+        <FooterComponent />
       </div>
     </>
   );
