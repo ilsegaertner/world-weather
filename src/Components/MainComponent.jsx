@@ -10,6 +10,7 @@ const MainComponent = () => {
   const [lon, setLon] = useState(null);
   const [query, setQuery] = useState("Paris");
   const [error, setError] = useState(null);
+  const [fiveCities, setFiveCities] = useState(null);
   const limit = 1;
 
   const inputQuery = (event) => {
@@ -107,7 +108,7 @@ const MainComponent = () => {
           weatherData={weatherData}
           error={error}
         />
-        <FiveCityForecast />
+        <FiveCityForecast city={query} lon={lon} lat={lat} />
       </div>
       <div className="flex flex-col justify-center max-w-sm">
         <MyMap city={query} />

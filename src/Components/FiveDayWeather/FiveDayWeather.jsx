@@ -72,8 +72,8 @@ const FiveDayWeather = ({ lat, lon, query }) => {
     return (
       <>
         <div>
-          <p className="m-8 text-xl">Five-day forecast </p>
-          <p className="m-8 text-xl">{query}</p>
+          <p className="m-8 text-xl text-gray-800">Five-day forecast </p>
+          <p className="m-8 text-xl text-gray-800">{query}</p>
           {/* <input
             type="number"
             className="p-3 border-gray-300 rounded-xl mb-5"
@@ -84,9 +84,9 @@ const FiveDayWeather = ({ lat, lon, query }) => {
 
           {threeOClockValues.map((item, index) => (
             <p key={index}>
-              <div className="flex">
+              <div className="flex text-gray-800">
                 {formatDateTime(item.dt_txt)}{" "}
-                <span className="text-xl pl-6">
+                <span className="text-xl pl-6 text-white">
                   {item.main.temp.toFixed()} °C
                 </span>
               </div>

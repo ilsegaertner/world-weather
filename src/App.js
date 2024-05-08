@@ -18,7 +18,7 @@ function App() {
         <div className="App bg-gray-500 h-screen">
           <NavigationBar className="bg-white" />
 
-          <StateHandling />
+          {/* <StateHandling /> */}
 
           <MainComponent />
         </div>
