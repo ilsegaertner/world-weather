@@ -71,9 +71,9 @@ const FiveDayWeather = ({ lat, lon, query }) => {
   if (threeOClockValues.length > 0) {
     return (
       <>
-        <div>
-          <p className="m-8 text-xl text-gray-800">Five-day forecast </p>
-          <p className="m-8 text-xl text-gray-800">{query}</p>
+        <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl">
+          <p className="m-8 text-xl text-white">Five-day forecast </p>
+          <p className="m-8 text-xl text-yellow-300">{query}</p>
           {/* <input
             type="number"
             className="p-3 border-gray-300 rounded-xl mb-5"
@@ -84,7 +84,7 @@ const FiveDayWeather = ({ lat, lon, query }) => {
 
           {threeOClockValues.map((item, index) => (
             <p key={index}>
-              <div className="flex text-gray-800">
+              <div className="flex text-blue-100">
                 {formatDateTime(item.dt_txt)}{" "}
                 <span className="text-xl pl-6 text-white">
                   {item.main.temp.toFixed()} °C
