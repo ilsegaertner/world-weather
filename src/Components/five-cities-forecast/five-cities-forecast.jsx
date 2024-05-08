@@ -119,6 +119,7 @@ const FiveCityForecast = () => {
     <>
       <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl">
         <p className="m-8 text-xl text-blue-900">International Today</p>
+        <hr />
         {/* {fiveCities && (
           <div className="bg-red-600 w-48 h-48">
             {fiveCities.name}, {fiveCities.main.temp.toFixed()} °C
