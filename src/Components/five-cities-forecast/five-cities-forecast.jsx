@@ -118,7 +118,7 @@ const FiveCityForecast = () => {
   return (
     <>
       <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl">
-        <p className="m-8 text-xl text-blue-900">International Today</p>
+        <p className="flex my-8 text-xl text-blue-900">International Today</p>
         <hr />
         {/* {fiveCities && (
           <div className="bg-red-600 w-48 h-48">
@@ -128,11 +128,12 @@ const FiveCityForecast = () => {
 
         {error && <div>Error: {error}</div>}
         {fiveCities.slice(0, 5).map((city) => (
-          <div key={city.id} className="p-2">
+          <div key={city.id} className="py-1 flex">
             {" "}
-            <p className="justify-items-start inline text-blue-100">
-              {city.name}, {city.temperature.toFixed()} °C{" "}
-            </p>
+            <div className="flex justify-between text-blue-100">
+              <div>{city.name} </div>
+              <div className="pl-5">{city.temperature.toFixed()} °C </div>
+            </div>
           </div>
         ))}
       </div>

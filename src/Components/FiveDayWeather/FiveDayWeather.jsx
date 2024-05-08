@@ -72,8 +72,8 @@ const FiveDayWeather = ({ lat, lon, query }) => {
     return (
       <>
         <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl">
-          <p className="m-8 text-xl text-white">Five-day forecast </p>
-          <p className="m-8 text-xl text-yellow-300">{query}</p>
+          <p className="flex my-8 text-xl text-white">Five-day forecast </p>
+          <p className="flex my-8 text-xl text-yellow-300">{query}</p>
           <hr className="pb-3" />
           {/* <input
             type="number"

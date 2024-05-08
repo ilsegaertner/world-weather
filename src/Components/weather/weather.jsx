@@ -57,7 +57,7 @@ const Weather = ({
   return (
     <>
       <div
-        className="bg-gray-700 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl"
+        className="bg-gray-700 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl my-0"
         style={{ backgroundImage, backgroundRepeat: "repeat-y" }}
       >
         <p className="text-3xl text-yellow-300 mb-3"> World Weather </p>
