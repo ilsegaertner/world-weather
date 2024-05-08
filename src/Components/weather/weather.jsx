@@ -4,9 +4,14 @@ import RainSvg from "../../assets/160354.svg";
 import CloudsSvg from "../../assets/clouds-cloud-svgrepo-com.svg";
 import ClearSvg from "../../assets/Weather-clear.svg";
 
-const Weather = ({weatherData, inputQuery, query, handleKeyDown, handleSubmit, error}) => {
-  
-
+const Weather = ({
+  weatherData,
+  inputQuery,
+  query,
+  handleKeyDown,
+  handleSubmit,
+  error,
+}) => {
   const cityName = "Lamu";
   const limit = 1;
 
@@ -20,7 +25,6 @@ const Weather = ({weatherData, inputQuery, query, handleKeyDown, handleSubmit, e
       return () => clearTimeout(timeoutId);
     }
   }, [error]);
-
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -96,9 +100,9 @@ const Weather = ({weatherData, inputQuery, query, handleKeyDown, handleSubmit, e
         {error && <p>Error: {error}</p>}
       </div>
 
-      <div className="flex flex-col justify-center max-w-sm">
+      {/* <div className="flex flex-col justify-center max-w-sm">
         <MyMap city={query} />
-      </div>
+      </div> */}
     </>
   );
 };

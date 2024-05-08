@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import FiveDayWeather from "./FiveDayWeather/FiveDayWeather";
 import Weather from "./weather/weather";
+import MyMap from "./MyMap/myMap";
+import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
 
 const MainComponent = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -96,8 +98,8 @@ const MainComponent = () => {
   return (
     <>
       {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
-      <div className="bg-blue-300 shadow-xl border-gray-600 p-10 flex">
-        <FiveDayWeather lat={lat} lon={lon} />
+      <div className="bg-blue-300 shadow-xl border-gray-600 p-10 flex items-center">
+        <FiveDayWeather lat={lat} lon={lon} query={query} />
         <Weather
           handleSubmit={handleSubmit}
           handleKeyDown={handleKeyDown}
@@ -105,6 +107,10 @@ const MainComponent = () => {
           weatherData={weatherData}
           error={error}
         />
+        <FiveCityForecast />
+      </div>
+      <div className="flex flex-col justify-center max-w-sm">
+        <MyMap city={query} />
       </div>
     </>
   );
