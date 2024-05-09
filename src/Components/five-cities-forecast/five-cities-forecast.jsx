@@ -11,6 +11,7 @@ const FiveCityForecast = () => {
 
   const fetchFiveCities = async () => {
     try {
+      console.log("Fetching five cities...");
       const cities = [
         { id: 1, name: "Rome", lat: 41.9028, lon: 12.4964 },
         { id: 2, name: "New York", lat: 40.7128, lon: -74.006 },
@@ -112,6 +113,35 @@ const FiveCityForecast = () => {
       throw new Error("Failed to fetch data");
     }
     const data = await response.json();
+    console.log(data);
+
+    if (data.name === "Konkan Division") {
+      return { id, name: "Mumbai", temperature: data.main.temp };
+    } else if (data.name === "Shanghai Municipality") {
+      return { id, name: "Shanghai", temperature: data.main.temp };
+    } else if (data.name === "Al ‘Atabah" || data.name === "Al 'Atabah") {
+      return { id, name: "Cairo", temperature: data.main.temp };
+    } else if (data.name === "Trevi") {
+      return { id, name: "Rome", temperature: data.main.temp };
+    } else if (data.name === "Liberdade") {
+      return { id, name: "São Paulo", temperature: data.main.temp };
+    } else if (data.name === "Karaköy") {
+      return { id, name: "Istanbul", temperature: data.main.temp };
+    } else if (data.name === "Mitte") {
+      return { id, name: "Berlin", temperature: data.main.temp };
+    } else if (data.name === "Bright Hill Crescent") {
+      return { id, name: "Singapore", temperature: data.main.temp };
+    } else if (data.name === "De Waterkant") {
+      return { id, name: "Cape Town", temperature: data.main.temp };
+    } else if (data.name === "Grímsstaðaholt") {
+      return { id, name: "Reykjavík", temperature: data.main.temp };
+    } else if (data.name === "Saint-Merri") {
+      return { id, name: "Paris", temperature: data.main.temp };
+    } else if (data.name === "Nonthaburi") {
+      return { id, name: "Bankok", temperature: data.main.temp };
+    } else if (data.name === "San Nicolas") {
+      return { id, name: "Buenos Aires", temperature: data.main.temp };
+    }
     return { id, name: data.name, temperature: data.main.temp };
   };
 
