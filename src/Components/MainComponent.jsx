@@ -100,7 +100,6 @@ const MainComponent = () => {
     <>
       {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
       <div className="bg-blue-300 shadow-xl border-gray-600 p-10 flex items-center">
-        <FiveDayWeather lat={lat} lon={lon} query={query} />
         <Weather
           handleSubmit={handleSubmit}
           handleKeyDown={handleKeyDown}
@@ -108,6 +107,13 @@ const MainComponent = () => {
           weatherData={weatherData}
           error={error}
         />
+        <FiveDayWeather
+          lat={lat}
+          lon={lon}
+          query={query}
+          weatherData={weatherData}
+        />
+
         <FiveCityForecast
           city={query}
           lon={lon}

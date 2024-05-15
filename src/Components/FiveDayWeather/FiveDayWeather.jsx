@@ -1,7 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
+import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
+import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
 
-const FiveDayWeather = ({ lat, lon, query }) => {
+const FiveDayWeather = ({ lat, lon, query, weatherData }) => {
   const [fiveDayWeather, setFiveDayWeather] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -34,6 +37,8 @@ const FiveDayWeather = ({ lat, lon, query }) => {
     }
   };
 
+  console.log(fiveDayWeather);
+
   const filterThreeDayOClockValues = (list) => {
     const filteredValues = list.filter((item) =>
       item.dt_txt.includes("15:00:00")
@@ -45,9 +50,9 @@ const FiveDayWeather = ({ lat, lon, query }) => {
     const date = new Date(dateTimeString);
     const options = {
       weekday: "short",
-      year: "numeric",
-      month: "short",
-      day: "numeric",
+      // year: "numeric",
+      // month: "short",
+      // day: "numeric",
       // hour: "numeric",
       // minute: "2-digit",
       // second: "2-digit",
@@ -55,6 +60,26 @@ const FiveDayWeather = ({ lat, lon, query }) => {
     };
     return date.toLocaleDateString("en-US", options);
   };
+
+  let backgroundImage;
+  if (weatherData && weatherData.weather && weatherData.weather.length > 0) {
+    switch (weatherData.weather[0].main) {
+      case "Rain":
+        backgroundImage = `url(${RainSvg})`;
+        break;
+      case "Clouds":
+        backgroundImage = `url(${CloudsSvg})`;
+        break;
+      case "Clear":
+        backgroundImage = `url(${ClearSvg})`;
+        break;
+      default:
+        backgroundImage = null;
+    }
+  } else {
+    backgroundImage = null;
+  }
+
 
   if (loading) {
     return <p>Loading...</p>;
@@ -75,24 +100,23 @@ const FiveDayWeather = ({ lat, lon, query }) => {
           <p className="flex my-8 text-xl text-white">Five-day forecast </p>
           <p className="flex my-8 text-xl text-yellow-300">{query}</p>
           <hr className="pb-3" />
-          {/* <input
-            type="number"
-            className="p-3 border-gray-300 rounded-xl mb-5"
-            placeholder="how many days?"
-            min={1}
-            max={35}
-          ></input> */}
 
-          {threeOClockValues.map((item, index) => (
-            <p key={index}>
-              <div className="flex text-blue-100">
-                {formatDateTime(item.dt_txt)}{" "}
-                <span className="text-xl pl-6 text-white">
-                  {item.main.temp.toFixed()} °C
-                </span>
-              </div>
-            </p>
-          ))}
+          <div className="flex gap-2">
+            {threeOClockValues.map((item, index) => (
+              <p key={index}>
+                <div className="flex flex-col text-blue-100 pl-0 px-4 items-start">
+                  {formatDateTime(item.dt_txt)}{" "}
+                  <span className="text-md text-white">
+                    {item.main.temp.toFixed()}°C
+                  </span>
+                  <div
+                    className="relative w-10 h-10 bg-cover"
+                    style={{ backgroundImage }}
+                  ></div>
+                </div>
+              </p>
+            ))}
+          </div>
         </div>
       </>
     );

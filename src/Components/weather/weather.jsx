@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import MyMap from "../MyMap/myMap";
-import RainSvg from "../../assets/160354.svg";
-import CloudsSvg from "../../assets/clouds-cloud-svgrepo-com.svg";
-import ClearSvg from "../../assets/Weather-clear.svg";
+// import RainSvg from "../../assets/160354.svg";
+// import CloudsSvg from "../../assets/clouds-cloud-svgrepo-com.svg";
+// import ClearSvg from "../../assets/Weather-clear.svg";
+
+import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
+import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
+import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
 
 const Weather = ({
   weatherData,
@@ -14,6 +18,8 @@ const Weather = ({
 }) => {
   const cityName = "Lamu";
   const limit = 1;
+
+  console.log(weatherData);
 
   // useEffect for page reload when city not existing
   useEffect(() => {
@@ -57,11 +63,14 @@ const Weather = ({
   return (
     <>
       <div
-        className="bg-gray-700 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl my-0"
-        style={{ backgroundImage, backgroundRepeat: "repeat-y" }}
+        className="bg-gray-700 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl my-0 border-8 border-gray-900 border-solid"
+        // style={{ backgroundImage, backgroundRepeat: "repeat-y" }}
       >
-        <p className="text-3xl text-yellow-300 mb-3"> World Weather </p>
-        <form onSubmit={handleSubmit}>
+        <p className="text-3xl text-yellow-300 mb-3 flex px-4">
+          {" "}
+          World Weather{" "}
+        </p>
+        <form className="px-4 flex" onSubmit={handleSubmit}>
           <input
             className="bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500 placeholder-gray-500 text-gray-800"
             value={query}
@@ -78,20 +87,23 @@ const Weather = ({
         </form>
         {weatherData && (
           <>
-            <div className="flex justify-start align-center flex-col text-yellow-200 overflow-auto p-10">
-              <div className="">
+            <p className="align-center flex text-lg mt-12 px-4 text-white">
+              {weatherData.name}, {weatherData.sys.country}  {" "}
+            </p>
+
+            <div className="px-4 flex justify-between flex-row text-yellow-200 items-center gap-20 overflow-none">
+              <div className="p-1 justify-between align-top text-white flex flex-col items-center">
                 {" "}
-                <p className="text-2xl align-center">
-                  {weatherData.name}, {weatherData.sys.country}  {" "}
-                  <span className="text-4xl text-white">
-                    {temperatureCelsius.toFixed()}°C
-                  </span>
-                </p>
-              </div>
-              <div className="p-2 justify-start align-top text-white">
-                {" "}
+                <div
+                  className="relative w-16 h-16 bg-cover"
+                  style={{ backgroundImage }}
+                ></div>
                 <p>{weatherData.weather[0].main}</p>
               </div>
+              <span className="text-4xl text-white">
+                {temperatureCelsius.toFixed()}°C
+              </span>
+
               <div></div>
             </div>
           </>

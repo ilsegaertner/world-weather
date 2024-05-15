@@ -45,33 +45,7 @@ const FiveCityForecast = () => {
         { id: 30, name: "Reykjavik", lat: 64.1466, lon: -21.9426 },
       ];
 
-      //   const fiveRandomCities = [];
-      //   while (fiveRandomCities.length < 5) {
-      //     const randomIndex = Math.floor(Math.random() * cities.length);
-      //     fiveRandomCities.push(cities[randomIndex]);
-      //   }
-
-      //   const promises = fiveRandomCities.map(async (city) => {
-      //     const { id, name, lat, lon } = city;
-
-      //     const response = await fetch(
-      //       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=4430e9e41106a5deb2aba2b74568af5e`
-      //     );
-      //     if (!response.ok) {
-      //       throw new Error("Failed to fetch data");
-      //     }
-      //     const data = await response.json();
-      //     return { id, name: data.name, temperature: data.main.temp };
-      //   });
-
-      //   const cityData = await Promise.all(promises);
-      //   setFiveCities(cityData);
-      // } catch (error) {
-      //   console.error("Error:", error);
-      //   setError(error.message);
-      // }
-
-      //new Code with cached cities and unique selected cities
+     
 
       const cachedData = JSON.parse(localStorage.getItem("weatherData")) || {};
       const selectedCities = new Set();
