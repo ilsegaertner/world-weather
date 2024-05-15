@@ -15,8 +15,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="App bg-gray-500 h-screen">
-          <NavigationBar className="bg-white" />
+        <div className="App bg-gray-800 h-screen">
+          {/* <NavigationBar className="bg-white" /> */}
 
           {/* <StateHandling /> */}
 

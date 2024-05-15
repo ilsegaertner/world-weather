@@ -99,7 +99,12 @@ const MainComponent = () => {
   return (
     <>
       {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
-      <div className="bg-blue-300 shadow-xl border-gray-600 p-10 flex items-center">
+      <p className="text-3xl text-yellow-300 mb-3 inline">
+        {" "}
+        <span className="text-white">World</span> Weather{" "}
+        <span className="text-blue-400">App</span>
+      </p>
+      <div className="bg-blue-300 shadow-xl border-gray-600 p-10 flex items-center flex-wrap gap-8">
         <Weather
           handleSubmit={handleSubmit}
           handleKeyDown={handleKeyDown}

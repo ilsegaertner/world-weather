@@ -45,8 +45,6 @@ const FiveCityForecast = () => {
         { id: 30, name: "Reykjavik", lat: 64.1466, lon: -21.9426 },
       ];
 
-     
-
       const cachedData = JSON.parse(localStorage.getItem("weatherData")) || {};
       const selectedCities = new Set();
 
@@ -121,8 +119,8 @@ const FiveCityForecast = () => {
 
   return (
     <>
-      <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl">
-        <p className="flex my-8 text-xl text-blue-900">International Today</p>
+      <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl ">
+        <p className="flex my-8 text-xl text-yellow-300">International Today</p>
         <hr />
         {/* {fiveCities && (
           <div className="bg-red-600 w-48 h-48">

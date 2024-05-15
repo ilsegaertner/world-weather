@@ -63,14 +63,14 @@ const Weather = ({
   return (
     <>
       <div
-        className="bg-gray-700 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl my-0 border-8 border-gray-900 border-solid"
+        className="bg-gray-700 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl my-0 border-8 border-gray-900 border-solid overflow-auto"
         // style={{ backgroundImage, backgroundRepeat: "repeat-y" }}
       >
         <p className="text-3xl text-yellow-300 mb-3 flex px-4">
           {" "}
           World Weather{" "}
         </p>
-        <form className="px-4 flex" onSubmit={handleSubmit}>
+        <form className="px-4 flex gap-1" onSubmit={handleSubmit}>
           <input
             className="bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500 placeholder-gray-500 text-gray-800"
             value={query}
@@ -80,7 +80,7 @@ const Weather = ({
           />
           <button
             type="sumbit"
-            className="bg-green-900 p-2 rounded-lg text-white hover:bg-green-700"
+            className="bg-blue-500 p-2 rounded-lg text-white hover:bg-blue-700"
           >
             Go
           </button>
@@ -91,7 +91,7 @@ const Weather = ({
               {weatherData.name}, {weatherData.sys.country}  {" "}
             </p>
 
-            <div className="px-4 flex justify-between flex-row text-yellow-200 items-center gap-20 overflow-none">
+            <div className="px-4 flex justify-between flex-row text-yellow-200 items-center overflow-none">
               <div className="p-1 justify-between align-top text-white flex flex-col items-center">
                 {" "}
                 <div
