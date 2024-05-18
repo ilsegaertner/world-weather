@@ -96,7 +96,7 @@ const FiveDayWeather = ({ lat, lon, query, weatherData }) => {
     return (
       <>
         <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl border-blue-200 border-2 overflow-auto">
-          <p className="flex my-8 text-xl text-white">Five-day forecast </p>
+          <p className="flex my-8 text-xl text-gray-100">Five-day forecast </p>
           <p className="flex my-8 text-xl text-yellow-300">{query}</p>
           <hr className="pb-3" />
 
@@ -105,7 +105,7 @@ const FiveDayWeather = ({ lat, lon, query, weatherData }) => {
               <p key={index}>
                 <div className="flex flex-col text-blue-100 pl-0 px-4 items-start">
                   {formatDateTime(item.dt_txt)}{" "}
-                  <span className="text-md text-white">
+                  <span className="text-md text-gray-100">
                     {item.main.temp.toFixed()}°C
                   </span>
                   <div

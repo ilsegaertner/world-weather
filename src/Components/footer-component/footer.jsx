@@ -7,11 +7,11 @@ const FooterComponent = () => {
         className="flex justify-center p-8 flex-col text-white
       "
       >
-        <p>Mimi</p>
+        {/* <p>Mimi</p>
         <p>Pamela</p>
         <p>Footer</p>
         <p>Footer</p>
-        <p>Footer</p>
+        <p>Footer</p> */}
       </div>
 
       <footer className="bg-gray-800 py-8 ">
@@ -20,17 +20,9 @@ const FooterComponent = () => {
             <a className="text-gray-300 font-semibold" href="legal-info.html">
               Legal Info | Impressum
             </a>
-            <a
-              className="text-gray-300 font-semibold"
-              href="assets/Pruegl-Joachim-Resume.pdf"
-              download
-              target="_blank"
-            >
-              Download Resume
-            </a>
           </div>
           <div className="footer-container_right flex gap-6 flex-row">
-            <p className="text-gray-300 font-semibold">Find me on</p>
+            <p className="text-gray-300 font-semibold"></p>
             <div className="social-media flex flex-row">
               <a href="https://github.com/ilsegaertner" target="_blank">
                 <img
@@ -60,7 +52,7 @@ const FooterComponent = () => {
           </div>
         </div>
         <p className="text-center text-gray-300 mt-4">
-          © Copyright 2024 | joachimpruegl.me
+          © Copyright 2024 | world-weather-app
         </p>
       </footer>
     </>

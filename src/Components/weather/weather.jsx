@@ -80,19 +80,19 @@ const Weather = ({
           />
           <button
             type="sumbit"
-            className="bg-blue-500 p-2 rounded-lg text-white hover:bg-blue-700"
+            className="bg-blue-500 p-2 rounded-lg text-gray-100 hover:bg-blue-700"
           >
             Go
           </button>
         </form>
         {weatherData && (
           <>
-            <p className="align-center flex text-lg mt-12 px-4 text-white">
+            <p className="align-center flex text-lg mt-12 px-4 text-gray-100">
               {weatherData.name}, {weatherData.sys.country}  {" "}
             </p>
 
             <div className="px-4 flex justify-between flex-row text-yellow-200 items-center overflow-none">
-              <div className="p-1 justify-between align-top text-white flex flex-col items-center">
+              <div className="p-1 justify-between align-top text-gray-100 flex flex-col items-center">
                 {" "}
                 <div
                   className="relative w-16 h-16 bg-cover"

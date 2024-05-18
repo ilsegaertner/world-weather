@@ -4,6 +4,9 @@ import Weather from "./weather/weather";
 import FooterComponent from "./footer-component/footer";
 import MyMap from "./MyMap/myMap";
 import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
+import NavigationBar from "./navigation-bar/navigation-bar";
+import About from "./about/about";
+import { Route, Switch } from "react-router-dom";
 
 const MainComponent = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -99,11 +102,16 @@ const MainComponent = () => {
   return (
     <>
       {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
-      <p className="text-3xl text-yellow-300 mb-3 inline">
-        {" "}
-        <span className="text-white">World</span> Weather{" "}
-        <span className="text-blue-400">App</span>
-      </p>
+      <div className="flex items-center pt-3">
+        <p className="text-3xl text-yellow-300 mb-3 inline m-auto">
+          {" "}
+          <span className="text-white">World</span> Weather{" "}
+          <span className="text-blue-400">App</span>
+        </p>
+      </div>
+
+      {/* <NavigationBar /> */}
+
       <div className="bg-blue-300 shadow-xl border-gray-600 p-10 flex items-center flex-wrap gap-8">
         <Weather
           handleSubmit={handleSubmit}
@@ -129,7 +137,7 @@ const MainComponent = () => {
       <div className="flex flex-col justify-center w-screen bg-yellow-300">
         <MyMap city={query} />
       </div>
-      <div className="bg-blue-900 w-screen h-screen">
+      <div className="bg-blue-900 w-screen ">
         <FooterComponent />
       </div>
     </>
