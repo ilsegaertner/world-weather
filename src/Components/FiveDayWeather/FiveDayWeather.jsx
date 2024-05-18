@@ -95,7 +95,7 @@ const FiveDayWeather = ({ lat, lon, query, weatherData }) => {
   if (threeOClockValues.length > 0) {
     return (
       <>
-        <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-10 shadow-xl border-blue-200 border-2 overflow-auto">
+        <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-5 sm:p-10 shadow-xl border-blue-200 border-2 overflow-auto">
           <p className="flex my-8 text-xl text-gray-100">Five-day forecast </p>
           <p className="flex my-8 text-xl text-yellow-300">{query}</p>
           <hr className="pb-3" />

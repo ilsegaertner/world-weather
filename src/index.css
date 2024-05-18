@@ -3,19 +3,28 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@font-face {
+  font-family: "Your Chosen Font";
+  src: url("../public/fonts/Geist.Mono/GeistMono-Medium.woff2") format("woff2"),
+    /* specify the path to your font file */
+      url("../public/fonts/Geist.Mono/GeistMono-Regular.woff2") format("woff"); /* provide fallback formats if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Geist mono", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #2d3748;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: Geist mono, source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
 }
 
 #root {

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
 import FiveDayWeather from "./FiveDayWeather/FiveDayWeather";
 import Weather from "./weather/weather";
+import About from "./about/about";
+import Contact from "./contact/contact";
 import FooterComponent from "./footer-component/footer";
 import MyMap from "./MyMap/myMap";
 import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
 import NavigationBar from "./navigation-bar/navigation-bar";
-import About from "./about/about";
+
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
 const MainComponent = () => {
@@ -103,7 +105,7 @@ const MainComponent = () => {
     <>
       {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
       <div className="flex items-center pt-3">
-        <p className="text-3xl text-yellow-300 mb-3 inline m-auto">
+        <p className="text-3xl text-yellow-300 mb-3 inline m-auto px-10 z-50">
           {" "}
           <span className="text-white">World</span> Weather{" "}
           <span className="text-blue-400">App</span>
@@ -112,7 +114,7 @@ const MainComponent = () => {
 
       {/* <NavigationBar /> */}
 
-      <div className="bg-blue-300 shadow-xl border-gray-600 p-10 flex items-center flex-wrap gap-8">
+      <div className="bg-blue-300 shadow-xl border-gray-600 sm:p-10 flex items-center flex-wrap gap-8 py-10 ">
         <Weather
           handleSubmit={handleSubmit}
           handleKeyDown={handleKeyDown}

@@ -5,14 +5,14 @@ import FooterComponent from "../footer-component/footer";
 const About = () => {
   return (
     <>
-      <div className="px-64 py-24 text-gray-100 xl:max-w-8xl bg-blue-900">
-        <h1 className="text-yellow-400 text-4xl px-10 pb-8 leading-10 text-center">
+      <div className="md:px-24 lg:px-48 xl:px-64 py-24 text-gray-100 xl:max-w-8xl bg-blue-900">
+        <h1 className="text-yellow-400 text-4xl sm:px-10 pb-8 leading-10 text-center px-5">
           <span className="text-blue-700 pr-10">About</span>{" "}
           <span className="text-gray-100">World</span> Weather{" "}
           <span className="text-blue-400">App</span>
         </h1>
         <hr className=""></hr>
-        <div className="p-10 leading-9 m-8 text-2xl text-gray-100">
+        <div className="sm:p-10 p-3 leading-6 text-lg sm:leading-9 m-5 sm:m-8 sm:text-2xl text-gray-100 ">
           <p>
             Welcome to World Weather App, your trusted source for accurate and
             timely weather updates! <br></br>
@@ -22,19 +22,19 @@ const About = () => {
           </p>
         </div>
 
-        <div className="p-10  rounded-xl m-8 bg-gradient-to-r from-blue-700 text-gray-100">
+        <div className="p-10 rounded-xl sm:m-8 bg-gradient-to-r from-blue-700 text-gray-100 mt-40">
           <h2 className="text-yellow-400 text-xl">Our Story</h2>
           {/* <hr></hr> */}
-          <p className="mt-8 leading-7">
+          <p className="mt-8 leading-6 text-md  sm:leading-7">
             World Weather App was founded by a dedicated team of meteorologists
             and tech enthusiasts who saw the need for a user-friendly weather
-            app that goes beyond basic forecasts. We aimed to create a platform
-            that offers comprehensive weather insights and tools to make your
-            daily planning easier and more efficient.
+            app that goes beyond basic forecasts. <br></br> <br></br>We aimed to
+            create a platform that offers comprehensive weather insights and
+            tools to make your daily planning easier and more efficient.
           </p>
         </div>
 
-        <div className="p-10  rounded-xl m-8 bg-gradient-to-l from-blue-700 leading-7 text-gray-100">
+        <div className="p-10 rounded-xl sm:m-8 pr-24 bg-gradient-to-l from-blue-700 leading-6 text-md  sm:leading-7 text-gray-100 mt-20">
           <h2 className="text-yellow-400 text-xl">What We Offer</h2>
           <hr></hr>
           <ul className="mt-8">
@@ -57,7 +57,7 @@ const About = () => {
           </ul>
         </div>
 
-        <div className="p-10 rounded-xl m-8 bg-gradient-to-r from-blue-700 leading-7 text-gray-100">
+        <div className="p-10 rounded-xl sm:m-8 bg-gradient-to-r from-blue-700 leading-6 text-md  sm:leading-7 text-gray-100 mt-20">
           <h2 className="text-yellow-400 text-xl">
             {" "}
             Why Choose World Weather App?
@@ -85,7 +85,7 @@ const About = () => {
           </ul>
         </div>
 
-        <div className="p-10 rounded-xl m-8 bg-gradient-to-l from-blue-700 leading-7 text-gray-100">
+        <div className="p-10 rounded-xl sm:m-8 bg-gradient-to-l from-blue-700 leading-6 text-md  sm:leading-7 text-gray-100 mt-20">
           <h2 className="text-yellow-400 text-xl">Our Vision</h2>
           <p className="mt-8">
             At World Weather App, we envision a world where everyone has easy
@@ -96,7 +96,7 @@ const About = () => {
           </p>
         </div>
 
-        <div className="p-10 rounded-xl m-8 bg-gradient-to-r from-blue-700 leading-7 text-gray-100">
+        <div className="p-10 rounded-xl sm:m-8 bg-gradient-to-r from-blue-700 leading-6 text-md sm:leading-7 text-gray-100 mt-20">
           <h2 className="text-yellow-400 text-xl">Connect with Us</h2>
           <p className="mt-8">
             We love hearing from our users! If you have any questions, feedback,
@@ -105,12 +105,12 @@ const About = () => {
             features and weather news by following our blog.
           </p>
         </div>
-        <p className="p-10 m-8">
+        <p className="p-10 sm:m-8 mt-20">
           Thank you for choosing World Weather App. We’re excited to be your
           trusted weather partner, rain or shine!
         </p>
 
-        <p className=" p-10 text-yellow-400 m-8 justify-center flex">
+        <p className=" p-10 text-yellow-400 sm:m-8 justify-center flex text-4xl">
           <strong>World Weather App – Your Weather, Your Way.</strong>
         </p>
       </div>
