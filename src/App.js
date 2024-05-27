@@ -12,6 +12,7 @@ import MainComponent from "./Components/MainComponent";
 import StateHandling from "./Components/StateHandling/state-handling";
 import About from "./Components/about/about";
 import Contact from "./Components/contact/contact";
+import LegalInfo from "./Components/legal-info/legal-info";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/weather" element={<MainComponent />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/legal-info" element={<LegalInfo />} />
           </Routes>
         </div>
       </BrowserRouter>

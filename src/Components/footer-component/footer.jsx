@@ -1,25 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FooterComponent = () => {
   return (
     <>
-      <div
-        className="flex justify-center p-8 flex-col text-white
-      "
-      >
-        {/* <p>Mimi</p>
-        <p>Pamela</p>
-        <p>Footer</p>
-        <p>Footer</p>
-        <p>Footer</p> */}
-      </div>
-
       <footer className="bg-gray-800 py-8 px-5 sm:px-10">
         <div className="container mx-auto flex flex-wrap justify-between">
           <div className="footer-container_left flex gap-6">
-            <a className="text-gray-300 font-semibold" href="legal-info.html">
+            <Link
+              to="/legal-info"
+              className="text-gray-300 font-semibold"
+              href="legal-info.html"
+            >
               Legal Info | Impressum
-            </a>
+            </Link>
           </div>
           <p className="text-center text-gray-300 text-xs">
             © Copyright 2024 | world-weather-app

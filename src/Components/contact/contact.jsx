@@ -22,28 +22,31 @@ const Contact = () => {
             value your feedback, inquiries, and suggestions. Whether you have
             questions about our app, need assistance, or want to collaborate,
             we're here to help.{" "}
+          </p>
+          <div className="bg-blue-900 p-10 m-10 rounded-3xl ml-0 mr-0">
             <p className="mt-8">
               Please feel free to reach out to us using the contact information
               below:
             </p>
-          </p>
-          <p className="mt-16">
-            <strong>Email:</strong> contact@worldweatherapp.com
-          </p>
-          <p>
-            <strong>Phone:</strong> +1 (555) 123-4567
-          </p>
-          <p>
-            <strong>Address:</strong>
-            <br />
-            World Weather App
-            <br />
-            123 Weather Way
-            <br />
-            City, State, Zip Code
-            <br />
-            Country
-          </p>
+
+            <p className="mt-16">
+              <strong>Email:</strong> contact@worldweatherapp.com
+            </p>
+            <p>
+              <strong>Phone:</strong> +1 (555) 123-4567
+            </p>
+            <p>
+              <strong>Address:</strong>
+              <br />
+              World Weather App
+              <br />
+              123 Weather Way
+              <br />
+              City, State, Zip Code
+              <br />
+              Country
+            </p>
+          </div>
           <p className="mt-16">
             We strive to respond to all inquiries promptly.
           </p>
