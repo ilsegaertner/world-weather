@@ -1,5 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
+import DrizzleSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
+import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
+import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
 
 const FiveCityForecast = () => {
   const [fiveCities, setFiveCities] = useState([]);
@@ -87,40 +91,129 @@ const FiveCityForecast = () => {
     const data = await response.json();
     console.log(data);
 
+    const currentWeather =
+      data.weather && data.weather.length > 0 ? data.weather[0].main : null;
+    console.log("current weather:", currentWeather);
+
     if (data.name === "Konkan Division") {
-      return { id, name: "Mumbai", temperature: data.main.temp };
+      return {
+        id,
+        name: "Mumbai",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Shanghai Municipality") {
-      return { id, name: "Shanghai", temperature: data.main.temp };
+      return {
+        id,
+        name: "Shanghai",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Al ‘Atabah" || data.name === "Al 'Atabah") {
-      return { id, name: "Cairo", temperature: data.main.temp };
+      return {
+        id,
+        name: "Cairo",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Trevi") {
-      return { id, name: "Rome", temperature: data.main.temp };
+      return {
+        id,
+        name: "Rome",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Liberdade") {
-      return { id, name: "São Paulo", temperature: data.main.temp };
+      return {
+        id,
+        name: "São Paulo",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Karaköy") {
-      return { id, name: "Istanbul", temperature: data.main.temp };
+      return {
+        id,
+        name: "Istanbul",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Mitte") {
-      return { id, name: "Berlin", temperature: data.main.temp };
+      return {
+        id,
+        name: "Berlin",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Bright Hill Crescent") {
-      return { id, name: "Singapore", temperature: data.main.temp };
+      return {
+        id,
+        name: "Singapore",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "De Waterkant") {
-      return { id, name: "Cape Town", temperature: data.main.temp };
+      return {
+        id,
+        name: "Cape Town",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Grímsstaðaholt") {
-      return { id, name: "Reykjavík", temperature: data.main.temp };
+      return {
+        id,
+        name: "Reykjavík",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Saint-Merri") {
-      return { id, name: "Paris", temperature: data.main.temp };
+      return {
+        id,
+        name: "Paris",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "Nonthaburi") {
-      return { id, name: "Bankok", temperature: data.main.temp };
+      return {
+        id,
+        name: "Bankok",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     } else if (data.name === "San Nicolas") {
-      return { id, name: "Buenos Aires", temperature: data.main.temp };
+      return {
+        id,
+        name: "Buenos Aires",
+        temperature: data.main.temp,
+        current: currentWeather,
+      };
     }
-    return { id, name: data.name, temperature: data.main.temp };
+    return {
+      id,
+      name: data.name,
+      temperature: data.main.temp,
+      current: currentWeather,
+    };
+  };
+
+  const getWeatherImage = (weather) => {
+    switch (weather) {
+      case "Rain":
+        return RainSvg;
+      case "Clouds":
+        return CloudsSvg;
+      case "Clear":
+        return ClearSvg;
+      case "Drizzle":
+        return DrizzleSvg;
+      default:
+        return null;
+    }
   };
 
   return (
     <>
       <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl shadow-xl p-5 sm:p-10">
-        <p className="flex my-8 text-xl text-yellow-300">International Today</p>
+        <p className="flex my-8 text-xl text-black">International Today</p>
         <hr className="mb-2" />
         {/* {fiveCities && (
           <div className="bg-red-600 w-48 h-48">
@@ -130,11 +223,20 @@ const FiveCityForecast = () => {
 
         {error && <div>Error: {error}</div>}
         {fiveCities.slice(0, 5).map((city) => (
-          <div key={city.id} className="py-1 flex">
+          <div key={city.id} className="">
             {" "}
-            <div className="flex justify-between text-blue-100">
-              <div>{city.name} </div>
-              <div className="pl-5">{city.temperature.toFixed()} °C </div>
+            <div className="flex items-center text-blue-100 justify-between">
+              <div className="">{city.name} </div>
+              <div className="flex items-center">
+                <div className="pl-5">{city.temperature.toFixed()}°C </div>
+                <div className="relative w-10 h-10 bg-cover">
+                  <img
+                    src={getWeatherImage(city.current)}
+                    alt={`${city.current} weather`}
+                    className="w-full h-full "
+                  />
+                </div>
+              </div>
             </div>
           </div>
         ))}

@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logoGithub from "../../assets/logos/9025783_github_logo_icon.svg";
+import logoTwitter from "../../assets/logos/8642365_ic_social_media_twitter_icon.svg";
+import logoLinkedin from "../../assets/logos/4362961_linkedin_social media_icon.svg";
 
 const FooterComponent = () => {
   return (
@@ -21,30 +24,23 @@ const FooterComponent = () => {
           <div className="footer-container_right flex gap-6 flex-row">
             <p className="text-gray-300 font-semibold"></p>
             <div className="social-media flex flex-row">
-              <a href="https://github.com/ilsegaertner" target="_blank">
+              <Link to="/weather">
+                <img src={logoGithub} alt="Github Logo" className="w-6 h-6" />
+              </Link>
+              <Link>
                 <img
-                  src="img/github-mark-white.svg"
-                  alt="Github Logo"
-                  className="w-6 h-6"
-                />
-              </a>
-              <a href="https://twitter.com/JoachimPrugl" target="_blank">
-                <img
-                  src="img/x_logo.svg"
+                  src={logoTwitter}
                   alt="Twitter Logo"
                   className="w-6 h-6 ml-2"
                 />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/joachim-pr%C3%BCgl/"
-                target="_blank"
-              >
+              </Link>
+              <Link>
                 <img
-                  src="img/icons8-linkedin-128.svg"
+                  src={logoLinkedin}
                   alt="LinkedIn Logo"
                   className="w-6 h-6 ml-2"
                 />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

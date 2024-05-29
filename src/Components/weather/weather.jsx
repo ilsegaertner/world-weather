@@ -4,8 +4,9 @@ import MyMap from "../MyMap/myMap";
 // import CloudsSvg from "../../assets/clouds-cloud-svgrepo-com.svg";
 // import ClearSvg from "../../assets/Weather-clear.svg";
 
-import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
+import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
+import DrizzleSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
 import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
 
 const Weather = ({
@@ -45,6 +46,8 @@ const Weather = ({
     case "Rain":
       backgroundImage = `url(${RainSvg})`;
       break;
+    case "Drizzle":
+      backgroundImage = `url(${DrizzleSvg})`;
     case "Clouds":
       backgroundImage = `url(${CloudsSvg})`;
       break;

@@ -104,49 +104,51 @@ const MainComponent = () => {
 
   return (
     <>
-      {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
-      <div className="flex items-center pt-3">
-        <img
-          src={logo}
-          className="ml-48 -mt-4 absolute text-xs text-white w-16 h-auto"
-          alt="World Weather App logo"
-        />
-        <p className="text-3xl text-yellow-300 mb-3 inline m-auto px-10 z-50">
-          {" "}
-          <span className="text-white">World</span> Weather{" "}
-          <span className="text-blue-400">App</span>
-        </p>
-      </div>
+      <div className="sm:max-w-4xl m-auto">
+        {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
+        <div className="flex items-center pt-3">
+          <img
+            src={logo}
+            className="ml-48 -mt-4 absolute text-xs text-white w-16 h-auto"
+            alt="World Weather App logo"
+          />
+          <p className="text-3xl text-yellow-300 mb-3 inline m-auto px-10 z-50">
+            {" "}
+            <span className="text-white">World</span> Weather{" "}
+            <span className="text-blue-400">App</span>
+          </p>
+        </div>
 
-      {/* <NavigationBar /> */}
+        {/* <NavigationBar /> */}
 
-      <div className="bg-blue-300 shadow-xl border-gray-600 sm:p-10 flex items-center flex-wrap gap-8 py-10 ">
-        <Weather
-          handleSubmit={handleSubmit}
-          handleKeyDown={handleKeyDown}
-          inputQuery={inputQuery}
-          weatherData={weatherData}
-          error={error}
-        />
-        <FiveDayWeather
-          lat={lat}
-          lon={lon}
-          query={query}
-          weatherData={weatherData}
-        />
+        <div className=" bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 sm:p-10 flex items-center flex-wrap gap-8 py-10 ">
+          <Weather
+            handleSubmit={handleSubmit}
+            handleKeyDown={handleKeyDown}
+            inputQuery={inputQuery}
+            weatherData={weatherData}
+            error={error}
+          />
+          <FiveDayWeather
+            lat={lat}
+            lon={lon}
+            query={query}
+            weatherData={weatherData}
+          />
 
-        <FiveCityForecast
-          city={query}
-          lon={lon}
-          lat={lat}
-          weatherData={weatherData}
-        />
-      </div>
-      <div className="flex flex-col justify-center w-screen bg-yellow-300">
-        <MyMap city={query} />
-      </div>
-      <div className="bg-blue-900 w-screen ">
-        <FooterComponent />
+          <FiveCityForecast
+            city={query}
+            lon={lon}
+            lat={lat}
+            weatherData={weatherData}
+          />
+        </div>
+        <div className="flex flex-col justify-center w-screen ">
+          <MyMap city={query} />
+        </div>
+        <div className="bg-blue-900 w-screen ">
+          <FooterComponent />
+        </div>
       </div>
     </>
   );

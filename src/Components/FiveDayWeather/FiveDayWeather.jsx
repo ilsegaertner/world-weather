@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
+import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
 import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
 
@@ -61,24 +61,46 @@ const FiveDayWeather = ({ lat, lon, query, weatherData }) => {
     return date.toLocaleDateString("en-US", options);
   };
 
-  let backgroundImage;
-  if (weatherData && weatherData.weather && weatherData.weather.length > 0) {
-    switch (weatherData.weather[0].main) {
+  // let backgroundImage;
+  // if (weatherData && weatherData.weather && weatherData.weather.length > 0) {
+  //   switch (weatherData.weather[0].main) {
+  //     case "Rain":
+  //       backgroundImage = `url(${RainSvg})`;
+  //       break;
+  //     case "Clouds":
+  //       backgroundImage = `url(${CloudsSvg})`;
+  //       break;
+  //     case "Clear":
+  //       backgroundImage = `url(${ClearSvg})`;
+  //       break;
+  //     default:
+  //       backgroundImage = null;
+  //   }
+  // } else {
+  //   backgroundImage = null;
+  // }
+
+  const weatherCases = threeOClockValues.map((item) => item.weather[0].main);
+
+  console.log(weatherCases);
+
+  const backgroundImages = weatherCases.map((weather) => {
+    switch (weather) {
       case "Rain":
-        backgroundImage = `url(${RainSvg})`;
-        break;
+        return `url(${RainSvg})`;
+
       case "Clouds":
-        backgroundImage = `url(${CloudsSvg})`;
-        break;
+        return `url(${CloudsSvg})`;
+
       case "Clear":
-        backgroundImage = `url(${ClearSvg})`;
-        break;
+        return `url(${ClearSvg})`;
+
       default:
-        backgroundImage = null;
+        return null;
     }
-  } else {
-    backgroundImage = null;
-  }
+  });
+
+  console.log(backgroundImages);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -92,15 +114,17 @@ const FiveDayWeather = ({ lat, lon, query, weatherData }) => {
     return <p>Latitude and longitude are required.</p>;
   }
 
+  console.log(threeOClockValues);
+
   if (threeOClockValues.length > 0) {
     return (
       <>
         <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-5 sm:p-10 shadow-xl border-blue-200 border-2 overflow-auto">
           <p className="flex my-8 text-xl text-gray-100">Five-day forecast </p>
-          <p className="flex my-8 text-xl text-yellow-300">{query}</p>
+          <p className="flex my-8 text-xl text-black">{query}</p>
           <hr className="pb-3" />
 
-          <div className="flex ">
+          <div className="flex">
             {threeOClockValues.map((item, index) => (
               <p key={index}>
                 <div className="flex flex-col text-blue-100 pl-0 px-4 items-start">
@@ -110,7 +134,7 @@ const FiveDayWeather = ({ lat, lon, query, weatherData }) => {
                   </span>
                   <div
                     className="relative w-10 h-10 bg-cover"
-                    style={{ backgroundImage }}
+                    style={{ backgroundImage: backgroundImages[index] }}
                   ></div>
                 </div>
               </p>
