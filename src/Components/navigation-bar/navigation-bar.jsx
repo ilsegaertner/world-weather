@@ -15,9 +15,11 @@ const NavigationBar = () => {
           <li className="hover:text-gray-600 transition-colors transition-all duration-200">
             <Link to="/about">About</Link>
           </li>
-          <li className="hover:text-gray-600 transition-colors transition-all duration-200">
+          <hr />
+          <li className="hover:text-gray-600 transition-colors transition-all duration-200 text-xl">
             <Link to="/weather">Weather</Link>
           </li>
+          <hr />
           <li className="hover:text-gray-600 transition-colors transition-all duration-200">
             <Link to="/contact">Contact</Link>
           </li>

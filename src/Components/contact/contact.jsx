@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import FooterComponent from "../footer-component/footer";
-import { Navigate, useNavigate } from "react-router-dom";
+import logo from "../../assets/logos/logo.svg";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -11,6 +12,13 @@ const Contact = () => {
 
   return (
     <>
+      <Link to="/weather">
+        <img
+          src={logo}
+          className="ml-48 absolute text-xs text-white w-16 h-auto hover:opacity-75"
+          alt="World Weather App logo"
+        />
+      </Link>
       <div className="md:px-24 lg:px-48 xl:px-64 py-24 text-gray-100 xl:max-w-8xl bg-blue-800">
         <h1 className="text-yellow-400 text-4xl px-10 pb-8 leading-7 text-center">
           <span className="">Contact</span>{" "}

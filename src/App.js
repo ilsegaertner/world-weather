@@ -23,11 +23,6 @@ function App() {
         </div>
         <div>
           <Routes>
-            {/* <Route
-            path="/NavigationBar"
-            element={<NavigationBar className="bg-white" />}
-          />{" "} */}
-            {/* <StateHandling /> */}
             <Route path="/" element={<MainComponent />} />
             <Route path="/weather" element={<MainComponent />} />
             <Route path="/about" element={<About />} />

@@ -6,6 +6,7 @@ import FooterComponent from "./footer-component/footer";
 import MyMap from "./MyMap/myMap";
 import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
 import NavigationBar from "./navigation-bar/navigation-bar";
+import logo from "../assets/logos/logo.svg";
 
 import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
@@ -105,6 +106,11 @@ const MainComponent = () => {
     <>
       {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
       <div className="flex items-center pt-3">
+        <img
+          src={logo}
+          className="ml-48 -mt-4 absolute text-xs text-white w-16 h-auto"
+          alt="World Weather App logo"
+        />
         <p className="text-3xl text-yellow-300 mb-3 inline m-auto px-10 z-50">
           {" "}
           <span className="text-white">World</span> Weather{" "}
