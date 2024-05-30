@@ -1,9 +1,10 @@
 import React from "react";
+import FooterComponent from "../footer-component/footer";
 
 const LegalInfo = () => {
   return (
     <>
-      <div className="p-48 bg-white">
+      <div className="p-48 bg-white md:px-24 lg:px-48 xl:px-64  xl:max-w-8xl ">
         <h1 className=" text-xl">Legal Info</h1>
 
         <p className="py-4">( Information in accordance with § 5 TMG )</p>
@@ -130,6 +131,7 @@ const LegalInfo = () => {
           <strong>© 2024 World Weather App</strong>
         </p>
       </div>
+      <FooterComponent />
     </>
   );
 };

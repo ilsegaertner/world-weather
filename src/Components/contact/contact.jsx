@@ -2,28 +2,32 @@ import React from "react";
 import { useState } from "react";
 import FooterComponent from "../footer-component/footer";
 import logo from "../../assets/logos/logo.svg";
-import { Navigate, useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
-  const navigate = useNavigate();
-  const navigateToHome = () => {
-    navigate("/");
-  };
-
   return (
     <>
-      <Link to="/weather">
-        <img
-          src={logo}
-          className="ml-48 absolute text-xs text-white w-16 h-auto hover:opacity-75"
-          alt="World Weather App logo"
-        />
-      </Link>
-      <div className="md:px-24 lg:px-48 xl:px-64 py-24 text-gray-100 xl:max-w-8xl bg-blue-800">
+      <div className="  flex items-center pt-3 md:px-24 lg:px-48 xl:px-64  xl:max-w-8xl bg-gray-900 shadow-lg">
+        <Link to="/weather">
+          {" "}
+          <img
+            src={logo}
+            className="ml-48 -mt-4 pr-6 text-xs text-white w-16 h-auto"
+            alt="World Weather App logo"
+          />
+        </Link>
+        <p className="text-3xl text-yellow-300 mb-3 inline px-10 z-50">
+          {" "}
+          <span className="text-white">World</span> Weather{" "}
+          <span className="text-blue-400">App</span>
+        </p>
+      </div>
+
+      <div className="md:px-24 lg:px-48 xl:px-64 py-20 text-gray-100 xl:max-w-8xl">
         <h1 className="text-yellow-400 text-4xl px-10 pb-8 leading-7 text-center">
           <span className="">Contact</span>{" "}
         </h1>
-        <hr className=""></hr>
+        <hr className="mx-48 border-gray-800"></hr>
         <div className="p-10 sm:leading-9 sm:m-8 sm:text-2xl text-gray-100">
           <p>
             Thank you for your interest in contacting us!<br></br> <br></br> We
@@ -64,10 +68,7 @@ const Contact = () => {
             weather-related needs. Thank you for choosing World Weather App!
           </p>
           <div className="mt-16">
-            <button
-              className="bg-yellow-200 p-3 sm:p-4 rounded-lg text-gray-900 hover:bg-yellow-300 duration-200 sm:text-2xl"
-              onClick={navigateToHome}
-            >
+            <button className="bg-yellow-200 p-3 sm:p-4 rounded-lg text-gray-900 hover:bg-yellow-300 duration-200 sm:text-2xl">
               Back to Home
             </button>{" "}
             {/* Include a link back to the home page */}

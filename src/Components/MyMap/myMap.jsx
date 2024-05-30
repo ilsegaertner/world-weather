@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+
 import "../../App.css";
 
 const MyMap = ({ city }) => {
-  const [coordinates, setCoordinates] = useState();
+  const [coordinates, setCoordinates] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchCoords = async () => {
@@ -15,10 +17,15 @@ const MyMap = ({ city }) => {
           throw new Error("Failed to fetch coordinates from Google Maps");
         }
         const data = await response.json();
+        if (data.results.length === 0) {
+          throw new Error("No results found for the specified city");
+        }
         const location = data.results[0].geometry.location;
         setCoordinates({ lat: location.lat, lng: location.lng });
+        setError(null);
       } catch (error) {
         console.error("Error fetching coordinates: ", error);
+        setError("Could not fetch coordinates. Please try again later.");
       }
     };
     if (city) {
@@ -32,17 +39,20 @@ const MyMap = ({ city }) => {
   return (
     <>
       <div style={{ overflow: "hidden" }}>
-        <div id="map" key={key}>
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <div key={key}>
           {coordinates && (
-            <MapContainer center={[coordinates.lat, coordinates.lng]} zoom={10}>
+            <MapContainer
+              center={[coordinates.lat, coordinates.lng]}
+              zoom={10}
+              id="map"
+              placeholder
+            >
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-              {/* <TileLayer
-                url="http://maps.openweathermap.org/maps/2.0/weather/TA2/{z}/{x}/{y}?date=1552861800&opacity=0.9&fill_bound=true&appid=4430e9e41106a5deb2aba2b74568af5e
-"
-              /> */}
-              {/* <Marker position={[coordinates.lat, coordinates.lng]}>
+
+              <Marker position={[coordinates.lat, coordinates.lng]}>
                 <Popup>{city}</Popup>
-              </Marker> */}
+              </Marker>
             </MapContainer>
           )}
         </div>

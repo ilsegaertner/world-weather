@@ -4,7 +4,7 @@ import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.sv
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
 import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
 
-const FiveDayWeather = ({ lat, lon, query, weatherData }) => {
+const FiveDayWeather = ({ lat, lon, query, city, weatherData }) => {
   const [fiveDayWeather, setFiveDayWeather] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -121,7 +121,7 @@ const FiveDayWeather = ({ lat, lon, query, weatherData }) => {
       <>
         <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl p-5 sm:p-10 shadow-xl border-blue-200 border-2 overflow-auto">
           <p className="flex my-8 text-xl text-gray-100">Five-day forecast </p>
-          <p className="flex my-8 text-xl text-black">{query}</p>
+          <p className="flex my-8 text-xl text-black"> {city}</p>
           <hr className="pb-3" />
 
           <div className="flex">

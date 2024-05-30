@@ -7,7 +7,7 @@ import logoLinkedin from "../../assets/logos/4362961_linkedin_social media_icon.
 const FooterComponent = () => {
   return (
     <>
-      <footer className="bg-gray-800 py-8 px-5 sm:px-10">
+      <footer className="bg-gray-900 py-8 px-5 sm:px-10">
         <div className="container mx-auto flex flex-wrap justify-between">
           <div className="footer-container_left flex gap-6">
             <Link

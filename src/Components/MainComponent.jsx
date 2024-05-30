@@ -15,6 +15,7 @@ const MainComponent = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
+  const [city, setCity] = useState(null); // state variable to store city value after input
   const [query, setQuery] = useState("Paris");
   const [error, setError] = useState(null);
   const limit = 1;
@@ -24,14 +25,17 @@ const MainComponent = () => {
     console.log("Query:", event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    fetchCoords();
+    await fetchCoords();
+    await fetchWeatherData();
+    setCity(query);
   };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      fetchCoords();
+      handleSubmit(event);
+      // fetchCoords();
     }
   };
 
@@ -104,52 +108,47 @@ const MainComponent = () => {
 
   return (
     <>
-      <div className="sm:max-w-4xl m-auto">
-        {/* <p className="text-xl bg-blue-300"> This is the main Weather Component</p> */}
+      <div className="md:px-24 lg:px-48 xl:px-64  xl:max-w-8xl bg-gray-900">
         <div className="flex items-center pt-3">
           <img
             src={logo}
-            className="ml-48 -mt-4 absolute text-xs text-white w-16 h-auto"
+            className="ml-48 -mt-4 pr-6  text-xs text-white w-16 h-auto"
             alt="World Weather App logo"
           />
-          <p className="text-3xl text-yellow-300 mb-3 inline m-auto px-10 z-50">
+          <p className="text-3xl text-yellow-300 mb-3 inline  px-10 z-50">
             {" "}
             <span className="text-white">World</span> Weather{" "}
             <span className="text-blue-400">App</span>
           </p>
         </div>
-
-        {/* <NavigationBar /> */}
-
-        <div className=" bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 sm:p-10 flex items-center flex-wrap gap-8 py-10 ">
+        <div className="rounded-2xl bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 sm:p-10 flex items-center flex-wrap gap-8 py-10 ">
           <Weather
             handleSubmit={handleSubmit}
             handleKeyDown={handleKeyDown}
             inputQuery={inputQuery}
             weatherData={weatherData}
             error={error}
+            city={city}
           />
           <FiveDayWeather
             lat={lat}
             lon={lon}
-            query={query}
+            city={city}
             weatherData={weatherData}
           />
 
           <FiveCityForecast
-            city={query}
+            city={city}
             lon={lon}
             lat={lat}
             weatherData={weatherData}
           />
         </div>
-        <div className="flex flex-col justify-center w-screen ">
-          <MyMap city={query} />
-        </div>
-        <div className="bg-blue-900 w-screen ">
-          <FooterComponent />
+        <div className="flex flex-col justify-center   ">
+          <MyMap city={city} />
         </div>
       </div>
+      <FooterComponent />
     </>
   );
 };

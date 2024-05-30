@@ -7,20 +7,37 @@ import logo from "../../assets/logos/logo.svg";
 const About = () => {
   return (
     <>
-      <Link to="/weather">
+      {/* <Link to="/weather">
         <img
           src={logo}
           className="ml-48 absolute text-xs text-white w-16 h-auto hover:opacity-75"
           alt="World Weather App logo"
         />
-      </Link>
-      <div className="md:px-24 lg:px-48 xl:px-64 py-24 text-gray-100 xl:max-w-8xl bg-blue-900">
-        <h1 className="text-yellow-400 text-4xl sm:px-10 pb-8 leading-10 text-center px-5">
-          <span className="text-blue-700 pr-10">About</span>{" "}
-          <span className="text-gray-100">World</span> Weather{" "}
+      </Link> */}
+
+      <div className="flex items-center pt-3 md:px-24 lg:px-48 xl:px-64  xl:max-w-8xl bg-gray-900  ">
+        <Link to="/weather">
+          {" "}
+          <img
+            src={logo}
+            className="ml-48 -mt-4 pr-6 text-xs text-white w-16 h-auto"
+            alt="World Weather App logo"
+          />
+        </Link>
+        <p className="text-3xl text-yellow-300 mb-3 inline px-10 z-50">
+          {" "}
+          <span className="text-white">World</span> Weather{" "}
           <span className="text-blue-400">App</span>
+        </p>
+      </div>
+
+      <div className="md:px-24 lg:px-48 xl:px-64 py-20 xl:max-w-8xl text-gray-100  bg-gray-00">
+        <h1 className="text-yellow-400 text-4xl sm:px-10 pb-8 leading-10 text-center px-5 ">
+          <span className="text-yellow-300 pr-10">About</span>{" "}
+          {/* <span className="text-gray-100">World</span> Weather{" "}
+          <span className="text-blue-400">App</span> */}
         </h1>
-        <hr className=""></hr>
+        <hr className="mx-48 border-gray-800"></hr>
         <div className="sm:p-10 p-3 leading-6 text-lg sm:leading-9 m-5 sm:m-8 sm:text-2xl text-gray-100 ">
           <p>
             Welcome to World Weather App, your trusted source for accurate and
