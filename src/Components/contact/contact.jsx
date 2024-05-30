@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Contact = () => {
   return (
     <>
-      <div className="  flex items-center pt-3 md:px-24 lg:px-48 xl:px-64  xl:max-w-8xl bg-gray-900 shadow-lg">
+      <div className="  flex items-center pt-3 md:px-24 lg:px-48 xl:px-64  xl:max-w-8xl bg-gray-900 shadow-md">
         <Link to="/weather">
           {" "}
           <img
