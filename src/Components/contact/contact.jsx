@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import FooterComponent from "../footer-component/footer";
 import logo from "../../assets/logos/logo.svg";
 import { Link } from "react-router-dom";

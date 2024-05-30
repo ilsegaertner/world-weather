@@ -17,7 +17,6 @@ const FiveDayWeather = ({ lat, lon, query, city, weatherData }) => {
     }
   }, [lat, lon]);
 
-  // fetching hourly Weather data 5 days preview
   const fetchFiveDayWeather = async () => {
     try {
       const response = await fetch(
@@ -50,35 +49,9 @@ const FiveDayWeather = ({ lat, lon, query, city, weatherData }) => {
     const date = new Date(dateTimeString);
     const options = {
       weekday: "short",
-      // year: "numeric",
-      // month: "short",
-      // day: "numeric",
-      // hour: "numeric",
-      // minute: "2-digit",
-      // second: "2-digit",
-      // timeZoneName: "short",
     };
     return date.toLocaleDateString("en-US", options);
   };
-
-  // let backgroundImage;
-  // if (weatherData && weatherData.weather && weatherData.weather.length > 0) {
-  //   switch (weatherData.weather[0].main) {
-  //     case "Rain":
-  //       backgroundImage = `url(${RainSvg})`;
-  //       break;
-  //     case "Clouds":
-  //       backgroundImage = `url(${CloudsSvg})`;
-  //       break;
-  //     case "Clear":
-  //       backgroundImage = `url(${ClearSvg})`;
-  //       break;
-  //     default:
-  //       backgroundImage = null;
-  //   }
-  // } else {
-  //   backgroundImage = null;
-  // }
 
   const weatherCases = threeOClockValues.map((item) => item.weather[0].main);
 

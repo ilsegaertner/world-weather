@@ -215,11 +215,6 @@ const FiveCityForecast = () => {
       <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl shadow-xl p-5 sm:p-10">
         <p className="flex my-8 text-xl text-black">International Today</p>
         <hr className="mb-2" />
-        {/* {fiveCities && (
-          <div className="bg-red-600 w-48 h-48">
-            {fiveCities.name}, {fiveCities.main.temp.toFixed()} °C
-          </div>
-        )} */}
 
         {error && <div>Error: {error}</div>}
         {fiveCities.slice(0, 5).map((city) => (

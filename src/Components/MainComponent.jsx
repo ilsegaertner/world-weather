@@ -1,15 +1,10 @@
 import FiveDayWeather from "./FiveDayWeather/FiveDayWeather";
 import Weather from "./weather/weather";
-import About from "./about/about";
-import Contact from "./contact/contact";
 import FooterComponent from "./footer-component/footer";
 import MyMap from "./MyMap/myMap";
 import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
-import NavigationBar from "./navigation-bar/navigation-bar";
 import logo from "../assets/logos/logo.svg";
-
 import React, { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
 
 const MainComponent = () => {
   const [weatherData, setWeatherData] = useState(null);

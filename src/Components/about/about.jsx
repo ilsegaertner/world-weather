@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import FooterComponent from "../footer-component/footer";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logos/logo.svg";
@@ -7,14 +6,6 @@ import logo from "../../assets/logos/logo.svg";
 const About = () => {
   return (
     <>
-      {/* <Link to="/weather">
-        <img
-          src={logo}
-          className="ml-48 absolute text-xs text-white w-16 h-auto hover:opacity-75"
-          alt="World Weather App logo"
-        />
-      </Link> */}
-
       <div className="flex items-center pt-3 md:px-24 lg:px-48 xl:px-64  xl:max-w-8xl bg-gray-900  shadow-md">
         <Link to="/weather">
           {" "}
