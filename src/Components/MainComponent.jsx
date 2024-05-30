@@ -15,7 +15,7 @@ const MainComponent = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
-  const [city, setCity] = useState(null); // state variable to store city value after input
+  const [city, setCity] = useState("Paris"); // state variable to store city value after input
   const [query, setQuery] = useState("Paris");
   const [error, setError] = useState(null);
   const limit = 1;

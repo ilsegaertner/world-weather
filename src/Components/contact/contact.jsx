@@ -69,7 +69,7 @@ const Contact = () => {
           </p>
           <div className="mt-16">
             <button className="bg-yellow-200 p-3 sm:p-4 rounded-lg text-gray-900 hover:bg-yellow-300 duration-200 sm:text-2xl">
-              Back to Home
+              <Link to="/weather">Back to Home</Link>
             </button>{" "}
             {/* Include a link back to the home page */}
           </div>

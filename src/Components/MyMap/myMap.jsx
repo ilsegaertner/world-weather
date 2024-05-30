@@ -36,6 +36,14 @@ const MyMap = ({ city }) => {
   // Use a key to force the map to re-render when the city changes
   const key = city || "default";
 
+  const MapUpdater = ({ center }) => {
+    const map = useMap();
+    useEffect(() => {
+      map.setView(center, map.getZoom());
+    }, [center, map]);
+    return null;
+  };
+
   return (
     <>
       <div style={{ overflow: "hidden" }}>
@@ -48,6 +56,7 @@ const MyMap = ({ city }) => {
               id="map"
               placeholder
             >
+              <MapUpdater center={[coordinates.lat, coordinates.lng]} />
               <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
               <Marker position={[coordinates.lat, coordinates.lng]}>
