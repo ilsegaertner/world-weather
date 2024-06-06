@@ -7,6 +7,21 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="World Weather App" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link
+      rel="preload"
+      href="../public/fonts/Geist.Mono/GeistMono-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="../public/fonts/Geist.Mono/GeistMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/> -->
@@ -14,9 +29,19 @@
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
+    <!-- 
     <link
       rel="stylesheet"
       href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css"
+      crossorigin=""
+    /> -->
+
+    <link
+      rel="preload"
+      fetchpriority="high"
+      href="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      as="image"
+      type="image/png"
     />
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />

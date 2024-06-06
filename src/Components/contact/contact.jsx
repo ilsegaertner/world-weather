@@ -13,6 +13,7 @@ const Contact = () => {
             src={logo}
             className="ml-48 -mt-4 pr-6 text-xs text-white w-16 h-auto"
             alt="World Weather App logo"
+            width={"30px"}
           />
         </Link>
         <p className="text-3xl text-yellow-300 mb-3 inline px-10 z-50">

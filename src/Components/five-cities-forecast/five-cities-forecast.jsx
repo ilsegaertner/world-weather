@@ -229,6 +229,7 @@ const FiveCityForecast = () => {
                     src={getWeatherImage(city.current)}
                     alt={`${city.current} weather`}
                     className="w-full h-full "
+                    width={"30px"}  
                   />
                 </div>
               </div>

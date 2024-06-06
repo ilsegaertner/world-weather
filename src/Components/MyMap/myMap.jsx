@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense, lazy } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 import "../../App.css";
 
@@ -10,6 +11,12 @@ const MyMap = ({ city }) => {
   useEffect(() => {
     const fetchCoords = async () => {
       try {
+        const cachedCoords = localStorage.getItem(city);
+        if (cachedCoords) {
+          setCoordinates(JSON.parse(cachedCoords));
+          return;
+        }
+
         const response = await fetch(
           `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=AIzaSyBKfBTaWvjhxabyqesd6-vSUfv4qst1h1M`
         );
@@ -21,7 +28,9 @@ const MyMap = ({ city }) => {
           throw new Error("No results found for the specified city");
         }
         const location = data.results[0].geometry.location;
-        setCoordinates({ lat: location.lat, lng: location.lng });
+        const newCoordinates = { lat: location.lat, lng: location.lng };
+        setCoordinates(newCoordinates);
+        localStorage.setItem(city, JSON.stringify(newCoordinates));
         setError(null);
       } catch (error) {
         console.error("Error fetching coordinates: ", error);
@@ -49,20 +58,24 @@ const MyMap = ({ city }) => {
       <div style={{ overflow: "hidden" }}>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div key={key}>
-          {coordinates && (
-            <MapContainer
-              center={[coordinates.lat, coordinates.lng]}
-              zoom={10}
-              id="map"
-              placeholder
-            >
-              <MapUpdater center={[coordinates.lat, coordinates.lng]} />
-              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {coordinates ? (
+            <Suspense fallback={<div>Loading map...</div>}>
+              <MapContainer
+                center={[coordinates.lat, coordinates.lng]}
+                zoom={10}
+                id="map"
+                placeholder
+              >
+                <MapUpdater center={[coordinates.lat, coordinates.lng]} />
+                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-              <Marker position={[coordinates.lat, coordinates.lng]}>
-                <Popup>{city}</Popup>
-              </Marker>
-            </MapContainer>
+                <Marker position={[coordinates.lat, coordinates.lng]}>
+                  <Popup>{city}</Popup>
+                </Marker>
+              </MapContainer>
+            </Suspense>
+          ) : (
+            <p>Loading map...</p>
           )}
         </div>
       </div>

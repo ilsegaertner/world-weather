@@ -1,23 +1,17 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
 import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
 
-const FiveDayWeather = ({ lat, lon, query, city, weatherData }) => {
+const FiveDayWeather = ({ lat, lon, city }) => {
   const [fiveDayWeather, setFiveDayWeather] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const [threeOClockValues, setThreeOClockValues] = useState([]);
+  // const [threeOClockValues, setThreeOClockValues] = useState([]);
 
-  useEffect(() => {
-    if (lat !== null && lon !== null) {
-      fetchFiveDayWeather();
-    }
-  }, [lat, lon]);
-
-  const fetchFiveDayWeather = async () => {
+  const fetchFiveDayWeather = useCallback(async () => {
     try {
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=4430e9e41106a5deb2aba2b74568af5e`
@@ -27,23 +21,34 @@ const FiveDayWeather = ({ lat, lon, query, city, weatherData }) => {
       }
       const data = await response.json();
       setFiveDayWeather(data);
-      filterThreeDayOClockValues(data.list);
-      console.log(data);
+      // filterThreeDayOClockValues(data.list);
+      // console.log(data);
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
-  };
+  }, [lat, lon]);
 
-  console.log(fiveDayWeather);
+  useEffect(() => {
+    if (lat !== null && lon !== null) {
+      fetchFiveDayWeather();
+    }
+  }, [lat, lon, fetchFiveDayWeather]);
 
-  const filterThreeDayOClockValues = (list) => {
-    const filteredValues = list.filter((item) =>
+  const threeOClockValues = useMemo(() => {
+    if (!fiveDayWeather) return [];
+    return fiveDayWeather.list.filter((item) =>
       item.dt_txt.includes("15:00:00")
     );
-    setThreeOClockValues(filteredValues);
-  };
+  }, [fiveDayWeather]);
+
+  // const filterThreeDayOClockValues = (list) => {
+  //   const filteredValues = list.filter((item) =>
+  //     item.dt_txt.includes("15:00:00")
+  //   );
+  //   setThreeOClockValues(filteredValues);
+  // };
 
   const formatDateTime = (dateTimeString) => {
     const date = new Date(dateTimeString);
@@ -53,27 +58,27 @@ const FiveDayWeather = ({ lat, lon, query, city, weatherData }) => {
     return date.toLocaleDateString("en-US", options);
   };
 
-  const weatherCases = threeOClockValues.map((item) => item.weather[0].main);
+  // const weatherCases = threeOClockValues.map((item) => item.weather[0].main);
 
-  console.log(weatherCases);
+  // console.log(weatherCases);
 
-  const backgroundImages = weatherCases.map((weather) => {
-    switch (weather) {
-      case "Rain":
-        return `url(${RainSvg})`;
+  const backgroundImages = useMemo(() => {
+    return threeOClockValues.map((item) => {
+      switch (item.weather[0].main) {
+        case "Rain":
+          return `url(${RainSvg})`;
 
-      case "Clouds":
-        return `url(${CloudsSvg})`;
+        case "Clouds":
+          return `url(${CloudsSvg})`;
 
-      case "Clear":
-        return `url(${ClearSvg})`;
+        case "Clear":
+          return `url(${ClearSvg})`;
 
-      default:
-        return null;
-    }
-  });
-
-  console.log(backgroundImages);
+        default:
+          return null;
+      }
+    });
+  }, [threeOClockValues]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -99,18 +104,21 @@ const FiveDayWeather = ({ lat, lon, query, city, weatherData }) => {
 
           <div className="flex">
             {threeOClockValues.map((item, index) => (
-              <p key={index}>
-                <div className="flex flex-col text-blue-100 pl-0 px-4 items-start">
-                  {formatDateTime(item.dt_txt)}{" "}
-                  <span className="text-md text-gray-100">
-                    {item.main.temp.toFixed()}°C
-                  </span>
-                  <div
-                    className="relative w-10 h-10 bg-cover"
-                    style={{ backgroundImage: backgroundImages[index] }}
-                  ></div>
-                </div>
-              </p>
+              // <p key={index}>
+              <div
+                key={index}
+                className="flex flex-col text-blue-100 pl-0 px-4 items-start"
+              >
+                {formatDateTime(item.dt_txt)}{" "}
+                <span className="text-md text-gray-100">
+                  {item.main.temp.toFixed()}°C
+                </span>
+                <div
+                  className="relative w-10 h-10 bg-cover"
+                  style={{ backgroundImage: backgroundImages[index] }}
+                ></div>
+              </div>
+              // </p>
             ))}
           </div>
         </div>
