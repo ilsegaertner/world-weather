@@ -17,49 +17,70 @@ const MainComponent = () => {
 
   const inputQuery = (event) => {
     setQuery(event.target.value);
-    console.log("Query:", event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await fetchCoords();
-    await fetchWeatherData();
-    setCity(query);
+    if (query !== city) {
+      await fetchCoords(query);
+      setCity(query);
+    }
   };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleSubmit(event);
-      // fetchCoords();
     }
   };
 
   // API call Geocoding
-  const fetchCoords = async () => {
+  const fetchCoords = async (cityName) => {
     try {
       if (!query) {
         // Don't make the request if the query is empty
         return;
       }
 
-      const response = await fetch(
-        `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=${limit}&appid=4430e9e41106a5deb2aba2b74568af5e`
-      );
-      if (!response.ok) {
-        throw new Error(
-          "Failed to fetch the weather Data from the city name query"
+      // local Storage
+      let latFromStorage, lonFromStorage;
+      // Retrieve coordinates from local storage
+
+      const storedCoords = localStorage.getItem(`weatherCoords_${cityName}`);
+      if (storedCoords) {
+        const { lat, lon } = JSON.parse(storedCoords);
+        latFromStorage = lat;
+        lonFromStorage = lon;
+        // Update the state with coordinates from local storage
+        setLat(lat);
+        setLon(lon);
+        console.log(lat, lon);
+      }
+
+      if (!latFromStorage || !lonFromStorage || query !== city) {
+        const response = await fetch(
+          `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=${limit}&appid=4430e9e41106a5deb2aba2b74568af5e`
+        );
+        if (!response.ok) {
+          throw new Error(
+            "Failed to fetch the weather Data from the city name query"
+          );
+        }
+        const data = await response.json();
+
+        // Check if data array is empty
+        if (data.length === 0) {
+          throw new Error("No matching city found");
+        }
+
+        const { lat, lon } = data[0];
+        setLat(lat);
+        setLon(lon);
+
+        localStorage.setItem(
+          `weatherCoords_${cityName}`,
+          JSON.stringify({ lat, lon })
         );
       }
-      const data = await response.json();
-
-      // Check if data array is empty
-      if (data.length === 0) {
-        throw new Error("No matching city found");
-      }
-
-      const { lat, lon } = data[0];
-      setLat(lat);
-      setLon(lon);
     } catch (error) {
       setError(error.message);
     }
@@ -71,8 +92,18 @@ const MainComponent = () => {
     fetchCoords();
   }, []);
 
-  const fetchWeatherData = async () => {
+  const fetchWeatherData = async (cityName, latitude, longitude) => {
     try {
+      if (!latitude || !longitude) return;
+
+      // Check if weather data exists in cache
+
+      const cachedWeatherData = localStorage.getItem(`weatherData_${cityName}`);
+      if (cachedWeatherData) {
+        setWeatherData(JSON.parse(cachedWeatherData));
+        return;
+      }
+
       const response = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=4430e9e41106a5deb2aba2b74568af5e`
       );
@@ -80,7 +111,10 @@ const MainComponent = () => {
         throw new Error("Failed to fetch weather data");
       }
       const data = await response.json();
+
       setWeatherData(data);
+
+      localStorage.setItem(`weatherData_${cityName}`, JSON.stringify(data));
       console.log(data);
     } catch (error) {
       setError(error.message);
@@ -88,18 +122,10 @@ const MainComponent = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await fetchCoords();
-        if (lat !== null && lon !== null) {
-          await fetchWeatherData();
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [lat, lon]);
+    if (lat !== null && lon !== null && city !== null) {
+      fetchWeatherData(lat, lon, city);
+    }
+  }, [lat, lon, city]);
 
   return (
     <>
@@ -109,11 +135,9 @@ const MainComponent = () => {
             src={logo}
             className="ml-48 -mt-4 pr-6  text-xs text-white w-16 h-auto"
             alt="World Weather App logo"
-            width={"30px"}
           />
-          <p className="text-3xl text-yellow-300 mb-3 inline px-10 z-50">
-            {" "}
-            <span className="text-white">World</span> Weather{" "}
+          <p className="text-3xl text-yellow-300 mb-3 inline  px-10 z-50">
+            <span className="text-white">World</span> Weather
             <span className="text-blue-400">App</span>
           </p>
         </div>
@@ -132,7 +156,6 @@ const MainComponent = () => {
             city={city}
             weatherData={weatherData}
           />
-
           <FiveCityForecast
             city={city}
             lon={lon}
@@ -140,7 +163,7 @@ const MainComponent = () => {
             weatherData={weatherData}
           />
         </div>
-        <div className="flex flex-col justify-center   ">
+        <div className="flex flex-col justify-center">
           <MyMap city={city} />
         </div>
       </div>
