@@ -1,10 +1,20 @@
-import FiveDayWeather from "./FiveDayWeather/FiveDayWeather";
-import Weather from "./weather/weather";
+// import FiveDayWeather from "./FiveDayWeather/FiveDayWeather";
+// import Weather from "./weather/weather";
+
 import FooterComponent from "./footer-component/footer";
-import MyMap from "./MyMap/myMap";
-import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
+// import MyMap from "./MyMap/myMap";
+// import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
 import logo from "../assets/logos/logo.svg";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
+
+const Weather = React.lazy(() => import("./weather/weather"));
+const FiveCityForecast = React.lazy(() =>
+  import("./five-cities-forecast/five-cities-forecast")
+);
+const MyMap = React.lazy(() => import("./MyMap/myMap"));
+const FiveDayWeather = React.lazy(() =>
+  import("./FiveDayWeather/FiveDayWeather")
+);
 
 const MainComponent = () => {
   const [weatherData, setWeatherData] = useState(null);
@@ -133,6 +143,7 @@ const MainComponent = () => {
         <div className="flex items-center pt-3">
           <img
             src={logo}
+            loading="lazy"
             className="ml-48 -mt-4 pr-6  text-xs text-white w-16 h-auto"
             alt="World Weather App logo"
           />
@@ -141,32 +152,35 @@ const MainComponent = () => {
             <span className="text-blue-400">App</span>
           </p>
         </div>
-        <div className="rounded-2xl bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 sm:p-10 flex items-center flex-wrap gap-8 py-10 ">
-          <Weather
-            handleSubmit={handleSubmit}
-            handleKeyDown={handleKeyDown}
-            inputQuery={inputQuery}
-            weatherData={weatherData}
-            error={error}
-            city={city}
-          />
-          <FiveDayWeather
-            lat={lat}
-            lon={lon}
-            city={city}
-            weatherData={weatherData}
-          />
-          <FiveCityForecast
-            city={city}
-            lon={lon}
-            lat={lat}
-            weatherData={weatherData}
-          />
-        </div>
-        <div className="flex flex-col justify-center">
-          <MyMap city={city} />
-        </div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <div className="rounded-2xl bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 sm:p-10 flex items-center flex-wrap gap-8 py-10 ">
+            <Weather
+              handleSubmit={handleSubmit}
+              handleKeyDown={handleKeyDown}
+              inputQuery={inputQuery}
+              weatherData={weatherData}
+              error={error}
+              city={city}
+            />
+            <FiveDayWeather
+              lat={lat}
+              lon={lon}
+              city={city}
+              weatherData={weatherData}
+            />
+            <FiveCityForecast
+              city={city}
+              lon={lon}
+              lat={lat}
+              weatherData={weatherData}
+            />
+          </div>
+          <div className="flex flex-col justify-center">
+            <MyMap city={city} />
+          </div>
+        </Suspense>
       </div>
+
       <FooterComponent />
     </>
   );
