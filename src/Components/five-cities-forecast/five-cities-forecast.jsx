@@ -4,6 +4,7 @@ import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.sv
 import DrizzleSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
 import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
+import HazePng from "../../assets/icons8-haze-100.png";
 
 const FiveCityForecast = () => {
   const [fiveCities, setFiveCities] = useState([]);
@@ -205,6 +206,8 @@ const FiveCityForecast = () => {
         return ClearSvg;
       case "Drizzle":
         return DrizzleSvg;
+      case "Haze":
+        return HazePng;
       default:
         return null;
     }
