@@ -212,30 +212,37 @@ const FiveCityForecast = () => {
 
   return (
     <>
-      <div className="bg-gray-600 xl:max-w-sm m-auto rounded-2xl shadow-xl p-5 sm:p-10">
-        <p className="flex my-8 text-xl text-black">International Today</p>
-        <hr className="mb-2" />
+      <div
+        className="bg-gray-600 xl:max-w-sm m-auto shadow-xl p-5 sm:p-2 col-start-7 col-end-9 grid grid-rows-1 gap-3
+      "
+      >
+        <p className="flex text-xl text-black grid-start-1">
+          International Today
+        </p>
+        {/* <hr className="mb-2" /> */}
 
         {error && <div>Error: {error}</div>}
-        {fiveCities.slice(0, 5).map((city) => (
-          <div key={city.id} className="">
-            {" "}
-            <div className="flex items-center text-blue-100 justify-between">
-              <div className="">{city.name} </div>
-              <div className="flex items-center">
-                <div className="pl-5">{city.temperature.toFixed()}°C </div>
-                <div className="relative w-10 h-10 bg-cover">
-                  <img
-                    src={getWeatherImage(city.current)}
-                    alt={`${city.current} weather`}
-                    className="w-full h-full "
-                    width={"30px"}  
-                  />
+        <div className="grid-start-2">
+          {fiveCities.slice(0, 5).map((city) => (
+            <div key={city.id} className="">
+              {" "}
+              <div className="flex items-center text-blue-100 justify-between">
+                <div className="">{city.name} </div>
+                <div className="flex items-center">
+                  <div className="pl-5">{city.temperature.toFixed()}°C </div>
+                  <div className="relative w-10 h-10 bg-cover">
+                    <img
+                      src={getWeatherImage(city.current)}
+                      alt={`${city.current} weather`}
+                      className="w-full h-full "
+                      width={"30px"}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );

@@ -153,7 +153,7 @@ const MainComponent = () => {
           </p>
         </div>
         <Suspense fallback={<div>Loading...</div>}>
-          <div className="rounded-2xl bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 sm:p-10 flex items-center flex-wrap gap-8 py-10 ">
+          <div className="grid grid-cols-8 grid-rows-1 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 sm:p-2 ">
             <Weather
               handleSubmit={handleSubmit}
               handleKeyDown={handleKeyDown}
