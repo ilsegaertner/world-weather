@@ -34,7 +34,7 @@ const MyMap = ({ city }) => {
         setError(null);
       } catch (error) {
         console.error("Error fetching coordinates: ", error);
-        setError("Could not fetch coordinates. Please try again later.");
+        // setError("Could not fetch coordinates. Please try again later.");
       }
     };
     if (city) {

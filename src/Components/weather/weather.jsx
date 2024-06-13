@@ -13,34 +13,41 @@ const Weather = ({
   handleKeyDown,
   handleSubmit,
   error,
+  setQuery,
+  setError,
 }) => {
   console.log(weatherData);
 
+  const [reload, setReload] = useState(false);
+
   //useEffect for page reload when city not existing
+  // useEffect(() => {
+  //   if (error && error.includes("No matching city found")) {
+  //     const timeoutId = setTimeout(() => {
+  //       window.location.reload();
+  //     }, 500);
+
+  //     return () => clearTimeout(timeoutId);
+  //   }
+  // }, [error]);
+
   useEffect(() => {
     if (error && error.includes("No matching city found")) {
       const timeoutId = setTimeout(() => {
-        window.location.reload();
-      }, 500);
-
+        setQuery("");
+        setError(null);
+      }, 1200);
       return () => clearTimeout(timeoutId);
     }
-  }, [error]);
+  }, [error, setError, setQuery]);
 
   if (error) {
     return (
-      <div
-        style={{
-          // position: "absolute",
-          color: "red",
-          left: "20px",
-          backgroundColor: "black",
-
-          zIndex: "100",
-        }}
-      >
-        Error: {error}
-      </div>
+      <>
+        <div className="grid-start-1 grid-end-2 bg-gray-800 p-3 text-red-700">
+          Error: {error}
+        </div>
+      </>
     );
   }
 
@@ -48,11 +55,11 @@ const Weather = ({
     return (
       <div
         style={{
-          // position: "absolute",
+          position: "absolute",
           left: "20px",
           color: "red",
           backgroundColor: "black",
-
+          width: "650px",
           zIndex: "100",
         }}
       >
@@ -88,9 +95,7 @@ const Weather = ({
       <div className="bg-gray-700 xl:max-w-sm m-auto sm:p-2 shadow-xl border-0 border-gray-900 border-solid overflow-auto col-start-1 col-end-2 border-2 ">
         <div className="weather-content grid grid-rows-2 grid-auto-rows-min gap-8">
           <div className="heading-and-input grid-start-1 flex flex-col justify-between gap-2 self-start gap-3">
-            <p className="text-3xl text-yellow-300 mb-3 flex">
-              World Weather
-            </p>
+            <p className="text-3xl text-yellow-300 mb-3 flex">World Weather</p>
             <form className="flex" onSubmit={handleSubmit}>
               <input
                 className="bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500 placeholder-gray-500 text-gray-800"
@@ -108,32 +113,34 @@ const Weather = ({
             </form>
           </div>
 
-          {weatherData && (
-            <>
-              <div className="grid-start-2 self-center">
-                <p className="city-and-country align-center flex text-lg text-gray-100 pl-2">
-                  {weatherData.name}, {weatherData.sys.country}  {" "}
-                </p>
+          <div>
+            {weatherData && (
+              <>
+                <div className="grid-start-2 self-center">
+                  <p className="city-and-country align-center flex text-lg text-gray-100 pl-2">
+                    {weatherData.name}, {weatherData.sys.country}  {" "}
+                  </p>
 
-                <div className="weather-image-and-temperature flex justify-between flex-row text-yellow-200 items-center overflow-none">
-                  <div className="p-1 justify-between align-top text-gray-100 flex flex-col items-center">
-                    <div
-                      className="relative w-16 h-16 bg-cover"
-                      style={{ backgroundImage }}
-                    ></div>
-                    <p>{weatherData.weather[0].main}</p>
+                  <div className="weather-image-and-temperature flex justify-between flex-row text-yellow-200 items-center overflow-none">
+                    <div className="p-1 justify-between align-top text-gray-100 flex flex-col items-center">
+                      <div
+                        className="relative w-16 h-16 bg-cover"
+                        style={{ backgroundImage }}
+                      ></div>
+                      <p>{weatherData.weather[0].main}</p>
+                    </div>
+                    <span className="text-4xl text-white">
+                      {temperatureCelsius.toFixed()}°C
+                    </span>
+
+                    <div></div>
                   </div>
-                  <span className="text-4xl text-white">
-                    {temperatureCelsius.toFixed()}°C
-                  </span>
-
-                  <div></div>
                 </div>
-              </div>
-            </>
-          )}
+              </>
+            )}
 
-          {error && <p>Error: {error}</p>}
+            {error && <p>Error: {error}</p>}
+          </div>
         </div>
       </div>
 

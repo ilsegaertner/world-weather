@@ -159,6 +159,9 @@ const MainComponent = () => {
               handleKeyDown={handleKeyDown}
               inputQuery={inputQuery}
               weatherData={weatherData}
+              query={query}
+              setQuery={setQuery}
+              setError={setError}
               error={error}
               city={city}
             />
