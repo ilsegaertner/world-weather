@@ -36,7 +36,7 @@ const Weather = ({
       const timeoutId = setTimeout(() => {
         setQuery("");
         setError(null);
-      }, 1200);
+      }, 1500);
       return () => clearTimeout(timeoutId);
     }
   }, [error, setError, setQuery]);
@@ -44,7 +44,7 @@ const Weather = ({
   if (error) {
     return (
       <>
-        <div className="grid-start-1 grid-end-2 bg-gray-800 p-3 text-red-700">
+        <div className="absolute bg-gray-900 p-5 text-red-700">
           Error: {error}
         </div>
       </>

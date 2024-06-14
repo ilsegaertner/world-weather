@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { API_KEY } from "../../config";
+
 import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import DrizzleSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
@@ -84,7 +86,7 @@ const FiveCityForecast = () => {
   const fetchWeatherData = async (city) => {
     const { id, name, lat, lon } = city;
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=4430e9e41106a5deb2aba2b74568af5e`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch data");

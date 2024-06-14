@@ -1,6 +1,8 @@
 // import FiveDayWeather from "./FiveDayWeather/FiveDayWeather";
 // import Weather from "./weather/weather";
 
+import { API_KEY } from "../config.js";
+
 import FooterComponent from "./footer-component/footer";
 // import MyMap from "./MyMap/myMap";
 // import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
@@ -68,7 +70,7 @@ const MainComponent = () => {
 
       if (!latFromStorage || !lonFromStorage || query !== city) {
         const response = await fetch(
-          `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=${limit}&appid=4430e9e41106a5deb2aba2b74568af5e`
+          `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=${limit}&appid=${API_KEY}`
         );
         if (!response.ok) {
           throw new Error(
@@ -115,7 +117,7 @@ const MainComponent = () => {
       }
 
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=4430e9e41106a5deb2aba2b74568af5e`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch weather data");
@@ -149,7 +151,7 @@ const MainComponent = () => {
           />
           <p className="text-3xl text-yellow-300 mb-3 inline  px-10 z-50">
             <span className="text-white">World</span> Weather
-            <span className="text-blue-400">App</span>
+            <span className="text-blue-400"> App</span>
           </p>
         </div>
         <Suspense fallback={<div>Loading...</div>}>

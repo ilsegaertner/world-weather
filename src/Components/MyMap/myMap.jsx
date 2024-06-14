@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Suspense, lazy } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { API_KEY_MAPS } from "../../config";
 
 import "../../App.css";
 
@@ -18,7 +19,8 @@ const MyMap = ({ city }) => {
         }
 
         const response = await fetch(
-          `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=AIzaSyBKfBTaWvjhxabyqesd6-vSUfv4qst1h1M`
+          // `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${API_KEY_MAPS}`
+          `https://nominatim.openstreetmap.org/search?city=${city}&format=json`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch coordinates from Google Maps");
@@ -34,7 +36,6 @@ const MyMap = ({ city }) => {
         setError(null);
       } catch (error) {
         console.error("Error fetching coordinates: ", error);
-        // setError("Could not fetch coordinates. Please try again later.");
       }
     };
     if (city) {
