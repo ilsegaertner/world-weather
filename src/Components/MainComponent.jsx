@@ -25,6 +25,7 @@ const MainComponent = () => {
   const [city, setCity] = useState("Paris"); // state variable to store city value after input
   const [query, setQuery] = useState("Paris");
   const [error, setError] = useState(null);
+  const [cityName, setCityName] = useState(null); // state variable to store the city name from the fetched API
   const limit = 1;
 
   const inputQuery = (event) => {
@@ -78,6 +79,7 @@ const MainComponent = () => {
           );
         }
         const data = await response.json();
+        console.log(data);
 
         // Check if data array is empty
         if (data.length === 0) {

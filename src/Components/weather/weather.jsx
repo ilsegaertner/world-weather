@@ -15,6 +15,7 @@ const Weather = ({
   error,
   setQuery,
   setError,
+  city,
 }) => {
   console.log(weatherData);
 
@@ -118,7 +119,8 @@ const Weather = ({
               <>
                 <div className="grid-start-2 self-center">
                   <p className="city-and-country align-center flex text-lg text-gray-100 pl-2">
-                    {weatherData.name}, {weatherData.sys.country}  {" "}
+                    {/* {city}, */}
+                    {weatherData.name},{weatherData.sys.country}  {" "}
                   </p>
 
                   <div className="weather-image-and-temperature flex justify-between flex-row text-yellow-200 items-center overflow-none">
