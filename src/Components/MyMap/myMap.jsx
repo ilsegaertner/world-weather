@@ -21,16 +21,23 @@ const MyMap = ({ city }) => {
         const response = await fetch(
           // `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${API_KEY_MAPS}`
           `https://nominatim.openstreetmap.org/search?city=${city}&format=json`
+          // `https://nominatim.openstreetmap.org/search?q=${city}&format=json&addressdetails=1&limit=1&polygon_svg=1`
         );
         if (!response.ok) {
-          throw new Error("Failed to fetch coordinates from Google Maps");
+          throw new Error("Failed to fetch coordinates from OpenStreetMap Nominatim");
         }
         const data = await response.json();
-        if (data.results.length === 0) {
+        console.log(data);
+        if (data.length === 0) {
           throw new Error("No results found for the specified city");
         }
-        const location = data.results[0].geometry.location;
-        const newCoordinates = { lat: location.lat, lng: location.lng };
+
+        const location = data[0];
+        const newCoordinates = { lat: parseFloat(location.lat), lng: parseFloat(location.lon) };
+
+
+        // const location = data.results[0].geometry.location;
+        // const newCoordinates = { lat: location.lat, lng: location.lng };
         setCoordinates(newCoordinates);
         localStorage.setItem(city, JSON.stringify(newCoordinates));
         setError(null);
