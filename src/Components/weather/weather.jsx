@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MyMap from "../MyMap/myMap";
 
 import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
@@ -15,22 +14,8 @@ const Weather = ({
   error,
   setQuery,
   setError,
-  city,
 }) => {
   console.log(weatherData);
-
-  const [reload, setReload] = useState(false);
-
-  //useEffect for page reload when city not existing
-  // useEffect(() => {
-  //   if (error && error.includes("No matching city found")) {
-  //     const timeoutId = setTimeout(() => {
-  //       window.location.reload();
-  //     }, 500);
-
-  //     return () => clearTimeout(timeoutId);
-  //   }
-  // }, [error]);
 
   useEffect(() => {
     if (error && error.includes("No matching city found")) {
@@ -119,7 +104,6 @@ const Weather = ({
               <>
                 <div className="grid-start-2 self-center">
                   <p className="city-and-country align-center flex text-lg text-gray-100 pl-2">
-                    {/* {city}, */}
                     {weatherData.name},{weatherData.sys.country}  {" "}
                   </p>
 
@@ -145,53 +129,6 @@ const Weather = ({
           </div>
         </div>
       </div>
-
-      {/* <div className=" w-auto bg-gray-700 m-auto rounded-2xl p-5 sm:p-10 shadow-xl my-0 border-8 border-gray-900 border-solid overflow-auto ">
-        <div className="weather-content bg-black min-w-full ">
-          <div className="heading-and-input">
-            <p className="text-3xl text-yellow-300 mb-3 flex px-4">
-              World Weather
-            </p>
-            <form className="px-4 flex gap-1" onSubmit={handleSubmit}>
-              <input
-                className="bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500 placeholder-gray-500 text-gray-800"
-                value={query}
-                onChange={inputQuery}
-                placeholder="Enter city"
-                onKeyDown={handleKeyDown}
-              />
-              <button
-                type="sumbit"
-                className="bg-blue-500 p-2 rounded-lg text-gray-100 hover:bg-blue-700"
-              >
-                Go
-              </button>
-            </form>
-          </div>
-          {weatherData && (
-            <div>
-              <p className="city-and-country align-center flex text-lg mt-12 px-4 text-gray-100">
-                {weatherData.name}, {weatherData.sys.country}  {" "}
-              </p>
-
-              <div className="weather-image-and-temperature px-4 flex justify-between flex-row text-yellow-200 items-center overflow-none">
-                <div className="p-1 justify-between align-top text-gray-100 flex flex-col items-center">
-                  <div
-                    className="relative w-16 h-16 bg-cover"
-                    style={{ backgroundImage }}
-                  ></div>
-                  <p>{weatherData.weather[0].main}</p>
-                </div>
-                <span className="text-4xl text-white">
-                  {temperatureCelsius.toFixed()}°C
-                </span>
-              </div>
-            </div>
-          )}
-
-          {error && <p>Error: {error}</p>}
-        </div>
-      </div> */}
     </>
   );
 };

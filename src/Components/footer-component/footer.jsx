@@ -25,12 +25,7 @@ const FooterComponent = () => {
             <p className="text-gray-300 font-semibold"></p>
             <div className="social-media flex flex-row">
               <Link to="/weather">
-                <img
-                  src={logoGithub}
-                  alt="Github Logo"
-                  // className="w-6 h-6"
-                  width={"22px"}
-                />
+                <img src={logoGithub} alt="Github Logo" width={"22px"} />
               </Link>
               <Link>
                 <img

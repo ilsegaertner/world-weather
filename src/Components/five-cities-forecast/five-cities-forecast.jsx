@@ -224,7 +224,6 @@ const FiveCityForecast = () => {
         <p className="flex text-xl text-black grid-start-1">
           International Today
         </p>
-        {/* <hr className="mb-2" /> */}
 
         {error && <div>Error: {error}</div>}
         <div className="grid-start-2">

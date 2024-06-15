@@ -1,11 +1,7 @@
-// import FiveDayWeather from "./FiveDayWeather/FiveDayWeather";
-// import Weather from "./weather/weather";
-
 import { API_KEY } from "../config.js";
 
 import FooterComponent from "./footer-component/footer";
-// import MyMap from "./MyMap/myMap";
-// import FiveCityForecast from "./five-cities-forecast/five-cities-forecast";
+
 import logo from "../assets/logos/logo.svg";
 import React, { useEffect, useState, Suspense } from "react";
 
@@ -25,7 +21,6 @@ const MainComponent = () => {
   const [city, setCity] = useState("Paris"); // state variable to store city value after input
   const [query, setQuery] = useState("Paris");
   const [error, setError] = useState(null);
-  const [cityName, setCityName] = useState(null); // state variable to store the city name from the fetched API
   const limit = 1;
 
   const inputQuery = (event) => {

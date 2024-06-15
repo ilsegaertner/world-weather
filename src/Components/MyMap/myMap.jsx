@@ -1,7 +1,6 @@
-import React, { useEffect, useState, Suspense, lazy } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import React, { useEffect, useState, Suspense } from "react";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { API_KEY_MAPS } from "../../config";
 
 import "../../App.css";
 
@@ -19,9 +18,7 @@ const MyMap = ({ city }) => {
         }
 
         const response = await fetch(
-          // `https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${API_KEY_MAPS}`
           `https://nominatim.openstreetmap.org/search?city=${city}&format=json`
-          // `https://nominatim.openstreetmap.org/search?q=${city}&format=json&addressdetails=1&limit=1&polygon_svg=1`
         );
         if (!response.ok) {
           throw new Error(
@@ -40,8 +37,6 @@ const MyMap = ({ city }) => {
           lng: parseFloat(location.lon),
         };
 
-        // const location = data.results[0].geometry.location;
-        // const newCoordinates = { lat: location.lat, lng: location.lng };
         setCoordinates(newCoordinates);
         localStorage.setItem(city, JSON.stringify(newCoordinates));
         setError(null);
