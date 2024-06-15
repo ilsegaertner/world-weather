@@ -8,7 +8,7 @@ const FooterComponent = () => {
   return (
     <>
       <footer className="bg-gray-900 py-8 px-5 sm:px-10">
-        <div className="container mx-auto flex flex-wrap justify-between">
+        <div className="container mx-auto flex flex-wrap justify-between gap-6">
           <div className="footer-container_left flex gap-6">
             <Link
               to="/legal-info"
@@ -22,7 +22,6 @@ const FooterComponent = () => {
             © Copyright 2024 | world-weather-app
           </p>
           <div className="footer-container_right flex gap-6 flex-row">
-            <p className="text-gray-300 font-semibold"></p>
             <div className="social-media flex flex-row">
               <Link to="/weather">
                 <img src={logoGithub} alt="Github Logo" width={"22px"} />

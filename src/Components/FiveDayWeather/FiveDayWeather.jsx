@@ -84,7 +84,7 @@ const FiveDayWeather = ({ lat, lon, city }) => {
   if (threeOClockValues.length > 0) {
     return (
       <>
-        <div className="col-start-4 col-end-6 bg-gray-600 xl:max-w-sm m-auto sm:p-2 shadow-xl border-gray-900  overflow-auto grid grid-auto-rows-min gap-16 border-2">
+        <div className="p-5 bg-gray-600 sm:p-2 shadow-xl border-gray-900  overflow-auto grid grid-auto-rows-min gap-16 border-2">
           <p className="flex text-xl text-gray-100 row-start-1 self-center">
             Five-day forecast{" "}
           </p>

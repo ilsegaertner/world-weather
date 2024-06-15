@@ -138,21 +138,21 @@ const MainComponent = () => {
 
   return (
     <>
-      <div className="md:px-24 lg:px-48 xl:px-64  xl:max-w-8xl bg-gray-900">
-        <div className="flex items-center pt-3">
+      <div className="md:px-24 lg:px-36 xl:px-48  xl:max-w-8xl bg-gray-900">
+        <div className="flex items-center pt-3 justify-center px-20 py-3 gap-3 align-middle">
           <img
             src={logo}
             loading="lazy"
-            className="ml-48 -mt-4 pr-6  text-xs text-white w-16 h-auto"
+            className=" w-10"
             alt="World Weather App logo"
           />
-          <p className="text-3xl text-yellow-300 mb-3 inline  px-10 z-50">
+          <p className="text-3xl text-yellow-300 inline z-50">
             <span className="text-white">World</span> Weather
             <span className="text-blue-400"> App</span>
           </p>
         </div>
         <Suspense fallback={<div>Loading...</div>}>
-          <div className="grid grid-cols-8 grid-rows-1 bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 sm:p-2 ">
+          <div className="justify-center md:justify-start p-8 flex flex-wrap bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 gap-8 ">
             <Weather
               handleSubmit={handleSubmit}
               handleKeyDown={handleKeyDown}

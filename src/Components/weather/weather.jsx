@@ -78,11 +78,14 @@ const Weather = ({
 
   return (
     <>
-      <div className="bg-gray-700 xl:max-w-sm m-auto sm:p-2 shadow-xl border-0 border-gray-900 border-solid overflow-auto col-start-1 col-end-2 border-2 ">
+      <div className=" p-5 bg-gray-700 sm:p-2 shadow-xl border-0 border-gray-900 border-solid overflow-auto border-2 ">
         <div className="weather-content grid grid-rows-2 grid-auto-rows-min gap-8">
           <div className="heading-and-input grid-start-1 flex flex-col justify-between gap-2 self-start gap-3">
             <p className="text-3xl text-yellow-300 mb-3 flex">World Weather</p>
-            <form className="flex" onSubmit={handleSubmit}>
+            <form
+              className="flex gap-4 md:flex-row flex-col"
+              onSubmit={handleSubmit}
+            >
               <input
                 className="bg-gray-100 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:border-blue-500 placeholder-gray-500 text-gray-800"
                 value={query}

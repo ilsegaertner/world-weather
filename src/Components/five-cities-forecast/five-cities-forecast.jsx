@@ -218,7 +218,7 @@ const FiveCityForecast = () => {
   return (
     <>
       <div
-        className="bg-gray-600 xl:max-w-sm m-auto shadow-xl p-5 sm:p-2 col-start-7 col-end-9 grid grid-rows-1 gap-3
+        className="bg-gray-600  shadow-xl p-5 sm:p-2 col-start-7 col-end-9 grid grid-rows-1 gap-3
       "
       >
         <p className="flex text-xl text-black grid-start-1">

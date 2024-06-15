@@ -6,16 +6,12 @@ import logo from "../../assets/logos/logo.svg";
 const About = () => {
   return (
     <>
-      <div className="flex items-center pt-3 md:px-24 lg:px-48 xl:px-64  xl:max-w-8xl bg-gray-900  shadow-md">
+      <div className="flex items-center pt-3 justify-center px-20 py-3 gap-3 align-middle bg-gray-900  shadow-md">
         <Link to="/weather">
           {" "}
-          <img
-            src={logo}
-            className="ml-48 -mt-4 pr-6 text-xs text-white w-16 h-auto"
-            alt="World Weather App logo"
-          />
+          <img src={logo} className="w-10" alt="World Weather App logo" />
         </Link>
-        <p className="text-3xl text-yellow-300 mb-3 inline px-10 z-50">
+        <p className="text-3xl text-yellow-300 inline z-50">
           {" "}
           <span className="text-white">World</span> Weather{" "}
           <span className="text-blue-400">App</span>
