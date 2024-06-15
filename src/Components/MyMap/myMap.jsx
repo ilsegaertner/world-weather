@@ -24,7 +24,9 @@ const MyMap = ({ city }) => {
           // `https://nominatim.openstreetmap.org/search?q=${city}&format=json&addressdetails=1&limit=1&polygon_svg=1`
         );
         if (!response.ok) {
-          throw new Error("Failed to fetch coordinates from OpenStreetMap Nominatim");
+          throw new Error(
+            "Failed to fetch coordinates from OpenStreetMap Nominatim"
+          );
         }
         const data = await response.json();
         console.log(data);
@@ -33,8 +35,10 @@ const MyMap = ({ city }) => {
         }
 
         const location = data[0];
-        const newCoordinates = { lat: parseFloat(location.lat), lng: parseFloat(location.lon) };
-
+        const newCoordinates = {
+          lat: parseFloat(location.lat),
+          lng: parseFloat(location.lon),
+        };
 
         // const location = data.results[0].geometry.location;
         // const newCoordinates = { lat: location.lat, lng: location.lng };
@@ -76,10 +80,6 @@ const MyMap = ({ city }) => {
               >
                 <MapUpdater center={[coordinates.lat, coordinates.lng]} />
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
-                <Marker position={[coordinates.lat, coordinates.lng]}>
-                  <Popup>{city}</Popup>
-                </Marker>
               </MapContainer>
             </Suspense>
           ) : (
