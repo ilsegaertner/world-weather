@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MyMap from "../MyMap/myMap";
 
 import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
@@ -15,7 +14,6 @@ const Weather = ({
   error,
   setQuery,
   setError,
-  city,
 }) => {
   console.log(weatherData);
 
@@ -106,7 +104,6 @@ const Weather = ({
               <>
                 <div className="grid-start-2 self-center">
                   <p className="city-and-country align-center flex text-lg text-gray-100 pl-2">
-                    {/* {city}, */}
                     {weatherData.name},{weatherData.sys.country}  {" "}
                   </p>
 

@@ -52,11 +52,11 @@ const Contact = () => {
               <br />
               World Weather App
               <br />
-              123 Weather Way
+              Potsdamer Str. 64
               <br />
-              City, State, Zip Code
+              Berlin, 13353
               <br />
-              Country
+              Germany
             </p>
           </div>
           <p className="mt-16">
@@ -71,7 +71,6 @@ const Contact = () => {
             <button className="bg-yellow-200 p-3 sm:p-4 rounded-lg text-gray-900 hover:bg-yellow-300 duration-200 sm:text-2xl">
               <Link to="/weather">Back to Home</Link>
             </button>{" "}
-            {/* Include a link back to the home page */}
           </div>
         </div>
       </div>
