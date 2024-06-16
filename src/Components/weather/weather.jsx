@@ -61,6 +61,7 @@ const Weather = ({
       break;
     case "Drizzle":
       backgroundImage = `url(${DrizzleSvg})`;
+      break;
     case "Clouds":
       backgroundImage = `url(${CloudsSvg})`;
       break;
@@ -78,9 +79,9 @@ const Weather = ({
 
   return (
     <>
-      <div className=" p-5 bg-gray-700 sm:p-2 shadow-xl border-0 border-gray-900 border-solid overflow-auto border-2 ">
+      <div className=" p-5 bg-gray-700 sm:p-2 shadow-xl border-gray-900 border-solid overflow-auto border-2 ">
         <div className="weather-content grid grid-rows-2 grid-auto-rows-min gap-8">
-          <div className="heading-and-input grid-start-1 flex flex-col justify-between gap-2 self-start gap-3">
+          <div className="heading-and-input grid-start-1 flex flex-col justify-between self-start gap-3">
             <p className="text-3xl text-yellow-300 mb-3 flex">World Weather</p>
             <form
               className="flex gap-4 md:flex-row flex-col"

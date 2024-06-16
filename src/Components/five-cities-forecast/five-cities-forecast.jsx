@@ -84,7 +84,7 @@ const FiveCityForecast = () => {
   };
 
   const fetchWeatherData = async (city) => {
-    const { id, name, lat, lon } = city;
+    const { id, lat, lon } = city;
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
     );
