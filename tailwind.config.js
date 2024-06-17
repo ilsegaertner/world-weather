@@ -4,8 +4,8 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   // mode: "jit",
-  // content: ["./src/**/*.html", "./src/**/*.js", "./public/**/*.html"],
-  purge: ["./src/**/*.html", "./src/**/*.js", "./public/**/*.html"],
+  content: ["./src/**/*.html", "./src/**/*.js", "./public/**/*.html"],
+  // purge: ["./src/**/*.html", "./src/**/*.js", "./public/**/*.html"],
   theme: {
     extend: {},
   },

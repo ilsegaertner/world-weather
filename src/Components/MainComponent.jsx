@@ -98,8 +98,8 @@ const MainComponent = () => {
   };
 
   useEffect(() => {
-    fetchCoords();
-  }, []);
+    fetchCoords(city);
+  }, [city]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchWeatherData = async (cityName, latitude, longitude) => {
     try {
@@ -134,7 +134,7 @@ const MainComponent = () => {
     if (lat !== null && lon !== null && city !== null) {
       fetchWeatherData(lat, lon, city);
     }
-  }, [lat, lon, city]);
+  }, [lat, lon, city]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
