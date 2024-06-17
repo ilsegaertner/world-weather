@@ -1,12 +1,13 @@
 import "./App.css";
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import NavigationBar from "./Components/navigation-bar/navigation-bar";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
-import MainComponent from "./Components/MainComponent";
-import About from "./Components/about/about";
-import Contact from "./Components/contact/contact";
-import LegalInfo from "./Components/legal-info/legal-info";
+
+const MainComponent = lazy(() => import("./Components/MainComponent"));
+const About = lazy(() => import("./Components/about/about"));
+const Contact = lazy(() => import("./Components/contact/contact"));
+const LegalInfo = lazy(() => import("./Components/legal-info/legal-info"));
 
 function App() {
   return (
@@ -14,15 +15,16 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <NavigationBar />
-        </div>
-        <div>
-          <Routes>
-            <Route path="/" element={<MainComponent />} />
-            <Route path="/weather" element={<MainComponent />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/legal-info" element={<LegalInfo />} />
-          </Routes>
+
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<MainComponent />} />
+              <Route path="/weather" element={<MainComponent />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/legal-info" element={<LegalInfo />} />
+            </Routes>
+          </Suspense>
         </div>
       </BrowserRouter>
     </>
