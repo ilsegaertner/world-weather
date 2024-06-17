@@ -14,7 +14,7 @@ const FiveCityForecast = () => {
 
   useEffect(() => {
     fetchFiveCities();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchFiveCities = async () => {
     try {
