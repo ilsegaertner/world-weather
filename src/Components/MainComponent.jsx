@@ -139,7 +139,7 @@ const MainComponent = () => {
   return (
     <>
       <div className="md:px-24 lg:px-36 xl:px-48  xl:max-w-8xl bg-gray-900">
-        <div className="flex items-center pt-3 justify-center px-20 py-3 gap-3 align-middle">
+        <div className="flex items-center pt-3 justify-center px-20 py-3 gap-3 align-middle ">
           <img
             src={logo}
             loading="lazy"
