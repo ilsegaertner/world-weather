@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { API_KEY } from "../../config";
 
+import { Text, Heading, Spinner } from "@radix-ui/themes";
 import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
 import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
@@ -68,15 +69,24 @@ const FiveDayWeather = ({ lat, lon, city }) => {
   }, [threeOClockValues]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <Spinner size="2"></Spinner>;
   }
 
   if (error) {
-    return <p> Error: {error}</p>;
+    return (
+      <Text as="p" size="2" weight="light">
+        {" "}
+        Error: {error}
+      </Text>
+    );
   }
 
   if (!lat || !lon) {
-    return <p>Latitude and longitude are required.</p>;
+    return (
+      <Text as="p" size="2" weight="light">
+        Latitude and longitude are required.
+      </Text>
+    );
   }
 
   console.log(threeOClockValues);
@@ -84,30 +94,49 @@ const FiveDayWeather = ({ lat, lon, city }) => {
   if (threeOClockValues.length > 0) {
     return (
       <>
-        <div className="p-5 bg-gray-600 sm:p-2 shadow-xl border-gray-900  overflow-auto grid grid-auto-rows-min gap-16 border-2">
-          <p className="flex text-xl text-gray-100 row-start-1 self-center">
-            Five-day forecast{" "}
-          </p>
-          <p className="px-1 flex text-xl text-black row-start-2 self-center rounded-xl">
+        <div className="p-5 bg-gray-600 sm:p-2 shadow-xl border-gray-900  overflow-auto grid grid-auto-rows-min gap-8 border-2">
+          <Heading
+            as="p"
+            size="5"
+            weight="bold"
+            trim="end"
+            className="flex  text-gray-100 row-start-1 self-center"
+          >
+            Five-day forecast...{" "}
+          </Heading>
+          <Text
+            as="p"
+            size="5"
+            weight="medium"
+            className="px-1 flex  text-black row-start-2 self-center rounded-xl"
+          >
             {" "}
             {city}
-          </p>
+          </Text>
 
           <div className="flex row-start-3 self-center">
             {threeOClockValues.map((item, index) => (
-              <div
+              <Text
+                as="div"
+                size="2"
+                weight="light"
                 key={index}
                 className="flex flex-col text-blue-100 pl-0 px-4 items-start"
               >
                 {formatDateTime(item.dt_txt)}{" "}
-                <span className="text-md text-gray-100">
+                <Text
+                  as="span"
+                  size="2"
+                  weight="medium"
+                  className="text-md text-gray-100"
+                >
                   {item.main.temp.toFixed()}°C
-                </span>
+                </Text>
                 <div
                   className="relative w-10 h-10 bg-cover"
                   style={{ backgroundImage: backgroundImages[index] }}
                 ></div>
-              </div>
+              </Text>
             ))}
           </div>
         </div>
