@@ -4,6 +4,8 @@ import FooterComponent from "./footer-component/footer";
 
 import logo from "../assets/logos/logo.svg";
 import React, { useEffect, useState, Suspense } from "react";
+import { Text, Spinner } from "@radix-ui/themes";
+import HeadingSecond from "./heading-second/heading-second.jsx";
 
 const Weather = React.lazy(() => import("./weather/weather"));
 const FiveCityForecast = React.lazy(() =>
@@ -139,19 +141,8 @@ const MainComponent = () => {
   return (
     <>
       <div className="md:px-24 lg:px-36 xl:px-48  xl:max-w-8xl bg-gray-900">
-        <div className="flex items-center pt-3 justify-center px-20 py-3 gap-3 align-middle ">
-          <img
-            src={logo}
-            loading="lazy"
-            className=" w-10"
-            alt="World Weather App logo"
-          />
-          <p className="text-3xl text-yellow-300 inline z-50">
-            <span className="text-white">World</span> Weather
-            <span className="text-blue-400"> App</span>
-          </p>
-        </div>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Spinner size="2">Loading...</Spinner>}>
+          <HeadingSecond />
           <div className="justify-center md:justify-start p-8 flex flex-wrap bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 gap-8 ">
             <Weather
               handleSubmit={handleSubmit}
