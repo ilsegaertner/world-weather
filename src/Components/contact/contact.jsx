@@ -20,7 +20,7 @@ const Contact = () => {
   return (
     <>
       {/* <div className="md:px-24 lg:px-48 xl:px-64  text-gray-100 xl:max-w-8xl bg-gray-900"> */}
-      <HeadingSecond />
+      {/* <HeadingSecond /> */}
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -36,7 +36,7 @@ const Contact = () => {
           // damping: 32,
         }}
       >
-        <div className="mt-16 p-10 sm:leading-9 max-w-6xl m-auto text-gray-100">
+        <div className="mt-16 p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen">
           <Flex gap="" justify="between">
             <Box maxWidth="440px">
               <Text align="left" as="p" size="5" className="my-" wrap="pretty">

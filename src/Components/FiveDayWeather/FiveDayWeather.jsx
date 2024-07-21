@@ -114,7 +114,7 @@ const FiveDayWeather = ({ lat, lon, city }) => {
             {city}
           </Text>
 
-          <div className="flex row-start-3 self-center">
+          <div className="flex row-start-3 self-center flex-wrap sm:flex-no-wrap">
             {threeOClockValues.map((item, index) => (
               <Text
                 as="div"

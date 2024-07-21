@@ -92,7 +92,7 @@ const Weather = ({
         }}
       >
         <div className=" p-5 bg-gray-700 sm:p-2 shadow-xl border-gray-900 border-solid overflow-auto border-2 ">
-          <div className="weather-content grid grid-rows-2 grid-auto-rows-min gap-0">
+          <div className="weather-content grid grid-rows-2 grid-auto-rows-min gap-6">
             <Flex direction="column">
               <Box>
                 {/* <div className="heading-and-input grid-start-1 flex flex-col justify-between self-start gap-3"> */}
@@ -120,7 +120,7 @@ const Weather = ({
                   <Button
                     type="sumbit"
                     variant="classic"
-                    className="bg-blue-500 p-2 rounded-lg text-gray-100 hover:bg-blue-700"
+                    className="bg-blue-500 p-2 rounded-lg text-gray-100 hover:bg-blue-700 cursor-pointer"
                   >
                     <ArrowRightIcon />
                   </Button>

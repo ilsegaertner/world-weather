@@ -12,7 +12,7 @@ const NavigationBar = () => {
         direction="column"
         gap="4"
         pb="2"
-        className=" p-2 mb-5 shadow-md rounded-b-2xl max-w-xs m-auto sm:ml-10 top-0 sm:fixed"
+        className=" p-2 mb-5 shadow-md rounded-b-2xl max-w-xs m-auto sm:ml-10 top-0 sm:fixed bg-gray-900 z-50"
       >
         <TabNav.Root size="2" color="orange">
           <TabNav.Link asChild active={pathname === "/about"}>

@@ -140,10 +140,10 @@ const MainComponent = () => {
 
   return (
     <>
-      <div className="md:px-24 lg:px-36 xl:px-48  xl:max-w-8xl bg-gray-900">
+      <div className=" sm:p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen">
         <Suspense fallback={<Spinner size="2">Loading...</Spinner>}>
-          <HeadingSecond />
-          <div className="justify-center md:justify-start p-8 flex flex-wrap bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 gap-8 ">
+          {/* <HeadingSecond /> */}
+          <div className="flex-col sm:flex-row justify-center md:justify-between p-8 flex flex-wrap bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 gap-8 ">
             <Weather
               handleSubmit={handleSubmit}
               handleKeyDown={handleKeyDown}

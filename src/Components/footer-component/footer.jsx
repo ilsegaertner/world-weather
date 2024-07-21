@@ -7,9 +7,9 @@ import logoLinkedin from "../../assets/logos/4362961_linkedin_social media_icon.
 const FooterComponent = () => {
   return (
     <>
-      <footer className="bg-gray-900 py-8 px-5 sm:px-10">
-        <div className="container mx-auto flex flex-wrap justify-between gap-6">
-          <div className="footer-container_left flex gap-6">
+      <footer className="bg-gray-900 py-4 fixed bottom-0 w-screen">
+        <div className="container mx-auto flex justify-between items-center gap-6 px-4 sm:px-10">
+          <div className="footer-container_left">
             <Link
               to="/legal-info"
               className="text-gray-300 font-semibold"
@@ -21,26 +21,16 @@ const FooterComponent = () => {
           <p className="text-center text-gray-300 text-xs">
             © Copyright 2024 | world-weather-app
           </p>
-          <div className="footer-container_right flex gap-6 flex-row">
-            <div className="social-media flex flex-row">
+          <div className="footer-container_right  flex-row">
+            <div className="social-media flex flex-row gap-2">
               <Link to="/weather">
                 <img src={logoGithub} alt="Github Logo" width={"22px"} />
               </Link>
               <Link>
-                <img
-                  src={logoTwitter}
-                  alt="Twitter Logo"
-                  className="ml-2"
-                  width={"22px"}
-                />
+                <img src={logoTwitter} alt="Twitter Logo" width={"22px"} />
               </Link>
               <Link>
-                <img
-                  src={logoLinkedin}
-                  alt="LinkedIn Logo"
-                  className="ml-2"
-                  width={"22px"}
-                />
+                <img src={logoLinkedin} alt="LinkedIn Logo" width={"22px"} />
               </Link>
             </div>
           </div>

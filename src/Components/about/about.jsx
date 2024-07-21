@@ -23,8 +23,8 @@ const About = () => {
           // damping: 32,
         }}
       >
-        <HeadingSecond />
-        <div className="md:px-24 lg:px-36 xl:px-36 xl:max-w-8xl text-gray-100  bg-gray-900">
+        {/* <HeadingSecond /> */}
+        <div className="mt-10 p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen">
           <Flex>
             <div className="flex-1 sm:p-10 p-3 leading-6 text-lg sm:leading-9 m-5 sm:m-8 sm:text-2xl text-gray-100 ">
               <p>
