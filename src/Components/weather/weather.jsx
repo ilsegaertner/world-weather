@@ -12,6 +12,7 @@ import { Toaster } from "sonner";
 
 const Weather = ({
   weatherData,
+  uncachedWeatherData,
   inputQuery,
   query,
   handleKeyDown,
@@ -74,7 +75,22 @@ const Weather = ({
   // Convert temperature from Kelvin to Celsius
   const temperatureCelsius = weatherData.main.temp - 273.15;
 
-  console.log(weatherData);
+  let timestamp = "";
+
+  if (uncachedWeatherData) {
+    timestamp = new Date(
+      (uncachedWeatherData.dt + uncachedWeatherData.timezone) * 1000
+    ).toLocaleTimeString();
+  }
+
+  // const timestamp = new Date(
+  //   if (uncachedWeatherData) {
+  //     (uncachedWeatherData.dt + uncachedWeatherData.timezone) * 1000
+
+  //   }
+  // ).toLocaleTimeString();
+
+  console.log(uncachedWeatherData);
 
   return (
     <>
@@ -84,14 +100,14 @@ const Weather = ({
         animate={{ x: 0 }}
         layout
         transition={{
-          duration: 0.03,
+          duration: 0.01,
           type: "spring",
           stiffness: 549,
           mass: 1,
           damping: 32,
         }}
       >
-        <div className=" p-5 bg-gray-700 sm:p-2 shadow-xl border-gray-900 border-solid overflow-auto border-2 ">
+        <div className="p-5 bg-gray-700 sm:p-2 shadow-xl border-gray-900 border-solid overflow-auto border-2">
           <div className="weather-content grid grid-rows-2 grid-auto-rows-min gap-6">
             <Flex direction="column">
               <Box>
@@ -139,7 +155,8 @@ const Weather = ({
                       weight="medium"
                       className="city-and-country align-center flex text-gray-100 pl-2"
                     >
-                      {weatherData.name},{weatherData.sys.country}  {" "}
+                      {weatherData.name},{weatherData.sys.country}, {timestamp}{" "}
+                       {" "}
                     </Text>
 
                     <div className="weather-image-and-temperature flex justify-between flex-row text-yellow-200 items-center overflow-none">
