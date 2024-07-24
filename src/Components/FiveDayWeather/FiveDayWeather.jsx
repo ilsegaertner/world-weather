@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { API_KEY } from "../../config";
 
-import { Text, Heading, Spinner } from "@radix-ui/themes";
+import { Text, Heading, Spinner, Card } from "@radix-ui/themes";
 import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
 import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
@@ -94,52 +94,54 @@ const FiveDayWeather = ({ lat, lon, city }) => {
   if (threeOClockValues.length > 0) {
     return (
       <>
-        <div className="p-5 bg-gray-600 sm:p-2 shadow-xl border-gray-900  overflow-auto flex flex-col justify-between gap-8 border-2">
-          <Heading
-            as="p"
-            size="5"
-            weight="bold"
-            trim="end"
-            className="flex  text-gray-100 m-0"
-          >
-            Forecast
-          </Heading>
-          <Text
-            as="p"
-            size="5"
-            weight="medium"
-            className="px-1 flex  text-black rounded-xl"
-          >
-            {" "}
-            {city}
-          </Text>
+        <Card>
+          <div className="p-5 bg-gray-600 sm:p-2 shadow-xl border-gray-900  overflow-auto flex flex-col justify-between gap-8 border-2 h-full">
+            <Heading
+              as="p"
+              size="5"
+              weight="bold"
+              trim="end"
+              className="flex  text-gray-100 m-0"
+            >
+              Forecast
+            </Heading>
+            <Text
+              as="p"
+              size="5"
+              weight="medium"
+              className="flex  text-black rounded-xl"
+            >
+              {" "}
+              {city}
+            </Text>
 
-          <div className="flex justify-between flex-wrap sm:flex-no-wrap">
-            {threeOClockValues.map((item, index) => (
-              <Text
-                as="div"
-                size="2"
-                weight="light"
-                key={index}
-                className="flex flex-col text-blue-100 pl-0 px-4 items-start"
-              >
-                {formatDateTime(item.dt_txt)}{" "}
+            <div className="flex justify-between flex-wrap sm:flex-no-wrap">
+              {threeOClockValues.map((item, index) => (
                 <Text
-                  as="span"
+                  as="div"
                   size="2"
-                  weight="medium"
-                  className="text-md text-gray-100"
+                  weight="light"
+                  key={index}
+                  className="flex flex-col text-blue-100 pl-0 px-4 items-start"
                 >
-                  {item.main.temp.toFixed()}°C
+                  {formatDateTime(item.dt_txt)}{" "}
+                  <Text
+                    as="span"
+                    size="2"
+                    weight="medium"
+                    className="text-md text-gray-100"
+                  >
+                    {item.main.temp.toFixed()}°C
+                  </Text>
+                  <div
+                    className="relative w-10 h-10 bg-cover"
+                    style={{ backgroundImage: backgroundImages[index] }}
+                  ></div>
                 </Text>
-                <div
-                  className="relative w-10 h-10 bg-cover"
-                  style={{ backgroundImage: backgroundImages[index] }}
-                ></div>
-              </Text>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </Card>
       </>
     );
   } else {

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { API_KEY } from "../../config";
 
-import { Text } from "@radix-ui/themes";
+import { Text, Card } from "@radix-ui/themes";
 
 import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import DrizzleSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
@@ -236,50 +236,52 @@ const FiveCityForecast = () => {
           // damping: 32,
         }}
       >
-        <div
-          className="bg-gray-600  shadow-xl p-5 sm:p-2 col-start-7 col-end-9 grid grid-rows-1 gap-6
+        <Card>
+          <div
+            className="bg-gray-600  shadow-xl p-5 sm:p-2 col-start-7 col-end-9 grid grid-rows-1 gap-6
       "
-        >
-          <Text
-            as="p"
-            size="5"
-            weight="bold"
-            className="flex text-black grid-start-1"
           >
-            International Today
-          </Text>
-
-          {error && (
-            <Text as="div" size="2">
-              Error: {error}
+            <Text
+              as="p"
+              size="5"
+              weight="bold"
+              className="flex text-black grid-start-1"
+            >
+              International Today
             </Text>
-          )}
-          <div className="grid-start-2">
-            {fiveCities.slice(0, 5).map((city) => (
-              <div key={city.id} className="">
-                {" "}
-                <div className="flex items-center text-blue-100 justify-between">
-                  <Text weight="light" as="div" size="2" className="">
-                    {city.name}{" "}
-                  </Text>
-                  <div className="flex items-center">
-                    <Text as="div" weight="medium" size="2" className="pl-5">
-                      {city.temperature.toFixed()}°C{" "}
+
+            {error && (
+              <Text as="div" size="2">
+                Error: {error}
+              </Text>
+            )}
+            <div className="grid-start-2">
+              {fiveCities.slice(0, 5).map((city) => (
+                <div key={city.id} className="">
+                  {" "}
+                  <div className="flex items-center text-blue-100 justify-between">
+                    <Text weight="light" as="div" size="2" className="">
+                      {city.name}{" "}
                     </Text>
-                    <div className="relative w-10 h-10 bg-cover">
-                      <img
-                        src={getWeatherImage(city.current)}
-                        alt={`${city.current} weather`}
-                        className="w-full h-full "
-                        width={"30px"}
-                      />
+                    <div className="flex items-center">
+                      <Text as="div" weight="medium" size="2" className="pl-5">
+                        {city.temperature.toFixed()}°C{" "}
+                      </Text>
+                      <div className="relative w-10 h-10 bg-cover">
+                        <img
+                          src={getWeatherImage(city.current)}
+                          alt={`${city.current} weather`}
+                          className="w-full h-full "
+                          width={"30px"}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </Card>
       </motion.div>
     </>
   );
