@@ -36,10 +36,10 @@ const Contact = () => {
           // damping: 32,
         }}
       >
-        <div className="mt-16 p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen">
-          <Flex gap="" justify="between">
+        <div className=" p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen mb-64 sm:mb-24">
+          <Flex gap="6" justify="between" className="flex-col sm:flex-row">
             <Box maxWidth="440px">
-              <Text align="left" as="p" size="5" className="my-" wrap="pretty">
+              <Text align="left" as="p" size="3" className="my-" wrap="pretty">
                 Thank you for your interest in contacting us!<br></br> <br></br>{" "}
                 We value your feedback, inquiries, and suggestions. Whether you
                 have questions about our app, need assistance, or want to
@@ -121,23 +121,31 @@ const Contact = () => {
             </motion.div>
           </Flex>
 
-          <Box maxWidth="440px">
-            <Text align="left">
-              <p className="m">
-                We strive to respond to all inquiries promptly.
-              </p>
+          <Flex justify="between" className="flex-col sm:flex-row items-end">
+            <Box maxWidth="440px" className="mt-10">
+              <Text align="left" size="3" as="p">
+                <p className="m">
+                  We strive to respond to all inquiries promptly.
+                </p>
 
-              <p className="mt-10">
-                We look forward to hearing from you and assisting you with any
-                weather-related needs. Thank you for choosing World Weather App!
-              </p>
+                <p className="mt-10">
+                  We look forward to hearing from you and assisting you with any
+                  weather-related needs. Thank you for choosing World Weather
+                  App!
+                </p>
+              </Text>
+            </Box>
+            <Box>
+              {" "}
               <div className="mt-10">
                 <Button className="bg-yellow-200 p-3 sm:p-4 rounded-lg text-gray-900 hover:bg-yellow-300 duration-200 sm:text-2xl">
-                  <Link to="/weather">Back to Home</Link>
+                  <Link to="/weather">
+                    <Text size="3">Back to Home</Text>
+                  </Link>
                 </Button>{" "}
               </div>
-            </Text>
-          </Box>
+            </Box>
+          </Flex>
         </div>
       </motion.div>
       {/* </div> */}
