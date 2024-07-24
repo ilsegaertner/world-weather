@@ -16,7 +16,7 @@ const FooterComponent = () => {
               className="text-gray-300 font-semibold"
               href="legal-info.html"
             >
-              <Text size="2">Legal Info | Impressum</Text>
+              <Text size="1">Legal Info | Impressum</Text>
             </Link>
           </div>
           <Text as="p" size="1">

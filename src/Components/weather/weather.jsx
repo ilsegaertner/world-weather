@@ -28,7 +28,7 @@ const Weather = ({
       const timeoutId = setTimeout(() => {
         setQuery("");
         setError(null);
-      }, 1300);
+      }, 900);
       return () => clearTimeout(timeoutId);
     }
   }, [error, setError, setQuery]);
@@ -36,16 +36,27 @@ const Weather = ({
   if (error) {
     return (
       <>
-        <Flex
-          gap="3"
-          className="absolute bg-gray-900 p-5 text-red-700 rounded-md  "
+        <motion.div
+          initial={{ x: -100 }}
+          exit={{ x: 100 }}
+          animate={{ x: 1 }}
+          layout
+          transition={{
+            duration: 0.2,
+            ease: "easeInOut",
+            // type: "spring",
+            // stiffness: 549,
+            // mass: 1,
+            // damping: 32,
+          }}
         >
-          <Text as="p" size="2" weight="medium">
-            {" "}
-            Error: {error}
-          </Text>
-          <Spinner size="2" />
-        </Flex>
+          <div className="flex bg-gray-900 p-5 text-red-700 rounded-md gap-4">
+            <Text as="p" size="2" weight="medium">
+              Error: {error}
+            </Text>
+            <Spinner size="2" />
+          </div>
+        </motion.div>
       </>
     );
   }
