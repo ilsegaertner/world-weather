@@ -5,7 +5,7 @@ import logo from "../../assets/logos/logo.svg";
 const Heading = () => {
   return (
     <>
-      <div className="mt-12 flex items-center pt-3 justify-center px-20 py-3 gap-3 align-middle bg-gray-900">
+      <div className="z-40 mt-12 sticky top-0 w-full flex items-center pt-3 justify-center px-20 py-3 gap-3 align-middle bg-gray-900">
         <img
           src={logo}
           loading="lazy"
