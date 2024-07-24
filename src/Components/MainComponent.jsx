@@ -18,11 +18,13 @@ const FiveDayWeather = React.lazy(() =>
 
 const MainComponent = () => {
   const [weatherData, setWeatherData] = useState(null);
+  const [uncachedWeatherData, setUncachedWeatherData] = useState(null);
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
   const [city, setCity] = useState("Paris"); // state variable to store city value after input
   const [query, setQuery] = useState("Paris");
   const [error, setError] = useState(null);
+
   const limit = 1;
 
   const inputQuery = (event) => {
@@ -124,31 +126,111 @@ const MainComponent = () => {
       const data = await response.json();
 
       setWeatherData(data);
+      setUncachedWeatherData(data);
 
       localStorage.setItem(`weatherData_${cityName}`, JSON.stringify(data));
-      console.log(data);
     } catch (error) {
       setError(error.message);
     }
   };
 
+  // Log uncachedWeatherData when it changes
+  useEffect(() => {
+    if (uncachedWeatherData) {
+      console.log("Uncached Weather Object:", uncachedWeatherData);
+    }
+  }, [uncachedWeatherData]);
+
   useEffect(() => {
     if (lat !== null && lon !== null && city !== null) {
-      fetchWeatherData(lat, lon, city);
+      fetchWeatherData(city, lat, lon);
     }
-  }, [lat, lon, city]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [city, lat, lon]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const isDay = (uncachedWeatherData) => {
+    if (uncachedWeatherData) {
+      const currentTime = new Date(
+        (uncachedWeatherData.dt + uncachedWeatherData.timezone) * 1000
+      );
+      const sunriseTime = new Date(
+        (uncachedWeatherData.sys.sunrise + uncachedWeatherData.timezone) * 1000
+      );
+      const sunsetTime = new Date(
+        (uncachedWeatherData.sys.sunset + uncachedWeatherData.timezone) * 1000
+      );
+
+      console.log(`Current Time in ${city}: ${currentTime}`);
+      console.log(`Sunrise Time in ${city}: ${sunriseTime}`);
+      console.log(`Sunset Time in ${city}: ${sunsetTime}`);
+
+      return currentTime >= sunriseTime && currentTime < sunsetTime;
+    }
+  };
+
+  const isDaytime = isDay(uncachedWeatherData);
+
+  let weatherGradient;
+  if (
+    uncachedWeatherData &&
+    uncachedWeatherData.weather &&
+    uncachedWeatherData.weather[0]
+  ) {
+    const mainWeather = uncachedWeatherData.weather[0].main;
+
+    if (isDaytime) {
+      // Daytime gradients
+      switch (mainWeather) {
+        case "Rain":
+        case "Drizzle":
+        case "Clouds":
+          weatherGradient =
+            "bg-gradient-to-r from-gray-200 via-gray-400 to-gray-600"; // Lighter shades
+          break;
+        case "Clear":
+          weatherGradient =
+            "bg-gradient-to-r from-yellow-200 via-yellow-400 to-blue-500"; // Bright and colorful
+          break;
+        default:
+          weatherGradient = "bg-gradient-to-r from-gray-200 to-gray-400";
+      }
+    } else {
+      // Nighttime gradients
+      switch (mainWeather) {
+        case "Rain":
+        case "Drizzle":
+        case "Clouds":
+          weatherGradient =
+            "bg-gradient-to-r from-gray-700 via-gray-900 to-black"; // Darker shades
+          break;
+        case "Clear":
+          weatherGradient =
+            "bg-gradient-to-r from-blue-900 via-blue-700 to-black"; // Dark blue tones
+          break;
+        default:
+          weatherGradient = "bg-gradient-to-r from-gray-400 to-gray-600";
+      }
+    }
+  }
 
   return (
     <>
-      <div className=" sm:p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen">
+      <div className="  sm:leading-9  m-auto text-gray-100 h-screen">
         <Suspense fallback={<Spinner size="2">Loading...</Spinner>}>
           {/* <HeadingSecond /> */}
-          <div className="flex-col sm:flex-row justify-center md:justify-between p-8 flex flex-wrap bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 gap-8 ">
+          <div
+            // className={
+            //   isDaytime
+            //     ? "flex-col sm:flex-row justify-center pt-16  p-8 flex flex-wrap bg-gradient-to-r from-yellow-500 from-10% via-sky-500 via-30% to-blue-500 to-90% shadow-xl border-gray-600 gap-8"
+            //     : "flex-col sm:flex-row justify-center pt-16  p-8 flex flex-wrap bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 gap-8"
+            // }
+            className={`flex-col sm:flex-row justify-center pt-16  p-8 flex flex-wrap shadow-xl border-gray-600 gap-8  ${weatherGradient}`}
+          >
             <Weather
               handleSubmit={handleSubmit}
               handleKeyDown={handleKeyDown}
               inputQuery={inputQuery}
               weatherData={weatherData}
+              uncachedWeatherData={uncachedWeatherData}
               query={query}
               setQuery={setQuery}
               setError={setError}
