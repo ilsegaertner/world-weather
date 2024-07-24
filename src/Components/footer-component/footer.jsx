@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Text } from "@radix-ui/themes";
 import logoGithub from "../../assets/logos/9025783_github_logo_icon.svg";
 import logoTwitter from "../../assets/logos/8642365_ic_social_media_twitter_icon.svg";
 import logoLinkedin from "../../assets/logos/4362961_linkedin_social media_icon.svg";
@@ -15,12 +16,16 @@ const FooterComponent = () => {
               className="text-gray-300 font-semibold"
               href="legal-info.html"
             >
-              Legal Info | Impressum
+              <Text size="2">Legal Info | Impressum</Text>
             </Link>
           </div>
-          <p className="text-center text-gray-300 text-xs">
-            © Copyright 2024 | world-weather-app
-          </p>
+          <Text as="p" size="1">
+            {" "}
+            <p className="text-center text-gray-300 ">
+              © Copyright 2024 | world-weather-app
+            </p>
+          </Text>
+
           <div className="footer-container_right  flex-row">
             <div className="social-media flex flex-row gap-2">
               <Link to="/weather">
