@@ -94,27 +94,27 @@ const FiveDayWeather = ({ lat, lon, city }) => {
   if (threeOClockValues.length > 0) {
     return (
       <>
-        <div className="p-5 bg-gray-600 sm:p-2 shadow-xl border-gray-900  overflow-auto grid grid-auto-rows-min gap-8 border-2">
+        <div className="p-5 bg-gray-600 sm:p-2 shadow-xl border-gray-900  overflow-auto flex flex-col justify-between gap-8 border-2">
           <Heading
             as="p"
             size="5"
             weight="bold"
             trim="end"
-            className="flex  text-gray-100 row-start-1 self-center"
+            className="flex  text-gray-100 m-0"
           >
-            Five-day forecast...{" "}
+            Forecast
           </Heading>
           <Text
             as="p"
             size="5"
             weight="medium"
-            className="px-1 flex  text-black row-start-2 self-center rounded-xl"
+            className="px-1 flex  text-black rounded-xl"
           >
             {" "}
             {city}
           </Text>
 
-          <div className="flex row-start-3 self-center flex-wrap sm:flex-no-wrap">
+          <div className="flex  self-center flex-wrap sm:flex-no-wrap">
             {threeOClockValues.map((item, index) => (
               <Text
                 as="div"
