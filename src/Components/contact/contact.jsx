@@ -14,14 +14,10 @@ import {
   Avatar,
 } from "@radix-ui/themes";
 import { motion } from "framer-motion";
-import HeadingSecond from "../heading-second/heading-second";
 
 const Contact = () => {
   return (
     <>
-      {/* <div className="md:px-24 lg:px-48 xl:px-64  text-gray-100 xl:max-w-8xl bg-gray-900"> */}
-      {/* <HeadingSecond /> */}
-
       <motion.div
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
@@ -148,7 +144,6 @@ const Contact = () => {
           </Flex>
         </div>
       </motion.div>
-      {/* </div> */}
       <FooterComponent />
     </>
   );
