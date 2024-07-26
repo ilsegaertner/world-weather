@@ -214,7 +214,9 @@ const MainComponent = () => {
 
   return (
     <>
-      <div className="  sm:leading-9  m-auto text-gray-100 h-screen">
+
+
+      <div className="sm:leading-9  m-auto text-gray-100 h-screen">
         <Suspense fallback={<Spinner size="2">Loading...</Spinner>}>
           {/* <HeadingSecond /> */}
           <div
