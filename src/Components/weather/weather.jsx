@@ -24,7 +24,13 @@ const Weather = ({
   console.log(weatherData);
 
   useEffect(() => {
-    if (error && error.includes("No matching city found")) {
+    if (
+      (error && error.includes("No matching city found")) ||
+      (error &&
+        error.includes(
+          "Failed to fetch the weather Data from the city name query"
+        ))
+    ) {
       const timeoutId = setTimeout(() => {
         setQuery("");
         setError(null);
