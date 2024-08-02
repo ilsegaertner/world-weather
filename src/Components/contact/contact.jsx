@@ -32,7 +32,7 @@ const Contact = () => {
           // damping: 32,
         }}
       >
-        <div className=" p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen mb-64 sm:mb-24">
+        <div className=" p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen mb-64 mt-8 sm:mb-24">
           <Flex gap="6" justify="between" className="flex-col sm:flex-row">
             <Box maxWidth="440px">
               <Text align="left" as="p" size="3" className="my-" wrap="pretty">
