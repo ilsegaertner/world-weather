@@ -218,13 +218,8 @@ const MainComponent = () => {
 
       <div className="sm:leading-9  m-auto text-gray-100 h-screen">
         <Suspense fallback={<Spinner size="2">Loading...</Spinner>}>
-          {/* <HeadingSecond /> */}
           <div
-            // className={
-            //   isDaytime
-            //     ? "flex-col sm:flex-row justify-center pt-16  p-8 flex flex-wrap bg-gradient-to-r from-yellow-500 from-10% via-sky-500 via-30% to-blue-500 to-90% shadow-xl border-gray-600 gap-8"
-            //     : "flex-col sm:flex-row justify-center pt-16  p-8 flex flex-wrap bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% shadow-xl border-gray-600 gap-8"
-            // }
+         
             className={`flex-col sm:flex-row justify-center pt-16  p-8 flex flex-wrap shadow-xl border-gray-600 gap-8  ${weatherGradient}`}
           >
             <Weather
