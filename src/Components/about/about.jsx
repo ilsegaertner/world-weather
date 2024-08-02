@@ -1,8 +1,9 @@
 import React from "react";
 import FooterComponent from "../footer-component/footer";
 import { Link } from "react-router-dom";
-import SwipeableStackCards from "../swipe-cards/swipe-cards";
 import logo from "../../assets/logos/logo.svg";
+import styles from "../Card-Stack/styles.module.css"
+import CardStack from "../Card-Stack/card-stack";
 import {
   Text,
   Separator,
@@ -13,7 +14,6 @@ import {
   Inset,
   Strong,
 } from "@radix-ui/themes";
-import HeadingSecond from "../heading-second/heading-second";
 import { motion } from "framer-motion";
 
 const About = () => {
@@ -33,10 +33,12 @@ const About = () => {
           // damping: 32,
         }}
       >
-        <SwipeableStackCards />
-
         <div className="p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen">
-          <Flex gap="" justify="between" className="flex-col sm:flex-row">
+          <Flex
+            gap=""
+            justify="between"
+            className="flex-col sm:flex-row overflow-x-scroll"
+          >
             <Box maxWidth="400px" minWidth="300px" className="z-0">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
@@ -68,7 +70,8 @@ const About = () => {
                 </Text>
               </Card>
             </Box>
-            <Box maxWidth="400px" minWidth="300px" className="z-0">
+
+            <Box maxWidth="400px" minWidth="370px" className="z-0">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -122,7 +125,7 @@ const About = () => {
                     }}
                   />
                 </Inset>{" "}
-                <Heading className="text-yellow-400 text-xl">
+                <Heading className="text-yellow-400 text-xl leading-7">
                   {" "}
                   Why Choose World Weather App?
                 </Heading>
@@ -211,6 +214,8 @@ const About = () => {
             </Box>
           </Flex>
         </div>
+        <div className={styles.container}> <CardStack /></div>
+       
       </motion.div>
 
       <FooterComponent />
