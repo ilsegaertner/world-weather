@@ -33,7 +33,11 @@ const Contact = () => {
         }}
       >
         <div className=" p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen mb-64 mt-8 sm:mb-24">
-          <Flex gap="6" justify="between" className="flex-col sm:flex-row">
+          <Flex
+            gap="6"
+            justify="between"
+            className="flex-col sm:flex-row-reverse"
+          >
             <Box maxWidth="440px">
               <Text align="left" as="p" size="3" className="my-" wrap="pretty">
                 Thank you for your interest in contacting us!<br></br> <br></br>{" "}
@@ -117,7 +121,10 @@ const Contact = () => {
             </motion.div>
           </Flex>
 
-          <Flex justify="between" className="flex-col sm:flex-row items-end">
+          <Flex
+            justify="between"
+            className="flex-col sm:flex-row-reverse items-end"
+          >
             <Box maxWidth="440px" className="mt-10">
               <Text align="left" size="3" as="p">
                 <p className="m">
