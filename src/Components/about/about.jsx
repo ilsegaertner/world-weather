@@ -2,8 +2,6 @@ import React from "react";
 import FooterComponent from "../footer-component/footer";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logos/logo.svg";
-import styles from "../Card-Stack/styles.module.css"
-import CardStack from "../Card-Stack/card-stack";
 import {
   Text,
   Separator,
@@ -33,13 +31,9 @@ const About = () => {
           // damping: 32,
         }}
       >
-        <div className="p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen">
-          <Flex
-            gap=""
-            justify="between"
-            className="flex-col sm:flex-row overflow-x-scroll"
-          >
-            <Box maxWidth="400px" minWidth="300px" className="z-0">
+        <div className="p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen ">
+          <div className="flex-col flex flex-wrap justify-between sm:flex-row overflow-x-scroll gap-8">
+            <Box className="z-0 basis-5">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -49,7 +43,7 @@ const About = () => {
                       display: "block",
                       objectFit: "cover",
                       width: "100%",
-                      height: 140,
+                      height: 100,
                       backgroundColor: "var(--gray-5)",
                     }}
                   />
@@ -71,7 +65,7 @@ const About = () => {
               </Card>
             </Box>
 
-            <Box maxWidth="400px" minWidth="370px" className="z-0">
+            <Box className="z-0 ">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -81,7 +75,7 @@ const About = () => {
                       display: "block",
                       objectFit: "cover",
                       width: "100%",
-                      height: 140,
+                      height: 100,
                       backgroundColor: "var(--gray-5)",
                     }}
                   />
@@ -110,7 +104,7 @@ const About = () => {
                 </Text>
               </Card>
             </Box>
-            <Box maxWidth="400px" minWidth="300px" className="z-0">
+            <Box className="z-0">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -120,7 +114,7 @@ const About = () => {
                       display: "block",
                       objectFit: "cover",
                       width: "100%",
-                      height: 140,
+                      height: 100,
                       backgroundColor: "var(--gray-5)",
                     }}
                   />
@@ -153,7 +147,7 @@ const About = () => {
                 </Text>
               </Card>
             </Box>
-            <Box maxWidth="400px" minWidth="300px" className="z-0">
+            <Box className="z-0 ">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -163,7 +157,7 @@ const About = () => {
                       display: "block",
                       objectFit: "cover",
                       width: "100%",
-                      height: 140,
+                      height: 100,
                       backgroundColor: "var(--gray-5)",
                     }}
                   />
@@ -173,7 +167,7 @@ const About = () => {
                 <Heading className="text-yellow-400 text-xl">
                   Our Vision
                 </Heading>
-                <Text as="p" size="3" className="mt-8">
+                <Text as="p" size="3" className="mt-8  text-gray-900">
                   At World Weather App, we envision a world where everyone has
                   easy access to reliable weather information, making life safer
                   and more enjoyable. We are committed to continuously improving
@@ -182,8 +176,8 @@ const About = () => {
                 </Text>
               </Card>
             </Box>
-            <Box maxWidth="400px" minWidth="300px" className="z-0">
-              <Card size="1">
+            <Box className="z-0 ">
+              <Card size="1" className="bg-black">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
                     src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
@@ -192,7 +186,7 @@ const About = () => {
                       display: "block",
                       objectFit: "cover",
                       width: "100%",
-                      height: 140,
+                      height: 100,
                       backgroundColor: "var(--gray-5)",
                     }}
                   />
@@ -202,7 +196,7 @@ const About = () => {
                 <Heading className="text-yellow-400 text-xl">
                   Connect with Us
                 </Heading>
-                <Text as="p" size="3" className="mt-8">
+                <Text as="p" size="3" className="mt-8  text-gray-900">
                   We love hearing from our users! If you have any questions,
                   feedback, or suggestions, please reach out to us through our
                   contact page or connect with us on social media. Stay updated
@@ -212,10 +206,8 @@ const About = () => {
                 {/* </div> */}
               </Card>
             </Box>
-          </Flex>
+          </div>
         </div>
-        <div className={styles.container}> <CardStack /></div>
-       
       </motion.div>
 
       <FooterComponent />
