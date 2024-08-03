@@ -94,8 +94,8 @@ const FiveDayWeather = ({ lat, lon, city }) => {
   if (threeOClockValues.length > 0) {
     return (
       <>
-        <Card>
-          <div className="p-5 bg-gray-600 sm:p-2 shadow-xl border-gray-900  overflow-auto flex flex-col justify-between gap-8 border-2 h-full">
+        <Card size="1">
+          <div className="p-5 bg-gray-600 sm:p-2  overflow-auto flex flex-col justify-between gap-8  h-full">
             <Heading
               as="p"
               size="5"
