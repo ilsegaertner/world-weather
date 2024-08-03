@@ -1,7 +1,11 @@
-/* src/styles/tailwind.css */
+/* src/styles/tailwind.css  */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
 @font-face {
   font-family: "Your Chosen Font";

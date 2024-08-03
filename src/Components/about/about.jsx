@@ -31,9 +31,9 @@ const About = () => {
           // damping: 32,
         }}
       >
-        <div className="p-10 sm:leading-9 xl:max-w-6xl m-auto text-gray-100 h-screen ">
-          <div className="flex-col flex flex-wrap justify-between sm:flex-row overflow-x-scroll gap-8">
-            <Box className="z-0 basis-5">
+        <div className="p-10 sm:leading-9  m-auto text-gray-100 h-screen ">
+          <div className="flex-col flex flex-wrap justify-between sm:flex-row overflow-x-scroll gap-6 pb-48">
+            <Box className="z-0 basis-80">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -65,7 +65,7 @@ const About = () => {
               </Card>
             </Box>
 
-            <Box className="z-0 ">
+            <Box className="z-0 basis-96">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -80,7 +80,7 @@ const About = () => {
                     }}
                   />
                 </Inset>{" "}
-                <Heading className="text-yellow-400 text-xl">
+                <Heading className=" text-xl text-gray-900">
                   What We Offer
                 </Heading>
                 <Separator />
@@ -104,7 +104,7 @@ const About = () => {
                 </Text>
               </Card>
             </Box>
-            <Box className="z-0">
+            <Box className="z-0 basis-96">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -119,7 +119,7 @@ const About = () => {
                     }}
                   />
                 </Inset>{" "}
-                <Heading className="text-yellow-400 text-xl leading-7">
+                <Heading className="text-xl leading-7 text-gray-900">
                   {" "}
                   Why Choose World Weather App?
                 </Heading>
@@ -147,7 +147,7 @@ const About = () => {
                 </Text>
               </Card>
             </Box>
-            <Box className="z-0 ">
+            <Box className="z-0 basis-6/12">
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -164,9 +164,7 @@ const About = () => {
                 </Inset>{" "}
                 {/* </div> */}
                 {/* <div className="p-10 rounded-xl sm:m-8 bg-gradient-to-l from-blue-700 leading-6 text-md  sm:leading-7 text-gray-100 mt-20"> */}
-                <Heading className="text-yellow-400 text-xl">
-                  Our Vision
-                </Heading>
+                <Heading className=" text-xl text-gray-900">Our Vision</Heading>
                 <Text as="p" size="3" className="mt-8  text-gray-900">
                   At World Weather App, we envision a world where everyone has
                   easy access to reliable weather information, making life safer
@@ -176,7 +174,7 @@ const About = () => {
                 </Text>
               </Card>
             </Box>
-            <Box className="z-0 ">
+            <Box className="z-0 basis-5/12">
               <Card size="1" className="bg-black">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
@@ -193,7 +191,7 @@ const About = () => {
                 </Inset>{" "}
                 {/* </div> */}
                 {/* <div className="p-10 rounded-xl sm:m-8 bg-gradient-to-r from-blue-700 leading-6 text-md sm:leading-7 text-gray-100 mt-20"> */}
-                <Heading className="text-yellow-400 text-xl">
+                <Heading className="text-xl text-gray-900">
                   Connect with Us
                 </Heading>
                 <Text as="p" size="3" className="mt-8  text-gray-900">

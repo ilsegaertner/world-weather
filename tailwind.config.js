@@ -1,6 +1,5 @@
 module.exports = {
-  // mode: "jit", // JIT mode is the default in Tailwind CSS v3
-  content: ["./src/**/*.html", "./src/**/*.js", "./public/**/*.html"],
+  content: ["./src/**/*.html", "./src/**/*.{js,jsx,tsx}", "./public/**/*.html"],
   theme: {
     extend: {
       minWidth: {
