@@ -4,7 +4,7 @@ import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.sv
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
 import DrizzleSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
 import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
-import { Flex, Text, Button, Box, Spinner, Card } from "@radix-ui/themes";
+  import { Flex, Text, Button, Box, Spinner, Card } from "@radix-ui/themes";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import HeadingSecond from "../heading-second/heading-second";
 import { motion } from "framer-motion";
