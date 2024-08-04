@@ -1,5 +1,10 @@
 module.exports = {
-  content: ["./src/**/*.html", "./src/**/*.{js,jsx,tsx}", "./public/**/*.html"],
+  content: [
+    "./src/**/*.html",
+    "./src/**/*.{js,jsx,tsx}",
+    "./public/**/*.html",
+    "./extension/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       minWidth: {

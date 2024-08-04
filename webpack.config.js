@@ -26,7 +26,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -52,12 +52,8 @@ module.exports = {
       ],
     }),
     new webpack.DefinePlugin({
-      "process.env.REACT_APP_API_KEY": JSON.stringify(
-        process.env.REACT_APP_API_KEY
-      ),
-      "process.env.REACT_APP_API_KEY_MAPS": JSON.stringify(
-        process.env.REACT_APP_API_KEY_MAPS
-      ),
+      "process.env.REACT_APP_API_KEY": JSON.stringify(process.env.REACT_APP_API_KEY),
+      "process.env.REACT_APP_API_KEY_MAPS": JSON.stringify(process.env.REACT_APP_API_KEY_MAPS),
     }),
   ],
   resolve: {
