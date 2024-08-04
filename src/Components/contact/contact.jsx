@@ -12,6 +12,7 @@ import {
   Card,
   Button,
   Avatar,
+  Inset,
 } from "@radix-ui/themes";
 import { motion } from "framer-motion";
 
@@ -19,6 +20,7 @@ const Contact = () => {
   return (
     <>
       <motion.div
+        className="mb-80 sm:mb-10 3xl:max-w-6xl m-auto"
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -38,7 +40,7 @@ const Contact = () => {
             justify="between"
             className="flex-col sm:flex-row-reverse"
           >
-            <Box maxWidth="440px">
+            <Box className="sm:basis-96">
               <Text align="left" as="p" size="3" className="my-" wrap="pretty">
                 Thank you for your interest in contacting us!<br></br> <br></br>{" "}
                 We value your feedback, inquiries, and suggestions. Whether you
@@ -70,6 +72,7 @@ const Contact = () => {
                         radius="full"
                         fallback="WWA"
                       />
+
                       <Text
                         as="p"
                         size="2"
@@ -125,7 +128,7 @@ const Contact = () => {
             justify="between"
             className="flex-col sm:flex-row-reverse items-end"
           >
-            <Box maxWidth="440px" className="mt-10">
+            <Box className="mt-10 sm:basis-96">
               <Text align="left" size="3" as="p">
                 <p className="m">
                   We strive to respond to all inquiries promptly.
@@ -141,7 +144,7 @@ const Contact = () => {
             <Box>
               {" "}
               <div className="mt-10">
-                <Button className="bg-yellow-200 p-3 sm:p-4 rounded-lg text-gray-900 hover:bg-yellow-300 duration-200 sm:text-2xl">
+                <Button className="bg-yellow-200 p-3 sm:p-4 rounded-lg text-gray-900 hover:bg-yellow-300 duration-200 ">
                   <Link to="/weather">
                     <Text size="3">Back to Home</Text>
                   </Link>
