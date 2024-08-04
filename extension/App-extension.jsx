@@ -97,9 +97,9 @@ const AppExtension = () => {
 
   return (
     <>
-      <div className="bg-gray-400 p-5 border-2 rounded-lg">
+      <div className="bg-gray-400 p-3 border-2 rounded-lg">
         <form onSubmit={handleSubmit} className="text-md py-3">
-          <label className="mb-3"> Enter city</label>
+          <p className="mb-3"> Enter city</p>
           <div className="flex-col gap-2 justify-between flex">
             <input
               type="text"
@@ -122,7 +122,7 @@ const AppExtension = () => {
       </div>
 
       {weatherData && weatherData[0] && (
-        <div className="bg-slate-400 p-5 border-2 rounded-xl">
+        <div className="bg-slate-400 p-3 border-2 rounded-xl">
           {/* <p className="inline">City: </p>{" "} */}
           <p className="inline font-bold">
             {" "}
@@ -133,7 +133,7 @@ const AppExtension = () => {
         </div>
       )}
       {extractedWeatherData && (
-        <div className="bg-slate-400 p-5 border-2 text-md rounded-xl">
+        <div className="bg-slate-400 p-3 border-2 text-md rounded-xl">
           <p> {timestamp}</p>
           <div className="flex-row flex justify-between gap-4">
             {isCelsius ? (
@@ -149,9 +149,9 @@ const AppExtension = () => {
             )}
             <button
               onClick={toggleCelsiusFahrenheit}
-              className="hover:bg-yellow-400 border-2 rounded-md shadow-md font-bold"
+              className="hover:bg-yellow-400 border-2 rounded-md shadow-md font-bold p-2"
             >
-              Switch to {isCelsius ? "Fahrenheit" : "Celsius"}
+              {isCelsius ? "Fahrenheit" : "Celsius"}
             </button>
           </div>
 
