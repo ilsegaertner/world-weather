@@ -1,11 +1,6 @@
-function openTab() {
-  var newTab = (typeof browser !== "undefined" ? browser : chrome).tabs.create({
-    url: "https://twitter.com",
+chrome.action.onClicked.addListener(() => {
+  chrome.tabs.create({
+    url: "https://twitter.com", // Replace with your actual app URL
     active: true,
   });
-}
-
-(typeof browser !== "undefined"
-  ? browser
-  : chrome
-).browserAction.onClicked.addListener(openTab);
+});

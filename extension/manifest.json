@@ -1,6 +1,6 @@
 {
-  "manifest_version": 2,
-  "version": "1.0",
+  "manifest_version": 3,
+  "version": "1.0.0",
   "name": "World Weather App",
   "description": "An extension to display global weather information.",
   "content_scripts": [
@@ -9,12 +9,17 @@
       "js": ["main.js"]
     }
   ],
-  "web_accessible_resources": ["logo.png"],
+  "web_accessible_resources": [
+    {
+      "resources": ["logo.png"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "icons": {
     "48": "icon-48.png",
     "96": "icon-96.png"
   },
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "19": "icon-19.png",
@@ -22,7 +27,7 @@
     }
   },
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
   "permissions": ["tabs"]
 }
