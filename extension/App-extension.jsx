@@ -97,49 +97,65 @@ const AppExtension = () => {
 
   return (
     <>
-      <div className="bg-gray-400 p-5 border-2">
-        <form onSubmit={handleSubmit}>
-          <label> Enter city</label>
-          <input
-            type="text"
-            placeholder="enter city"
-            value={query}
-            onChange={inputQuery}
-          />
-          <p>{query}</p>
-          <p></p>
-          {weatherData && <p>{weatherData.name}</p>}
-          <button type="submit">Get Weather</button>
+      <div className="bg-gray-400 p-5 border-2 rounded-lg">
+        <form onSubmit={handleSubmit} className="text-md py-3">
+          <label className="mb-3"> Enter city</label>
+          <div className="flex-col gap-2 justify-between flex">
+            <input
+              type="text"
+              placeholder="enter city"
+              value={query}
+              onChange={inputQuery}
+              className="bg-slate-100 text-md p-1 rounded-md hover:bg-yellow-400 shadow-md"
+            />{" "}
+            <button
+              type="submit"
+              className="bg-slate-100 text-md p-1 rounded-md hover:bg-yellow-400 shadow-md cursor-pointer w-16"
+            >
+              Go
+            </button>
+          </div>
+          <p className="text-md py-4">{query}</p>
+          {weatherData && <p className="text-md">{weatherData.name}</p>}
         </form>
         {error && <p>Error: {error}</p>}
       </div>
 
       {weatherData && weatherData[0] && (
-        <div className="bg-slate-400 p-5 border-2 ">
-          <p>
-            City: {weatherData[0].name}, {weatherData[0].country}
+        <div className="bg-slate-400 p-5 border-2 rounded-xl">
+          {/* <p className="inline">City: </p>{" "} */}
+          <p className="inline font-bold">
+            {" "}
+            {weatherData[0].name}, {weatherData[0].country}, {timestamp}
           </p>
-
           {/* <p>Lat: {weatherData[0].lat}</p>
           <p>Lon: {weatherData[0].lon}</p> */}
         </div>
       )}
       {extractedWeatherData && (
-        <div className="bg-slate-400 p-5 border-2 ">
-          <p>Local time: {timestamp}</p>
-          {isCelsius ? (
-            <p>
-              {" "}
-              Temp: <strong>{temperatureCelsius.toFixed()}°C</strong>
-            </p>
-          ) : (
-            <p> Temp: {temperatureFahrenheit.toFixed()}°F</p>
-          )}
-          <button onClick={toggleCelsiusFahrenheit}>
-            Switch to {isCelsius ? "Fahrenheit" : "Celsius"}
-          </button>
+        <div className="bg-slate-400 p-5 border-2 text-md rounded-xl">
+          <p> {timestamp}</p>
+          <div className="flex-row flex justify-between gap-4">
+            {isCelsius ? (
+              <p className="text-2xl text-yellow-400">
+                {" "}
+                <strong>{temperatureCelsius.toFixed()}°C</strong>
+              </p>
+            ) : (
+              <p className="text-2xl text-yellow-400">
+                {" "}
+                <strong>{temperatureFahrenheit.toFixed()}°F </strong>
+              </p>
+            )}
+            <button
+              onClick={toggleCelsiusFahrenheit}
+              className="hover:bg-yellow-400 border-2 rounded-md shadow-md font-bold"
+            >
+              Switch to {isCelsius ? "Fahrenheit" : "Celsius"}
+            </button>
+          </div>
 
-          <p> Weather: {extractedWeatherData.weather[0].description}</p>
+          <p> {extractedWeatherData.weather[0].description}</p>
         </div>
       )}
     </>

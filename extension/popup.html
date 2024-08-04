@@ -3,19 +3,44 @@
 <html>
   <head>
     <title>World Weather App</title>
+    <link
+      rel="preload"
+      href="../public/fonts/Geist.Mono/GeistMono-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link href="./output.css" rel="stylesheet" />
+
     <style>
       body {
-        width: 200px;
-        font-family: Arial, sans-serif;
+        width: 300px;
+        font-family: "Geist mono", sans-serif;
+        border-radius: 10px;
       }
     </style>
   </head>
   <body>
-    <h1>World Weather App</h1>
+    <h1 class="text-white p-8 text-xl"><strong>World Weather App</strong></h1>
 
-    <a href="localhost:3000" target="_blank">Go to App</a>
+    <a
+      href="localhost:3000"
+      target="_blank"
+      class="text-white hover:bg-yellow-400 rounded-md bg-gray-900 p-1 hover:text-gray-900 fixed top-0"
+      >Go to App</a
+    >
 
-    <div id="root" style="height: 400px"></div>
+    <div
+      id="root"
+      style="
+        min-height: 400px;
+        padding: 5px;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+      "
+    ></div>
 
     <script src="popup.js"></script>
   </body>
