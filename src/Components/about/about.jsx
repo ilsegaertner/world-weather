@@ -18,6 +18,7 @@ const About = () => {
   return (
     <>
       <motion.div
+        className="3xl:max-w-6xl m-auto"
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -33,11 +34,14 @@ const About = () => {
       >
         <div className="p-10 sm:leading-9  m-auto text-gray-100 h-screen ">
           <div className="flex-col flex flex-wrap justify-between sm:flex-row overflow-x-scroll gap-6 pb-48">
-            <Box className="z-0 basis-80">
+            <Box
+              className="z-0 basis-72
+            "
+            >
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
-                    src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                    src="https://cdn.pixabay.com/photo/2016/08/23/20/52/positano-1615510_1280.jpg"
                     alt="Bold typography"
                     style={{
                       display: "block",
@@ -69,7 +73,7 @@ const About = () => {
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
-                    src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                    src="https://cdn.pixabay.com/photo/2017/03/21/12/20/flowers-2162026_1280.jpg"
                     alt="Bold typography"
                     style={{
                       display: "block",
@@ -108,7 +112,7 @@ const About = () => {
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
-                    src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                    src="https://cdn.pixabay.com/photo/2018/06/13/18/20/waves-3473335_1280.jpg"
                     alt="Bold typography"
                     style={{
                       display: "block",
@@ -151,7 +155,7 @@ const About = () => {
               <Card size="1">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
-                    src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                    src="https://cdn.pixabay.com/photo/2023/05/18/16/25/boat-8002718_1280.jpg"
                     alt="Bold typography"
                     style={{
                       display: "block",
@@ -178,7 +182,7 @@ const About = () => {
               <Card size="1" className="bg-black">
                 <Inset clip="padding-box" side="top" pb="current">
                   <img
-                    src="https://images.unsplash.com/photo-1617050318658-a9a3175e34cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
+                    src="https://cdn.pixabay.com/photo/2018/01/25/21/49/forest-3107139_1280.jpg"
                     alt="Bold typography"
                     style={{
                       display: "block",
