@@ -2,6 +2,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 module.exports = {
   entry: "./extension/popup.js",
@@ -49,8 +52,12 @@ module.exports = {
       ],
     }),
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production"),
-      "process.env": JSON.stringify({}),
+      "process.env.REACT_APP_API_KEY": JSON.stringify(
+        process.env.REACT_APP_API_KEY
+      ),
+      "process.env.REACT_APP_API_KEY_MAPS": JSON.stringify(
+        process.env.REACT_APP_API_KEY_MAPS
+      ),
     }),
   ],
   resolve: {
