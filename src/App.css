@@ -3,14 +3,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
-
 .App {
   text-align: center;
 }
 
 #map {
-  height: 25vh;
+  height: 250px;
   width: 100%;
 }
 

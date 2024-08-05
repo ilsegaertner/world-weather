@@ -8,10 +8,17 @@
 @tailwind utilities; */
 
 @font-face {
-  font-family: "Your Chosen Font";
+  font-family: "Geist mono";
   src: url("../public/fonts/Geist.Mono/GeistMono-Medium.woff2") format("woff2"),
     /* specify the path to your font file */
       url("../public/fonts/Geist.Mono/GeistMono-Regular.woff2") format("woff"); /* provide fallback formats if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("../src/assets/fonts/static/Figtree-Regular.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -28,6 +35,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #1a202c;
+}
+
+* {
+  font-family: "Figtree", sans-serif;
 }
 
 code {
