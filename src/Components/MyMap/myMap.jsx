@@ -62,7 +62,7 @@ const MyMap = ({ city }) => {
 
   return (
     <>
-      <div className="border-2 border-gray-900 overflow-hidden">
+      <div className="border-2 border-gray-900 overflow-hidden z-0 mb-32">
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div key={key}>
           {coordinates ? (

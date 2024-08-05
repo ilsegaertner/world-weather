@@ -3,20 +3,45 @@
 <html>
   <head>
     <title>World Weather App</title>
+    <!-- <link
+      rel="preload"
+      href="../src/assets/fonts/static/Figtree-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    /> -->
+    <link href="./output.css" rel="stylesheet" />
+
     <style>
       body {
-        width: 200px;
-        font-family: Arial, sans-serif;
+        width: 300px;
+        font-family: "Figtree", sans-serif;
+        border-radius: 10px;
       }
     </style>
   </head>
   <body>
-    <h2>Weather Map</h2>
-    <button id="showMap">Show Map</button>
-    <a href="localhost:3000" target="_blank">Go to App</a>
-    <div id="mapContainer" style="height: 400px; width: 100%; display: none">
-      <div id="root"></div>
-    </div>
+    <!-- <h1 class="text-white p-8 text-2xl"><strong>World Weather App</strong></h1> -->
+
+    <a
+      href="localhost:3000"
+      target="_blank"
+      class="text-white rounded-md bg-gray-900 p-1 hover:text-gray-900 fixed top-0 z-50"
+      >Go to App</a
+    >
+
+    <div
+      id="root"
+      style="
+        min-height: 400px;
+        padding: 5px;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+      "
+    ></div>
+
     <script src="popup.js"></script>
   </body>
 </html>

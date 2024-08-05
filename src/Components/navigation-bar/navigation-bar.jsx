@@ -1,24 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { TabNav, Flex } from "@radix-ui/themes";
 
 const NavigationBar = () => {
+  const location = useLocation();
+  const pathname = location.pathname;
   return (
     <>
-      <nav className="bg-gray-100 p-5 mb-5 shadow-md rounded-b-2xl max-w-xs m-auto sm:ml-10 top-0 sm:fixed">
-        <ul className="text-lg ">
-          <li className="hover:text-gray-600 transition-all duration-200">
-            <Link to="/about">About</Link>
-          </li>
-          <hr />
-          <li className="hover:text-gray-600 transition-all duration-200 text-xl">
-            <Link to="/weather">Weather</Link>
-          </li>
-          <hr />
-          <li className="hover:text-gray-600 transition-all duration-200">
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      </nav>
+      <Flex
+        direction="column"
+        gap="4"
+        pb="2"
+        className="p-2 shadow-md rounded-b-2xl max-w-xs m-auto sm:ml-10 top-0 sm:fixed bg-gray-900 z-50 items-center "
+      >
+        <TabNav.Root size="2" color="orange">
+          <TabNav.Link asChild active={pathname === "/about"}>
+            <Link to="/about" className="text-gray-100">
+              About
+            </Link>
+          </TabNav.Link>
+          <TabNav.Link asChild active={pathname === "/weather"}>
+            <Link to="/weather" className=" text-gray-100">
+              Weather
+            </Link>
+          </TabNav.Link>
+          <TabNav.Link asChild active={pathname === "/contact"}>
+            <Link to="/contact" className="text-gray-100">
+              Contact
+            </Link>
+          </TabNav.Link>
+        </TabNav.Root>
+      </Flex>
     </>
   );
 };
