@@ -1,12 +1,10 @@
 import React from "react";
 import FooterComponent from "../footer-component/footer";
-import { Link } from "react-router-dom";
-import logo from "../../assets/logos/logo.svg";
 import {
   Text,
   Separator,
   Heading,
-  Flex,
+  
   Card,
   Box,
   Inset,

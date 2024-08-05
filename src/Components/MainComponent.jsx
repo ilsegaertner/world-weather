@@ -2,10 +2,8 @@ import { API_KEY } from "../config.js";
 
 import FooterComponent from "./footer-component/footer";
 
-import logo from "../assets/logos/logo.svg";
 import React, { useEffect, useState, Suspense } from "react";
-import { Text, Spinner } from "@radix-ui/themes";
-import HeadingSecond from "./heading-second/heading-second.jsx";
+import {  Spinner } from "@radix-ui/themes";
 
 const Weather = React.lazy(() => import("./weather/weather"));
 const FiveCityForecast = React.lazy(() =>

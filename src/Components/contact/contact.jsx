@@ -3,16 +3,13 @@ import FooterComponent from "../footer-component/footer";
 import logo from "../../assets/logos/logo.svg";
 import { Link } from "react-router-dom";
 import {
-  Heading,
   Text,
-  Separator,
   DataList,
   Flex,
   Box,
   Card,
   Button,
   Avatar,
-  Inset,
 } from "@radix-ui/themes";
 import { motion } from "framer-motion";
 

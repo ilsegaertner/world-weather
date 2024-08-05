@@ -3,7 +3,7 @@ import React, { lazy, Suspense } from "react";
 import NavigationBar from "./Components/navigation-bar/navigation-bar";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
-import { Theme, ThemePanel, Spinner } from "@radix-ui/themes";
+import { Theme, Spinner } from "@radix-ui/themes";
 
 import Heading from "./Components/heading/heading";
 const MainComponent = lazy(() => import("./Components/MainComponent"));
