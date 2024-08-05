@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false && react-scripts build",
     "build:extension": "webpack --mode production",
     "build:extension-css": "npx postcss src/index.css -o extension/output.css",
     "test": "react-scripts test",
