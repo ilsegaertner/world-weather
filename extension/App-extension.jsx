@@ -205,9 +205,19 @@ const AppExtension = () => {
 
   let temperatureFahrenheit, temperatureCelsius, timestamp;
   if (extractedWeatherData) {
-    timestamp = new Date(
-      (extractedWeatherData.dt + extractedWeatherData.timezone) * 1000
-    ).toLocaleTimeString();
+    // Convert the UTC timestamp to milliseconds and add the timezone offset in milliseconds
+    const utcTime = extractedWeatherData.dt * 1000;
+    const timezoneOffset = extractedWeatherData.timezone * 1000; // in milliseconds
+
+    // Calculate the local time
+    const localTime = new Date(utcTime + timezoneOffset);
+
+    timestamp = localTime.toLocaleTimeString("en-GB", {
+      timeZone: "Europe/Berlin",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
     temperatureCelsius = extractedWeatherData.main.temp - 273.15;
     temperatureFahrenheit = extractedWeatherData.main.temp;
   }
