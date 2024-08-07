@@ -310,7 +310,7 @@ const AppExtension = () => {
               >
                 {isCelsius ? "Fahrenheit" : "Celsius"}
               </button>
-              <button>See next 5 days</button>
+              {/* <button>See next 5 days</button> */}
             </div>
           </div>
 
