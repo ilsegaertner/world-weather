@@ -159,6 +159,16 @@ const AppExtension = () => {
   };
 
   useEffect(() => {
+    if (error && error.includes("Cannot destructure property")) {
+      const timeoutId = setTimeout(() => {
+        setQuery("");
+        setError(null);
+      }, 1800);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [error, setError, setQuery]);
+
+  useEffect(() => {
     if (finishedQuery) {
       fetchCoords(finishedQuery);
     }
@@ -202,6 +212,16 @@ const AppExtension = () => {
       }
     }
   };
+
+  if (error) {
+    return (
+      <>
+        <div className="text-xl p-2 text-red-500 absolute">
+          Error: This city doesnt exist. Please try again.
+        </div>
+      </>
+    );
+  }
 
   let temperatureFahrenheit, temperatureCelsius, timestamp;
   if (extractedWeatherData) {
@@ -270,23 +290,28 @@ const AppExtension = () => {
       {extractedWeatherData && (
         <div className="bg-white p-3  text-md rounded-xl">
           <div className="flex-row flex justify-between gap-4">
-            {isCelsius ? (
-              <p className="text-xl">
-                {" "}
-                <strong>{temperatureCelsius.toFixed()}°C</strong>
-              </p>
-            ) : (
-              <p className="text-xl">
-                {" "}
-                <strong>{temperatureFahrenheit.toFixed()}°F </strong>
-              </p>
-            )}
-            <button
-              onClick={toggleCelsiusFahrenheit}
-              className=" border-1 rounded-md shadow-md  p-2 text-sm"
-            >
-              {isCelsius ? "Fahrenheit" : "Celsius"}
-            </button>
+            <div>
+              {isCelsius ? (
+                <p className="text-xl">
+                  {" "}
+                  <strong>{temperatureCelsius.toFixed()}°C</strong>
+                </p>
+              ) : (
+                <p className="text-xl">
+                  {" "}
+                  <strong>{temperatureFahrenheit.toFixed()}°F </strong>
+                </p>
+              )}
+            </div>
+            <div>
+              <button
+                onClick={toggleCelsiusFahrenheit}
+                className=" border-1 rounded-md shadow-md  p-2 text-sm"
+              >
+                {isCelsius ? "Fahrenheit" : "Celsius"}
+              </button>
+              <button>See next 5 days</button>
+            </div>
           </div>
 
           <p> {extractedWeatherData.weather[0].description}</p>
