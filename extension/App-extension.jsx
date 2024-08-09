@@ -4,9 +4,15 @@ import { API_KEY } from "../src/config";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
+import moment from "moment";
+import "moment-timezone";
+
 import "../src/App.css";
 
 import logo from "../src/assets/logos/logo.svg";
+
+const timeBerlinNow = new Date();
+console.log("Time Berlin now:", timeBerlinNow);
 
 // Heading component
 const Heading = () => {
@@ -95,7 +101,7 @@ const MyMap = ({ city }) => {
 
   return (
     <>
-      <div className="border-2 border-gray-900 overflow-hidden z-0 mb-32">
+      <div className="border-0 border-gray-900 overflow-hidden z-0 mb-32">
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div key={key}>
           {coordinates ? (
@@ -112,9 +118,7 @@ const MyMap = ({ city }) => {
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
               </MapContainer>
             </Suspense>
-          ) : (
-            <p>Loading map...</p>
-          )}
+          ) : null}
         </div>
       </div>
     </>
@@ -225,19 +229,12 @@ const AppExtension = () => {
 
   let temperatureFahrenheit, temperatureCelsius, timestamp;
   if (extractedWeatherData) {
-    // Convert the UTC timestamp to milliseconds and add the timezone offset in milliseconds
-    const utcTime = extractedWeatherData.dt * 1000;
-    const timezoneOffset = extractedWeatherData.timezone * 1000; // in milliseconds
+    const utcTime = moment.unix(extractedWeatherData.dt);
+    const localTime = utcTime.utcOffset(extractedWeatherData.timezone / 60);
+    timestamp = localTime.format("HH:mm");
 
-    // Calculate the local time
-    const localTime = new Date(utcTime + timezoneOffset);
+    console.log(`"Timestamp queried:" ${query}`, timestamp);
 
-    timestamp = localTime.toLocaleTimeString("en-GB", {
-      timeZone: "Europe/Berlin",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-    });
     temperatureCelsius = extractedWeatherData.main.temp - 273.15;
     temperatureFahrenheit = extractedWeatherData.main.temp;
   }
@@ -308,7 +305,7 @@ const AppExtension = () => {
                 onClick={toggleCelsiusFahrenheit}
                 className=" border-1 rounded-md shadow-md  p-2 text-sm"
               >
-                {isCelsius ? "Fahrenheit" : "Celsius"}
+                {isCelsius ? "°F" : "°C"}
               </button>
               {/* <button>See next 5 days</button> */}
             </div>
