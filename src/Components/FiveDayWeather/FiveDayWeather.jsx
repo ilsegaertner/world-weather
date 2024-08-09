@@ -3,9 +3,9 @@ import { useState, useEffect, useMemo, useCallback } from "react";
 import { API_KEY } from "../../config";
 
 import { Text, Heading, Spinner, Card } from "@radix-ui/themes";
-import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
-import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
-import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
+// import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
+// import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
+// import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
 
 const FiveDayWeather = ({ lat, lon, city }) => {
   const [fiveDayWeather, setFiveDayWeather] = useState(null);
@@ -22,6 +22,7 @@ const FiveDayWeather = ({ lat, lon, city }) => {
       }
       const data = await response.json();
       setFiveDayWeather(data);
+      console.log("FiveDayWeather-Data:", fiveDayWeather);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -50,23 +51,7 @@ const FiveDayWeather = ({ lat, lon, city }) => {
     return date.toLocaleDateString("en-US", options);
   };
 
-  const backgroundImages = useMemo(() => {
-    return threeOClockValues.map((item) => {
-      switch (item.weather[0].main) {
-        case "Rain":
-          return `url(${RainSvg})`;
-
-        case "Clouds":
-          return `url(${CloudsSvg})`;
-
-        case "Clear":
-          return `url(${ClearSvg})`;
-
-        default:
-          return null;
-      }
-    });
-  }, [threeOClockValues]);
+  console.log("Three O Clock Values:", threeOClockValues);
 
   if (loading) {
     return <Spinner size="2"></Spinner>;
@@ -116,29 +101,35 @@ const FiveDayWeather = ({ lat, lon, city }) => {
             </Text>
 
             <div className="flex justify-between flex-wrap sm:flex-no-wrap">
-              {threeOClockValues.map((item, index) => (
-                <Text
-                  as="div"
-                  size="2"
-                  weight="light"
-                  key={index}
-                  className="flex flex-col text-blue-100 pl-0 px-4 items-start"
-                >
-                  {formatDateTime(item.dt_txt)}{" "}
+              {threeOClockValues.map((item, index) => {
+                const icon = item.weather[0].icon;
+                const weatherIconAdress = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+                return (
                   <Text
-                    as="span"
+                    as="div"
                     size="2"
-                    weight="medium"
-                    className="text-md text-gray-100"
+                    weight="light"
+                    key={index}
+                    className="flex flex-col text-blue-100 pl-0 px-4 items-start"
                   >
-                    {item.main.temp.toFixed()}°C
+                    {formatDateTime(item.dt_txt)}{" "}
+                    <Text
+                      as="span"
+                      size="2"
+                      weight="medium"
+                      className="text-md text-gray-100"
+                    >
+                      {item.main.temp.toFixed()}°C
+                    </Text>
+                    <img
+                      src={weatherIconAdress}
+                      alt="weather icon"
+                      className="w-10 h-10"
+                    />
                   </Text>
-                  <div
-                    className="relative w-10 h-10 bg-cover"
-                    style={{ backgroundImage: backgroundImages[index] }}
-                  ></div>
-                </Text>
-              ))}
+                );
+              })}
             </div>
           </div>
         </Card>
