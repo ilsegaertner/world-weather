@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 
+import moment from "moment";
+import "moment-timezone";
+
 import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
 import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
 import DrizzleSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
@@ -91,19 +94,15 @@ const Weather = ({
   const temperatureCelsius = weatherData.main.temp - 273.15;
 
   let timestamp = "";
+  let icon = weatherData.weather[0].icon;
+  let weatherIconAdress;
 
   if (uncachedWeatherData) {
-    timestamp = new Date(
-      (uncachedWeatherData.dt + uncachedWeatherData.timezone) * 1000
-    ).toLocaleTimeString();
+    const utcTime = moment.unix(uncachedWeatherData.dt);
+    const localTime = utcTime.utcOffset(uncachedWeatherData.timezone / 60);
+    timestamp = localTime.format("HH:mm");
+    weatherIconAdress = `https://openweathermap.org/img/wn/${icon}@2x.png`;
   }
-
-  // const timestamp = new Date(
-  //   if (uncachedWeatherData) {
-  //     (uncachedWeatherData.dt + uncachedWeatherData.timezone) * 1000
-
-  //   }
-  // ).toLocaleTimeString();
 
   console.log(uncachedWeatherData);
 
@@ -177,13 +176,22 @@ const Weather = ({
 
                       <div className="weather-image-and-temperature flex justify-between flex-row text-yellow-200 items-center overflow-none">
                         <div className="p-1 justify-between align-top text-gray-100 flex flex-col items-center">
-                          <div
+                          {/* <div
                             className="relative w-16 h-16 bg-cover"
                             style={{ backgroundImage }}
-                          ></div>
+                          ></div> */}
+
+                          <img
+                            src={weatherIconAdress}
+                            alt="Weather icon"
+                            className="w-16 h-16 bg-cover"
+                          />
                           <Text as="p" size="2" weight="light">
                             {weatherData.weather[0].main}
                           </Text>
+                          {/* <Text as="p" size="2" weight="light">
+                            {weatherData.weather[0].description}
+                          </Text> */}
                         </div>
                         <Text
                           as="p"
