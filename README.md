@@ -16,7 +16,7 @@ This Weather Application provides real-time weather data for cities around the w
 - **Gradient Background**: The app dynamically renders the background color as a gradient based on the actual current weather data. For example, when it's sunny, the background displays a yellow-blue gradient, while a dark gray gradient is used for night and cloudy conditions.
 - **Browser Extension**: A Chrome extension allows users to quickly view weather information and a map for any city directly from their browser.
 
-<img width="400" alt="Extension Screenshot 1" src="https://github.com/ilsegaertner/world-weather/blob/main/src/assets/screenshots/screenshot.png?raw=true" />
+<img width="200" alt="Extension Screenshot 1" src="https://github.com/ilsegaertner/world-weather/blob/main/src/assets/screenshots/screenshot.png?raw=true" />
 
 ## Technologies Used
 
@@ -43,7 +43,10 @@ The application uses the following endpoints from the
 - **Current Weather Data**: Fetches the current weather data for a city using its geographical coordinates.
   - Example: `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}`
 - **Five-Day Forecast Data**: Fetches the five-day weather forecast for a city using its geographical coordinates.
+
   - Example: `https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&units=metric&appid={API_KEY}`
+
+  <img width="800" alt="Extension Screenshot 4" src="https://github.com/ilsegaertner/world-weather/blob/main/src/assets/screenshots/screenshot4.png?raw=true" />
 
 ## Acknowledgements
 
