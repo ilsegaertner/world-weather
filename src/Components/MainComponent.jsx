@@ -4,6 +4,7 @@ import FooterComponent from "./footer-component/footer";
 
 import React, { useEffect, useState, Suspense } from "react";
 import { Spinner } from "@radix-ui/themes";
+import InstallExtensionButton from "./install-extension-button/install-extension-button.jsx";
 
 const Weather = React.lazy(() => import("./weather/weather"));
 const FiveCityForecast = React.lazy(() =>
@@ -212,8 +213,10 @@ const MainComponent = () => {
 
   return (
     <>
-      <div className="sm:leading-9  m-auto text-gray-100 h-screen">
+      <div className="sm:leading-9  m-auto text-gray-100 h-screen relative">
         <Suspense fallback={<Spinner size="2">Loading...</Spinner>}>
+          <InstallExtensionButton className="absolute right-2" />
+
           <div
             className={`flex-col sm:flex-row justify-center pt-16  p-8 flex flex-wrap shadow-xl border-gray-600 gap-8  ${weatherGradient}`}
           >
