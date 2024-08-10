@@ -2,14 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { API_KEY } from "../../config";
 
-import { Text, Card } from "@radix-ui/themes";
+import { Text, Card, Button } from "@radix-ui/themes";
 
-import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
-import DrizzleSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-6.svg";
-import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
-import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
-import HazePng from "../../assets/icons8-haze-100.png";
 import { motion } from "framer-motion";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const FiveCityForecast = () => {
   const [fiveCities, setFiveCities] = useState([]);
@@ -21,7 +17,6 @@ const FiveCityForecast = () => {
 
   const fetchFiveCities = async () => {
     try {
-      console.log("Fetching five cities...");
       const cities = [
         { id: 1, name: "Rome", lat: 41.9028, lon: 12.4964 },
         { id: 2, name: "New York", lat: 40.7128, lon: -74.006 },
@@ -55,38 +50,32 @@ const FiveCityForecast = () => {
         { id: 30, name: "Reykjavik", lat: 64.1466, lon: -21.9426 },
       ];
 
-      const cachedData = JSON.parse(localStorage.getItem("weatherData")) || {};
       const selectedCities = new Set();
-
       const promises = [];
+
+      //select 5 random cities
       while (selectedCities.size < 5) {
         const randomIndex = Math.floor(Math.random() * cities.length);
         const city = cities[randomIndex];
         if (!selectedCities.has(city.id)) {
           selectedCities.add(city.id);
-          if (cachedData[city.id]) {
-            setFiveCities((prevCities) => [...prevCities, cachedData[city.id]]);
-          } else {
-            const promise = fetchWeatherData(city);
-            promises.push(promise);
-          }
+          console.log("Fetching data for city:", city.name);
+          const promise = fetchWeatherData(city);
+          promises.push(promise);
         }
       }
 
       const cityData = await Promise.all(promises);
-      cityData.forEach((data) => {
-        setFiveCities((prevCities) => [...prevCities, data]);
-        cachedData[data.id] = data;
-      });
-
-      localStorage.setItem("weatherData", JSON.stringify(cachedData));
+      setFiveCities(cityData);
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Error", error);
       setError(error.message);
     }
   };
 
   const fetchWeatherData = async (city) => {
+    console.log("Fetching data for city:", city.name); // Added for debugging
+
     const { id, lat, lon } = city;
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
@@ -101,12 +90,19 @@ const FiveCityForecast = () => {
       data.weather && data.weather.length > 0 ? data.weather[0].main : null;
     console.log("current weather:", currentWeather);
 
+    const currentIcon =
+      data.weather && data.weather.length > 0 ? data.weather[0].icon : null;
+    console.log("currentIcon:", currentIcon);
+
+    console.log("Response Data Five Cities Forecast:", data);
+
     if (data.name === "Konkan Division") {
       return {
         id,
         name: "Mumbai",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Shanghai Municipality") {
       return {
@@ -114,6 +110,7 @@ const FiveCityForecast = () => {
         name: "Shanghai",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Al ‘Atabah" || data.name === "Al 'Atabah") {
       return {
@@ -121,6 +118,7 @@ const FiveCityForecast = () => {
         name: "Cairo",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Trevi") {
       return {
@@ -128,6 +126,7 @@ const FiveCityForecast = () => {
         name: "Rome",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Liberdade") {
       return {
@@ -135,6 +134,7 @@ const FiveCityForecast = () => {
         name: "São Paulo",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Karaköy") {
       return {
@@ -142,6 +142,7 @@ const FiveCityForecast = () => {
         name: "Istanbul",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Mitte") {
       return {
@@ -149,6 +150,7 @@ const FiveCityForecast = () => {
         name: "Berlin",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Bright Hill Crescent") {
       return {
@@ -156,6 +158,7 @@ const FiveCityForecast = () => {
         name: "Singapore",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "De Waterkant") {
       return {
@@ -163,6 +166,7 @@ const FiveCityForecast = () => {
         name: "Cape Town",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Grímsstaðaholt") {
       return {
@@ -170,6 +174,7 @@ const FiveCityForecast = () => {
         name: "Reykjavík",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Saint-Merri") {
       return {
@@ -177,6 +182,7 @@ const FiveCityForecast = () => {
         name: "Paris",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "Nonthaburi") {
       return {
@@ -184,6 +190,7 @@ const FiveCityForecast = () => {
         name: "Bankok",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     } else if (data.name === "San Nicolas") {
       return {
@@ -191,6 +198,7 @@ const FiveCityForecast = () => {
         name: "Buenos Aires",
         temperature: data.main.temp,
         current: currentWeather,
+        icon: currentIcon,
       };
     }
     return {
@@ -198,26 +206,12 @@ const FiveCityForecast = () => {
       name: data.name,
       temperature: data.main.temp,
       current: currentWeather,
+      icon: currentIcon,
     };
   };
 
-  const getWeatherImage = (weather) => {
-    switch (weather) {
-      case "Rain":
-        return RainSvg;
-      case "Clouds":
-        return CloudsSvg;
-      case "Clear":
-        return ClearSvg;
-      case "Drizzle":
-        return DrizzleSvg;
-      case "Mist":
-        return HazePng;
-      case "Haze":
-        return HazePng;
-      default:
-        return null;
-    }
+  const refreshData = () => {
+    fetchFiveCities();
   };
 
   return (
@@ -230,15 +224,11 @@ const FiveCityForecast = () => {
         transition={{
           duration: 0.2,
           ease: "easeInOut",
-          // type: "spring",
-          // stiffness: 549,
-          // mass: 1,
-          // damping: 32,
         }}
       >
         <Card>
           <div
-            className="bg-gray-600  shadow-xl p-5 sm:p-2 col-start-7 col-end-9 grid grid-rows-1 gap-6
+            className="bg-gray-600 relative shadow-xl p-5 sm:p-2 col-start-7 col-end-9 grid grid-rows-1 gap-6
       "
           >
             <Text
@@ -249,6 +239,17 @@ const FiveCityForecast = () => {
             >
               International Today
             </Text>
+
+            <Button
+              size="1"
+              variant="classic"
+              highContrast
+              onClick={refreshData}
+              className="absolute -mt-2 flex items-center -left-2 hover:cursor-pointer bg-blue-500 p-2  text-gray-100 hover:bg-blue-700 "
+            >
+              {" "}
+              <ReloadIcon width="15" className="left-5" />
+            </Button>
 
             {error && (
               <Text as="div" size="2">
@@ -268,12 +269,19 @@ const FiveCityForecast = () => {
                         {city.temperature.toFixed()}°C{" "}
                       </Text>
                       <div className="relative w-10 h-10 bg-cover">
-                        <img
-                          src={getWeatherImage(city.current)}
-                          alt={`${city.current} weather`}
-                          className="w-full h-full "
-                          width={"30px"}
-                        />
+                        {city.icon ? (
+                          <>
+                            {console.log(
+                              `Icon URL: "https://openweathermap.org/img/wn/${city.icon}@2x.png"`
+                            )}
+                            <img
+                              src={`https://openweathermap.org/img/wn/${city.icon}@2x.png`}
+                              alt={`${city.current} weather`}
+                              className="w-full h-full"
+                              width={"30px"}
+                            />
+                          </>
+                        ) : null}
                       </div>
                     </div>
                   </div>
