@@ -5,7 +5,6 @@
 This Weather Application provides real-time weather data for cities around the world. The app displays current weather conditions, including temperature, weather icons, and more, for a user-specified city and five randomly selected cities. Users can search for a specific city, and the app will update the display with the latest weather information.
 
 <img width="300" alt="Extension Screenshot 1" src="https://github.com/ilsegaertner/world-weather/blob/main/src/assets/screenshots/screenshot.png?raw=true" />
-<img width="300" alt="Extension Screenshot 1" src="https://github.com/ilsegaertner/world-weather/blob/main/src/assets/screenshots/screenshot2.png?raw=true" />
 
 ## Features
 
@@ -16,6 +15,8 @@ This Weather Application provides real-time weather data for cities around the w
 - **Responsive Design**: The application is designed to be responsive and works on various screen sizes.
 - **Gradient Background**: The app dynamically renders the background color as a gradient based on the actual current weather data. For example, when it's sunny, the background displays a yellow-blue gradient, while a dark gray gradient is used for night and cloudy conditions.
 - **Browser Extension**: A Chrome extension allows users to quickly view weather information and a map for any city directly from their browser.
+
+<img width="700" alt="Extension Screenshot 2" src="https://github.com/ilsegaertner/world-weather/blob/main/src/assets/screenshots/screenshot2.png?raw=true" />
 
 ## Technologies Used
 
@@ -31,6 +32,8 @@ This Weather Application provides real-time weather data for cities around the w
 - **View Five Random Cities**: The app automatically displays the weather for five random cities from a predefined list each time it is loaded or refreshed.
 - **Five-Day Forecast**: View the 3:00 PM weather forecast for the next five days for the searched city.
 - **Use the Browser Extension**: Install the extension to quickly check the weather and view a map for any city directly from your browser.
+
+<img width="700" alt="Extension Screenshot 3" src="https://github.com/ilsegaertner/world-weather/blob/main/src/assets/screenshots/screenshot3.png?raw=true" />
 
 ## API Reference
 
