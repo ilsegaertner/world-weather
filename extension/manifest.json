@@ -29,5 +29,9 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["activeTab"]
+  "permissions": [
+    "activeTab",
+    "https://api.openweathermap.org/*",
+    "https://nominatim.openstreetmap.org/*"
+  ]
 }
