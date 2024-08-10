@@ -3,7 +3,7 @@ import { API_KEY } from "../config.js";
 import FooterComponent from "./footer-component/footer";
 
 import React, { useEffect, useState, Suspense } from "react";
-import {  Spinner } from "@radix-ui/themes";
+import { Spinner } from "@radix-ui/themes";
 
 const Weather = React.lazy(() => import("./weather/weather"));
 const FiveCityForecast = React.lazy(() =>
@@ -212,12 +212,9 @@ const MainComponent = () => {
 
   return (
     <>
-
-
       <div className="sm:leading-9  m-auto text-gray-100 h-screen">
         <Suspense fallback={<Spinner size="2">Loading...</Spinner>}>
           <div
-         
             className={`flex-col sm:flex-row justify-center pt-16  p-8 flex flex-wrap shadow-xl border-gray-600 gap-8  ${weatherGradient}`}
           >
             <Weather
@@ -238,12 +235,7 @@ const MainComponent = () => {
               city={city}
               weatherData={weatherData}
             />
-            <FiveCityForecast
-              city={city}
-              lon={lon}
-              lat={lat}
-              weatherData={weatherData}
-            />
+            <FiveCityForecast query={query} />
           </div>
           <div className="flex flex-col justify-center">
             <MyMap city={city} />
