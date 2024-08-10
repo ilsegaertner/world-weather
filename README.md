@@ -30,8 +30,8 @@ This Weather Application provides real-time weather data for cities around the w
 
 ## API Reference
 
-The application uses the following endpoints from the [OpenWeatherMap API]
-( <a href="https://openweathermap.org/api" target=_blank> https://openweathermap.org/api</a> )
+The application uses the following endpoints from the
+<a href="https://openweathermap.org/api" target=_blank> OpenWeatherMap API</a>
 
 - **Current Weather Data**: Fetches the current weather data for a city using its geographical coordinates.
   - Example: `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}`
