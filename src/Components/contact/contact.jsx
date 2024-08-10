@@ -140,7 +140,7 @@ const Contact = () => {
             </Box>
             <Box>
               {" "}
-              <div className="mt-10">
+              <div className="mt-10 mb-32">
                 <Button className="bg-yellow-200 p-3 sm:p-4 rounded-lg text-gray-900 hover:bg-yellow-300 duration-200 ">
                   <Link to="/weather">
                     <Text size="3">Back to Home</Text>

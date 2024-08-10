@@ -242,10 +242,10 @@ const FiveCityForecast = () => {
 
             <Button
               size="1"
-              variant="classic"
+              variant="solid"
               highContrast
               onClick={refreshData}
-              className="absolute -mt-2 flex items-center -left-2 hover:cursor-pointer bg-blue-500 p-2  text-gray-100 hover:bg-blue-700 "
+              className="absolute -mt-2 flex items-center -left-2 hover:cursor-pointer p-2  text-gray-100"
             >
               {" "}
               <ReloadIcon width="15" className="left-5" />
@@ -269,19 +269,12 @@ const FiveCityForecast = () => {
                         {city.temperature.toFixed()}°C{" "}
                       </Text>
                       <div className="relative w-10 h-10 bg-cover">
-                        {city.icon ? (
-                          <>
-                            {console.log(
-                              `Icon URL: "https://openweathermap.org/img/wn/${city.icon}@2x.png"`
-                            )}
-                            <img
-                              src={`https://openweathermap.org/img/wn/${city.icon}@2x.png`}
-                              alt={`${city.current} weather`}
-                              className="w-full h-full"
-                              width={"30px"}
-                            />
-                          </>
-                        ) : null}
+                        <img
+                          src={`https://openweathermap.org/img/wn/${city.icon}@2x.png`}
+                          alt={`${city.current} weather`}
+                          className="w-full h-full"
+                          width={"30px"}
+                        />
                       </div>
                     </div>
                   </div>

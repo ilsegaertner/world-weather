@@ -94,7 +94,7 @@ const FiveDayWeather = ({ lat, lon, city }) => {
               as="p"
               size="5"
               weight="medium"
-              className="flex  text-black rounded-xl"
+              className="flex  text-white rounded-xl"
             >
               {" "}
               {city}
