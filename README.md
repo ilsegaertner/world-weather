@@ -4,6 +4,8 @@
 
 This Weather Application provides real-time weather data for cities around the world. The app displays current weather conditions, including temperature, weather icons, and more, for a user-specified city and five randomly selected cities. Users can search for a specific city, and the app will update the display with the latest weather information.
 
+
+
 ## Features
 
 - **City Search**: Users can enter the name of any city to retrieve its current weather information.
@@ -11,6 +13,7 @@ This Weather Application provides real-time weather data for cities around the w
 - **Five-Day Weather Forecast**: The app provides a five-day weather forecast for the searched city, displaying the weather conditions each day.
 - **Live Weather Icons**: Weather conditions are visually represented using icons sourced from the OpenWeatherMap API.
 - **Responsive Design**: The application is designed to be responsive and works on various screen sizes.
+- **Gradient Background**: The app dynamically renders the background color as a gradient based on the actual current weather data. For example, when it's sunny, the background displays a yellow-blue gradient, while a dark gray gradient is used for night and cloudy conditions.
 - **Browser Extension**: A Chrome extension allows users to quickly view weather information and a map for any city directly from their browser.
 
 ## Technologies Used
