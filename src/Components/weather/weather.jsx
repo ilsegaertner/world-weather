@@ -72,30 +72,15 @@ const Weather = ({
     return <Spinner size="3"></Spinner>;
   }
 
-  let backgroundImage;
-  switch (weatherData.weather[0].main) {
-    case "Rain":
-      backgroundImage = `url(${RainSvg})`;
-      break;
-    case "Drizzle":
-      backgroundImage = `url(${DrizzleSvg})`;
-      break;
-    case "Clouds":
-      backgroundImage = `url(${CloudsSvg})`;
-      break;
-    case "Clear":
-      backgroundImage = `url(${ClearSvg})`;
-      break;
-    default:
-      backgroundImage = null;
-  }
-
   // Convert temperature from Kelvin to Celsius
   const temperatureCelsius = weatherData.main.temp - 273.15;
 
   let timestamp = "";
-  let icon = weatherData.weather[0].icon;
-  let weatherIconAdress;
+  let icon =
+    weatherData.weather && weatherData.weather[0]
+      ? weatherData.weather[0].icon
+      : "01d";
+  let weatherIconAdress = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
   if (uncachedWeatherData) {
     const utcTime = moment.unix(uncachedWeatherData.dt);
@@ -151,8 +136,8 @@ const Weather = ({
                     <Button
                       type="sumbit"
                       highContrast
-                      variant="classic"
-                      className="bg-blue-500 p-2 rounded-lg text-gray-100 hover:bg-blue-700 cursor-pointer"
+                      variant="solid"
+                      className="p-2 text-gray-100 cursor-pointer"
                     >
                       <ArrowRightIcon />
                     </Button>
@@ -182,17 +167,17 @@ const Weather = ({
                             style={{ backgroundImage }}
                           ></div> */}
 
-                          <img
-                            src={weatherIconAdress}
-                            alt="Weather icon"
-                            className="w-16 h-16 bg-cover"
-                          />
+                          {weatherData && (
+                            <img
+                              src={weatherIconAdress}
+                              alt="Weather icon"
+                              className="w-16 h-16 bg-cover"
+                            />
+                          )}
+
                           <Text as="p" size="2" weight="light">
                             {weatherData.weather[0].main}
                           </Text>
-                          {/* <Text as="p" size="2" weight="light">
-                            {weatherData.weather[0].description}
-                          </Text> */}
                         </div>
                         <Text
                           as="p"
