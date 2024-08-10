@@ -31,7 +31,7 @@ This Weather Application provides real-time weather data for cities around the w
 ## API Reference
 
 The application uses the following endpoints from the
-<a href="https://openweathermap.org/api" target=_blank> OpenWeatherMap API</a>
+<a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API</a>
 
 - **Current Weather Data**: Fetches the current weather data for a city using its geographical coordinates.
   - Example: `https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_KEY}`
@@ -40,7 +40,7 @@ The application uses the following endpoints from the
 
 ## Acknowledgements
 
-- [OpenWeatherMap](https://openweathermap.org/) for providing the weather data API.
-- [Radix UI](https://radix-ui.com/) for the UI component library.
-- [Framer Motion](https://www.framer.com/motion/) for animations and transitions.
-- [Leaflet](https://leafletjs.com/) for map rendering in the browser extension.
+- <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap</a> for providing the weather data API.
+- <a href="https://radix-ui.com/" target="_blank">Radix UI</a> for the UI component library.
+- <a href="https://www.framer.com/motion/" target="_blank">Framer Motion</a> for animations and transitions.
+- <a href="https://leafletjs.com/" target="_blank">Leaflet</a> for map rendering in the browser extension.
