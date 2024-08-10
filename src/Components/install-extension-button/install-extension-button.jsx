@@ -13,7 +13,7 @@ const InstallExtensionButton = () => {
     <Button
       variant="solid"
       highContrast
-      className="right-10 absolute"
+      className="right-10 absolute hover:cursor-pointer"
       onClick={installExtension}
     >
       Install Chrome Extension
