@@ -4,7 +4,7 @@
 
 This Weather Application provides real-time weather data for cities around the world. The app displays current weather conditions, including temperature, weather icons, and more, for a user-specified city and five randomly selected cities. Users can search for a specific city, and the app will update the display with the latest weather information.
 
-
+![Extension Screenshot](https://github.com/ilsegaertner/world-weather/blob/main/src/assets/screenshots/screenshot.png?raw=true)
 
 ## Features
 
