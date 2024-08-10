@@ -150,6 +150,7 @@ const Weather = ({
                     />
                     <Button
                       type="sumbit"
+                      highContrast
                       variant="classic"
                       className="bg-blue-500 p-2 rounded-lg text-gray-100 hover:bg-blue-700 cursor-pointer"
                     >
