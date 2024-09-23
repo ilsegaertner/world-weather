@@ -64,7 +64,6 @@ const MainComponent = () => {
         // Update the state with coordinates from local storage
         setLat(lat);
         setLon(lon);
-        console.log(lat, lon);
       }
 
       if (!latFromStorage || !lonFromStorage || query !== city) {
@@ -77,7 +76,6 @@ const MainComponent = () => {
           );
         }
         const data = await response.json();
-        console.log(data);
 
         // Check if data array is empty
         if (data.length === 0) {
@@ -96,8 +94,6 @@ const MainComponent = () => {
     } catch (error) {
       setError(error.message);
     }
-    console.log(lat);
-    console.log(lon);
   };
 
   useEffect(() => {
@@ -126,7 +122,6 @@ const MainComponent = () => {
 
       setWeatherData(data);
       setUncachedWeatherData(data);
-
       localStorage.setItem(`weatherData_${cityName}`, JSON.stringify(data));
     } catch (error) {
       setError(error.message);
@@ -157,11 +152,6 @@ const MainComponent = () => {
       const sunsetTime = new Date(
         (uncachedWeatherData.sys.sunset + uncachedWeatherData.timezone) * 1000
       );
-
-      console.log(`Current Time in ${city}: ${currentTime}`);
-      console.log(`Sunrise Time in ${city}: ${sunriseTime}`);
-      console.log(`Sunset Time in ${city}: ${sunsetTime}`);
-
       return currentTime >= sunriseTime && currentTime < sunsetTime;
     }
   };

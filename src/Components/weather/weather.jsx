@@ -51,10 +51,6 @@ const Weather = ({
           transition={{
             duration: 0.2,
             ease: "easeInOut",
-            // type: "spring",
-            // stiffness: 549,
-            // mass: 1,
-            // damping: 32,
           }}
         >
           <div className="flex bg-gray-900 p-5 text-red-700 rounded-md gap-4">

@@ -3,9 +3,6 @@ import { useState, useEffect, useMemo, useCallback } from "react";
 import { API_KEY } from "../../config";
 
 import { Text, Heading, Spinner, Card } from "@radix-ui/themes";
-// import RainSvg from "../../assets/amcharts_weather_icons_1.0.0/static/rainy-7.svg";
-// import CloudsSvg from "../../assets/amcharts_weather_icons_1.0.0/static/cloudy.svg";
-// import ClearSvg from "../../assets/amcharts_weather_icons_1.0.0/static/day.svg";
 
 const FiveDayWeather = ({ lat, lon, city }) => {
   const [fiveDayWeather, setFiveDayWeather] = useState(null);
@@ -51,7 +48,6 @@ const FiveDayWeather = ({ lat, lon, city }) => {
     return date.toLocaleDateString("en-US", options);
   };
 
-  console.log("Three O Clock Values:", threeOClockValues);
 
   if (loading) {
     return <Spinner size="2"></Spinner>;
@@ -73,8 +69,6 @@ const FiveDayWeather = ({ lat, lon, city }) => {
       </Text>
     );
   }
-
-  console.log(threeOClockValues);
 
   if (threeOClockValues.length > 0) {
     return (
